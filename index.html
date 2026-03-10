@@ -10,13 +10,12 @@
       --bg:#050505;
       --bg-soft:#0c0c0c;
       --cream:#e8dbc9;
-      --cream-soft:rgba(232,219,201,.76);
+      --cream-soft:rgba(232,219,201,.78);
       --cream-faint:rgba(232,219,201,.12);
       --line:rgba(232,219,201,.18);
       --warm-1:#2c1f19;
       --warm-2:#6b4e3f;
       --warm-3:#3a2a22;
-      --shadow:0 24px 60px rgba(0,0,0,.35);
     }
 
     *{
@@ -47,15 +46,16 @@
       left:0;
       width:100%;
       z-index:1000;
-      transition:
-        background-color .35s ease,
-        backdrop-filter .35s ease,
-        border-color .35s ease,
-        padding .35s ease,
-        box-shadow .35s ease;
       padding:24px 0;
       background:transparent;
       border-bottom:1px solid transparent;
+      transition:
+        background-color .35s ease,
+        backdrop-filter .35s ease,
+        -webkit-backdrop-filter .35s ease,
+        border-color .35s ease,
+        padding .35s ease,
+        box-shadow .35s ease;
     }
 
     .site-header.scrolled{
@@ -82,6 +82,7 @@
       line-height:1;
       letter-spacing:-0.04em;
       color:var(--cream);
+      white-space:nowrap;
     }
 
     .nav{
@@ -116,6 +117,7 @@
       font-size:14px;
       font-weight:600;
       transition:transform .25s ease, background-color .25s ease, border-color .25s ease;
+      white-space:nowrap;
     }
 
     .nav-cta:hover{
@@ -130,7 +132,7 @@
       display:flex;
       align-items:center;
       overflow:hidden;
-      padding:120px 0 48px;
+      padding:130px 0 48px;
       background:
         radial-gradient(circle at 12% 22%, rgba(232,219,201,.04), transparent 22%),
         linear-gradient(180deg, #040404 0%, #080808 100%);
@@ -145,7 +147,6 @@
       background:linear-gradient(140deg,var(--warm-1),var(--warm-2),var(--warm-3));
       clip-path:polygon(25% 0,100% 0,100% 100%,0 100%);
       opacity:.95;
-      transform:translateY(0);
       will-change:transform;
     }
 
@@ -162,6 +163,8 @@
 
     .copy{
       max-width:560px;
+      position:relative;
+      z-index:3;
     }
 
     .eyebrow,
@@ -273,7 +276,7 @@
 
     .visual{
       position:relative;
-      min-height:720px;
+      min-height:760px;
       display:flex;
       align-items:flex-end;
       justify-content:center;
@@ -281,7 +284,7 @@
 
     .badge{
       position:absolute;
-      top:72px;
+      top:74px;
       right:34px;
       z-index:4;
       font-family:Georgia, serif;
@@ -295,45 +298,46 @@
 
     .word{
       position:absolute;
+      left:50%;
+      bottom:92px;
+      transform:translateX(-30%);
       font-family:Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
       font-size:clamp(120px, 12vw, 220px);
-      bottom:90px;
-      left:50%;
-      transform:translateX(-30%);
       color:rgba(232,219,201,.13);
       white-space:nowrap;
       pointer-events:none;
       user-select:none;
       will-change:transform;
       z-index:1;
-    }
-
-    .model{
-      position:relative;
-      z-index:3;
-      max-width:min(100%, 560px);
-      max-height:78vh;
-      width:auto;
-      height:auto;
-      display:block;
-      object-fit:contain;
-      filter:drop-shadow(0 24px 40px rgba(0,0,0,.42));
-      opacity:0;
-      transform:translateY(36px);
-      animation:fadeUp .95s cubic-bezier(.22,.8,.2,1) .42s forwards;
-      will-change:transform;
+      line-height:.84;
+      letter-spacing:-.04em;
     }
 
     .glow{
       position:absolute;
       width:58%;
       height:18%;
-      bottom:5%;
+      bottom:6%;
       border-radius:50%;
       background:radial-gradient(circle, rgba(232,219,201,.12) 0%, rgba(232,219,201,0) 72%);
       filter:blur(16px);
       z-index:0;
       pointer-events:none;
+    }
+
+    .model{
+      position:relative;
+      z-index:3;
+      width:520px;
+      max-width:100%;
+      height:auto;
+      display:block;
+      object-fit:contain;
+      filter:drop-shadow(0 30px 60px rgba(0,0,0,.5));
+      opacity:0;
+      transform:translateY(36px);
+      animation:fadeUp .95s cubic-bezier(.22,.8,.2,1) .42s forwards;
+      will-change:transform;
     }
 
     .section{
@@ -424,7 +428,7 @@
       }
 
       .visual{
-        min-height:500px;
+        min-height:520px;
       }
 
       .badge{
@@ -441,8 +445,7 @@
       }
 
       .model{
-        max-width:min(100%, 420px);
-        max-height:none;
+        width:min(100%, 420px);
       }
 
       .section{
@@ -455,7 +458,7 @@
 
   <header class="site-header" id="siteHeader">
     <div class="nav-wrap">
-      <a href="#" class="logo">Sara Cavaliere</a>
+      <a href="#home" class="logo">Sara Cavaliere</a>
 
       <nav class="nav">
         <a href="#home">Home</a>
@@ -507,7 +510,7 @@
         <div class="badge">UGC</div>
         <div class="word" id="creatorWord">CREATOR</div>
         <div class="glow"></div>
-       <img class="model" id="heroModel" src="./images/sara-hero.png" alt="Sara Cavaliere">
+        <img class="model" id="heroModel" src="./images/sara-hero.png" alt="Sara Cavaliere">
       </div>
     </div>
   </section>
@@ -539,8 +542,7 @@
   <section class="section reveal" id="contact">
     <h2 class="section-title">Contact</h2>
     <p class="section-text">
-      Add email, Instagram, response time and a call to collaborate.
-      Make the next action obvious and frictionless.
+      Add email, Instagram, response time and a clear call to collaborate.
     </p>
   </section>
 
@@ -561,8 +563,8 @@
       }
 
       creatorWord.style.transform = `translateX(-30%) translateY(${y * -0.08}px)`;
-      heroModel.style.transform = `translateY(${y * -0.16}px)`;
-      heroPanel.style.transform = `translateY(${y * -0.05}px)`;
+      heroModel.style.transform = `translateY(${y * -0.05}px)`;
+      heroPanel.style.transform = `translateY(${y * -0.03}px)`;
     }
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -574,12 +576,9 @@
           entry.target.classList.add('show');
         }
       });
-    }, {
-      threshold: 0.16
-    });
+    }, { threshold: 0.16 });
 
     reveals.forEach((item) => observer.observe(item));
   </script>
 </body>
 </html>
-
