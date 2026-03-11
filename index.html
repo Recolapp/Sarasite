@@ -35,12 +35,14 @@
       --cursor-opacity:1;
       --cursor-z:99999;
 
-      --collab-bg:#0a0a0a;
-      --collab-line:rgba(233,221,204,.08);
-      --logo-color:rgba(233,221,204,.82);
-      --logo-soft:rgba(233,221,204,.58);
+      /* collaborations refined palette */
+      --collab-bg:#f5efe8;
+      --collab-bg-2:#f1e8df;
+      --collab-line:rgba(104,74,63,.10);
+      --logo-color:#6f564c;
+      --logo-soft:rgba(111,86,76,.58);
       --logo-accent:#b98a78;
-      --logo-accent-2:#d9c2b4;
+      --logo-accent-2:#c3a494;
     }
 
     html,
@@ -208,6 +210,28 @@
       min-height:100vh;
       padding-top:112px;
       overflow:hidden;
+      z-index:1;
+    }
+
+    /* suave fusión hacia la sección clara */
+    .hero::after{
+      content:"";
+      position:absolute;
+      left:0;
+      right:0;
+      bottom:-1px;
+      height:220px;
+      background:
+        linear-gradient(
+          to bottom,
+          rgba(5,5,5,0) 0%,
+          rgba(33,27,24,.10) 28%,
+          rgba(102,83,72,.16) 52%,
+          rgba(245,239,232,.82) 86%,
+          var(--collab-bg) 100%
+        );
+      pointer-events:none;
+      z-index:5;
     }
 
     .hero-inner{
@@ -223,7 +247,7 @@
       z-index:4;
       max-width:620px;
       padding-top:10px;
-      padding-bottom:40px;
+      padding-bottom:88px;
     }
 
     .tag{
@@ -365,13 +389,43 @@
 
     .collaborations{
       position:relative;
-      padding:72px 0 88px;
+      margin-top:-86px;
+      padding:140px 0 88px;
       background:
-        linear-gradient(180deg, rgba(255,255,255,.01), rgba(255,255,255,0)),
-        var(--collab-bg);
-      border-top:1px solid var(--collab-line);
-      border-bottom:1px solid var(--collab-line);
+        radial-gradient(circle at top center, rgba(186,143,123,.14), transparent 28%),
+        linear-gradient(180deg, var(--collab-bg) 0%, var(--collab-bg-2) 100%);
       overflow:hidden;
+      z-index:2;
+    }
+
+    /* overlay superior para fusionar visualmente */
+    .collaborations::before{
+      content:"";
+      position:absolute;
+      left:0;
+      right:0;
+      top:0;
+      height:170px;
+      background:
+        linear-gradient(
+          to bottom,
+          rgba(245,239,232,0) 0%,
+          rgba(245,239,232,.52) 28%,
+          rgba(245,239,232,.92) 72%,
+          rgba(245,239,232,1) 100%
+        );
+      filter:blur(8px);
+      pointer-events:none;
+    }
+
+    /* atmósfera inferior muy sutil */
+    .collaborations::after{
+      content:"";
+      position:absolute;
+      inset:auto 0 0 0;
+      height:120px;
+      background:linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,.12));
+      pointer-events:none;
     }
 
     .collab-head{
@@ -380,6 +434,8 @@
       gap:24px;
       align-items:end;
       margin-bottom:36px;
+      position:relative;
+      z-index:2;
     }
 
     .collab-kicker{
@@ -395,7 +451,7 @@
       font-size:42px;
       line-height:.95;
       letter-spacing:-.04em;
-      color:var(--text);
+      color:#46362f;
       max-width:620px;
     }
 
@@ -416,6 +472,7 @@
       gap:20px;
       mask-image:linear-gradient(to right, transparent, black 10%, black 90%, transparent);
       -webkit-mask-image:linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+      z-index:2;
     }
 
     .logo-row{
@@ -453,12 +510,15 @@
       align-items:center;
       justify-content:center;
       gap:12px;
-      border:1px solid rgba(233,221,204,.08);
+      border:1px solid rgba(111,86,76,.10);
       border-radius:999px;
       background:
-        linear-gradient(180deg, rgba(255,255,255,.025), rgba(255,255,255,.01));
+        linear-gradient(180deg, rgba(255,255,255,.50), rgba(255,255,255,.24));
       color:var(--logo-color);
-      box-shadow:inset 0 1px 0 rgba(255,255,255,.02);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.40),
+        0 8px 24px rgba(111,86,76,.04);
+      backdrop-filter:blur(4px);
     }
 
     .logo-word{
@@ -521,7 +581,7 @@
       content:"";
       position:absolute;
       inset:6px;
-      border:1px solid rgba(217,194,180,.6);
+      border:1px solid rgba(195,164,148,.7);
       border-radius:50%;
     }
 
@@ -615,7 +675,7 @@
     .logo-divider{
       margin-top:18px;
       height:1px;
-      background:linear-gradient(90deg, transparent, rgba(233,221,204,.08), transparent);
+      background:linear-gradient(90deg, transparent, rgba(111,86,76,.12), transparent);
     }
 
     /* =========================
@@ -735,6 +795,10 @@
         padding-top:98px;
       }
 
+      .hero::after{
+        height:170px;
+      }
+
       .hero-inner{
         min-height:auto;
         display:block;
@@ -743,7 +807,7 @@
       .left{
         max-width:100%;
         padding-top:12px;
-        padding-bottom:18px;
+        padding-bottom:42px;
       }
 
       h1{
@@ -790,7 +854,8 @@
       }
 
       .collaborations{
-        padding:56px 0 68px;
+        margin-top:-46px;
+        padding:88px 0 68px;
       }
 
       .collab-head{
@@ -874,7 +939,8 @@
       }
 
       .collaborations{
-        padding:48px 0 58px;
+        margin-top:-28px;
+        padding:72px 0 58px;
       }
 
       .collab-kicker{
@@ -914,7 +980,6 @@
 
       .logo-row.top,
       .logo-row.bottom{
-        animation-play-state:running;
         animation-duration:28s;
       }
     }
@@ -1014,7 +1079,6 @@
         <div class="logo-marquee">
 
           <div class="logo-row top">
-            <!-- set 1 -->
             <div class="logo-chip large">
               <span class="logo-icon ring"></span>
               <div class="logo-word serif">Veloura</div>
@@ -1056,7 +1120,6 @@
               </div>
             </div>
 
-            <!-- duplicate -->
             <div class="logo-chip large">
               <span class="logo-icon ring"></span>
               <div class="logo-word serif">Veloura</div>
@@ -1100,7 +1163,6 @@
           </div>
 
           <div class="logo-row bottom">
-            <!-- set 2 -->
             <div class="logo-chip">
               <span class="logo-icon square"></span>
               <div class="logo-word serif">Sorella</div>
@@ -1142,7 +1204,6 @@
               <div class="logo-word sans">VÉNIA</div>
             </div>
 
-            <!-- duplicate -->
             <div class="logo-chip">
               <span class="logo-icon square"></span>
               <div class="logo-word serif">Sorella</div>
