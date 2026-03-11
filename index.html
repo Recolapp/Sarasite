@@ -18,10 +18,25 @@
       --muted:rgba(233,221,204,.76);
       --line:rgba(255,255,255,.16);
 
-      /* tonos nuevos inspirados en tu referencia */
       --panel-a:#6f5245;
       --panel-b:#8a6a5c;
       --script:#d9c3b4;
+
+      --cursor-size:22px;
+      --cursor-border:1.5px;
+      --cursor-color:rgba(233,221,204,.92);
+      --cursor-bg:transparent;
+      --cursor-hover-size:38px;
+      --cursor-hover-bg:rgba(233,221,204,.08);
+      --cursor-hover-border:rgba(233,221,204,1);
+      --cursor-opacity:1;
+      --cursor-z:99999;
+    }
+
+    html,
+    body{
+      width:100%;
+      min-height:100%;
     }
 
     body{
@@ -91,6 +106,11 @@
       padding:14px 24px;
       border-radius:999px;
       font-size:14px;
+      transition:.25s ease;
+    }
+
+    .header-cta:hover{
+      background:rgba(255,255,255,.04);
     }
 
     /* HERO */
@@ -159,6 +179,7 @@
       border-radius:999px;
       font-size:15px;
       font-weight:600;
+      transition:.25s ease;
     }
 
     .primary{
@@ -166,8 +187,16 @@
       color:#111;
     }
 
+    .primary:hover{
+      transform:translateY(-1px);
+    }
+
     .secondary{
       border:1px solid var(--line);
+    }
+
+    .secondary:hover{
+      background:rgba(255,255,255,.04);
     }
 
     /* RIGHT VISUAL */
@@ -181,7 +210,6 @@
       pointer-events:none;
     }
 
-    /* PANEL DIAGONAL GRANDE */
     .panel{
       position:absolute;
       right:0;
@@ -194,7 +222,6 @@
       opacity:.98;
     }
 
-    /* GLOW SUAVE PARA QUE NO SE VEA TAN DURO */
     .panel::before{
       content:"";
       position:absolute;
@@ -205,7 +232,6 @@
       pointer-events:none;
     }
 
-    /* TEXTO DE FONDO EDITORIAL */
     .bg-script{
       position:absolute;
       right:60px;
@@ -222,7 +248,6 @@
       white-space:nowrap;
     }
 
-    /* TEXTO OSCURO INFERIOR */
     .bg-block{
       position:absolute;
       left:-40px;
@@ -236,7 +261,6 @@
       pointer-events:none;
     }
 
-    /* IMAGEN */
     .model{
       position:absolute;
       right:42px;
@@ -245,6 +269,57 @@
       width:auto;
       z-index:3;
       filter:drop-shadow(0 28px 50px rgba(0,0,0,.34));
+    }
+
+    /* CUSTOM CURSOR */
+
+    .custom-cursor{
+      position:fixed;
+      top:0;
+      left:0;
+      width:var(--cursor-size);
+      height:var(--cursor-size);
+      border:var(--cursor-border) solid var(--cursor-color);
+      background:var(--cursor-bg);
+      border-radius:50%;
+      transform:translate(-50%, -50%);
+      pointer-events:none;
+      z-index:var(--cursor-z);
+      opacity:0;
+      transition:
+        width .18s ease,
+        height .18s ease,
+        background .18s ease,
+        border-color .18s ease,
+        opacity .18s ease;
+      will-change:left, top, width, height, opacity, background, border-color;
+    }
+
+    .custom-cursor.is-visible{
+      opacity:var(--cursor-opacity);
+    }
+
+    .custom-cursor.is-hover{
+      width:var(--cursor-hover-size);
+      height:var(--cursor-hover-size);
+      background:var(--cursor-hover-bg);
+      border-color:var(--cursor-hover-border);
+    }
+
+    .custom-cursor.is-down{
+      width:18px;
+      height:18px;
+    }
+
+    html.has-custom-cursor,
+    html.has-custom-cursor body,
+    html.has-custom-cursor a,
+    html.has-custom-cursor button,
+    html.has-custom-cursor input,
+    html.has-custom-cursor textarea,
+    html.has-custom-cursor select,
+    html.has-custom-cursor label{
+      cursor:none !important;
     }
 
     /* RESPONSIVE */
@@ -411,6 +486,23 @@
         right:0;
       }
     }
+
+    @media (hover:none), (pointer:coarse){
+      .custom-cursor{
+        display:none !important;
+      }
+
+      html.has-custom-cursor,
+      html.has-custom-cursor body,
+      html.has-custom-cursor a,
+      html.has-custom-cursor button,
+      html.has-custom-cursor input,
+      html.has-custom-cursor textarea,
+      html.has-custom-cursor select,
+      html.has-custom-cursor label{
+        cursor:auto !important;
+      }
+    }
   </style>
 </head>
 <body>
@@ -465,6 +557,91 @@
       <img class="model" src="/images/sara-hero.jpg" alt="Sara Cavaliere">
     </div>
   </section>
+
+  <div class="custom-cursor" aria-hidden="true"></div>
+
+  <script>
+    (() => {
+      const cursor = document.querySelector('.custom-cursor');
+      if (!cursor) return;
+
+      const isTouchDevice = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+      if (isTouchDevice) return;
+
+      document.documentElement.classList.add('has-custom-cursor');
+
+      let mouseX = window.innerWidth / 2;
+      let mouseY = window.innerHeight / 2;
+      let currentX = mouseX;
+      let currentY = mouseY;
+
+      const ease = 0.14;
+
+      const interactiveSelector = `
+        a,
+        button,
+        input,
+        textarea,
+        select,
+        label,
+        [role="button"],
+        .btn,
+        .header-cta
+      `;
+
+      function onMouseMove(e){
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        cursor.classList.add('is-visible');
+      }
+
+      function onMouseEnter(){
+        cursor.classList.add('is-visible');
+      }
+
+      function onMouseLeave(){
+        cursor.classList.remove('is-visible');
+      }
+
+      function onMouseDown(){
+        cursor.classList.add('is-down');
+      }
+
+      function onMouseUp(){
+        cursor.classList.remove('is-down');
+      }
+
+      function onPointerOver(e){
+        const target = e.target.closest(interactiveSelector);
+        if (target) cursor.classList.add('is-hover');
+      }
+
+      function onPointerOut(e){
+        const target = e.target.closest(interactiveSelector);
+        if (target) cursor.classList.remove('is-hover');
+      }
+
+      function animate(){
+        currentX += (mouseX - currentX) * ease;
+        currentY += (mouseY - currentY) * ease;
+
+        cursor.style.left = currentX + 'px';
+        cursor.style.top = currentY + 'px';
+
+        requestAnimationFrame(animate);
+      }
+
+      window.addEventListener('mousemove', onMouseMove, { passive:true });
+      document.addEventListener('mouseenter', onMouseEnter);
+      document.addEventListener('mouseleave', onMouseLeave);
+      document.addEventListener('mousedown', onMouseDown);
+      document.addEventListener('mouseup', onMouseUp);
+      document.addEventListener('mouseover', onPointerOver);
+      document.addEventListener('mouseout', onPointerOut);
+
+      animate();
+    })();
+  </script>
 
 </body>
 </html>
