@@ -1,588 +1,272 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sara Cavaliere</title>
 
-  <style>
-    :root{
-      --bg:#050505;
-      --cream:#e8dbc9;
-      --cream-soft:rgba(232,219,201,.78);
-      --line:rgba(232,219,201,.18);
-      --warm-1:#2c1f19;
-      --warm-2:#6b4e3f;
-      --warm-3:#3a2a22;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-    }
+<title>Sara Cavaliere</title>
 
-    html{
-      scroll-behavior:smooth;
-    }
+<style>
 
-    body{
-      background:var(--bg);
-      color:var(--cream);
-      font-family:Arial, sans-serif;
-      overflow-x:hidden;
-    }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
 
-    a{
-      color:inherit;
-      text-decoration:none;
-    }
+body{
+background:#050505;
+color:#e8dbc9;
+font-family:Arial, sans-serif;
+overflow-x:hidden;
+}
 
-    .site-header{
-      position:fixed;
-      top:0;
-      left:0;
-      width:100%;
-      z-index:1000;
-      padding:24px 0;
-      background:transparent;
-      border-bottom:1px solid transparent;
-      transition:
-        background-color .35s ease,
-        backdrop-filter .35s ease,
-        -webkit-backdrop-filter .35s ease,
-        border-color .35s ease,
-        padding .35s ease,
-        box-shadow .35s ease;
-    }
+/* HEADER */
 
-    .site-header.scrolled{
-      background:rgba(10,10,10,.55);
-      backdrop-filter:blur(14px);
-      -webkit-backdrop-filter:blur(14px);
-      border-bottom:1px solid rgba(232,219,201,.08);
-      box-shadow:0 10px 30px rgba(0,0,0,.12);
-      padding:14px 0;
-    }
+header{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+padding:24px 60px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+z-index:100;
+}
 
-    .nav-wrap{
-      width:min(1200px, calc(100% - 48px));
-      margin:0 auto;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:24px;
-    }
+.logo{
+font-family:Georgia, serif;
+font-size:28px;
+}
 
-    .logo{
-      font-family:Georgia, serif;
-      font-size:28px;
-      line-height:1;
-      letter-spacing:-0.04em;
-      color:var(--cream);
-      white-space:nowrap;
-    }
+nav{
+display:flex;
+gap:30px;
+}
 
-    .nav{
-      display:flex;
-      align-items:center;
-      gap:28px;
-      flex-wrap:wrap;
-    }
+nav a{
+font-size:13px;
+letter-spacing:.15em;
+text-transform:uppercase;
+color:#e8dbc9;
+text-decoration:none;
+}
 
-    .nav a{
-      font-size:13px;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      color:rgba(232,219,201,.82);
-      transition:opacity .25s ease;
-    }
+.cta{
+border:1px solid rgba(255,255,255,.2);
+padding:12px 22px;
+border-radius:30px;
+}
 
-    .nav a:hover{
-      opacity:.7;
-    }
+/* HERO */
 
-    .nav-cta{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-height:46px;
-      padding:0 20px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.02);
-      color:var(--cream);
-      font-size:14px;
-      font-weight:600;
-      transition:transform .25s ease, background-color .25s ease, border-color .25s ease;
-      white-space:nowrap;
-    }
+.hero{
+height:100vh;
+display:grid;
+grid-template-columns:1fr 1fr;
+align-items:center;
+padding:120px 60px;
+position:relative;
+}
 
-    .nav-cta:hover{
-      transform:translateY(-1px);
-      background:rgba(255,255,255,.05);
-      border-color:rgba(232,219,201,.3);
-    }
+.left{
+max-width:560px;
+}
 
-    .hero{
-      position:relative;
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      overflow:hidden;
-      padding:130px 0 48px;
-      background:
-        radial-gradient(circle at 12% 22%, rgba(232,219,201,.04), transparent 22%),
-        linear-gradient(180deg, #040404 0%, #080808 100%);
-    }
+.tag{
+font-size:12px;
+letter-spacing:.2em;
+text-transform:uppercase;
+margin-bottom:20px;
+opacity:.7;
+}
 
-    .panel{
-      position:absolute;
-      right:-10%;
-      top:0;
-      height:120%;
-      width:45%;
-      background:linear-gradient(140deg,var(--warm-1),var(--warm-2),var(--warm-3));
-      clip-path:polygon(25% 0,100% 0,100% 100%,0 100%);
-      opacity:.95;
-      will-change:transform;
-    }
+h1{
+font-family:Georgia, serif;
+font-size:84px;
+line-height:.9;
+margin-bottom:25px;
+}
 
-    .container{
-      width:min(1200px, calc(100% - 48px));
-      margin:auto;
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:40px;
-      align-items:center;
-      position:relative;
-      z-index:2;
-    }
+p{
+font-size:18px;
+line-height:1.6;
+opacity:.8;
+margin-bottom:30px;
+}
 
-    .copy{
-      max-width:560px;
-      position:relative;
-      z-index:3;
-    }
+.buttons{
+display:flex;
+gap:16px;
+}
 
-    .eyebrow,
-    .copy h1,
-    .copy p,
-    .actions,
-    .meta{
-      opacity:0;
-      transform:translateY(28px);
-      animation:fadeUp .9s cubic-bezier(.22,.8,.2,1) forwards;
-    }
+.btn{
+padding:16px 26px;
+border-radius:30px;
+font-weight:600;
+text-decoration:none;
+}
 
-    .eyebrow{
-      animation-delay:.05s;
-      font-size:12px;
-      letter-spacing:.22em;
-      text-transform:uppercase;
-      color:var(--cream-soft);
-      margin-bottom:22px;
-    }
+.primary{
+background:#e8dbc9;
+color:#111;
+}
 
-    .copy h1{
-      animation-delay:.18s;
-      font-family:Georgia, serif;
-      font-size:clamp(56px, 7vw, 86px);
-      line-height:.92;
-      letter-spacing:-.055em;
-      margin-bottom:20px;
-      text-wrap:balance;
-    }
+.secondary{
+border:1px solid rgba(255,255,255,.2);
+color:#e8dbc9;
+}
 
-    .copy p{
-      animation-delay:.32s;
-      max-width:500px;
-      color:var(--cream-soft);
-      font-size:18px;
-      line-height:1.65;
-      margin-bottom:30px;
-    }
+/* RIGHT SIDE */
 
-    .actions{
-      animation-delay:.44s;
-      display:flex;
-      gap:14px;
-      flex-wrap:wrap;
-      margin-bottom:28px;
-    }
+.right{
+position:relative;
+height:100%;
+display:flex;
+align-items:flex-end;
+justify-content:flex-end;
+}
 
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-height:54px;
-      padding:0 24px;
-      border-radius:999px;
-      font-size:15px;
-      font-weight:700;
-      transition:transform .25s ease, background-color .25s ease, border-color .25s ease, color .25s ease;
-    }
+/* BROWN PANEL */
 
-    .btn:hover{
-      transform:translateY(-2px);
-    }
+.panel{
+position:absolute;
+right:0;
+top:0;
+height:100%;
+width:420px;
 
-    .btn-primary{
-      background:var(--cream);
-      color:#111;
-      box-shadow:0 10px 30px rgba(232,219,201,.12);
-    }
+background:linear-gradient(
+135deg,
+#3a2a22,
+#6b4e3f
+);
 
-    .btn-secondary{
-      border:1px solid var(--line);
-      color:var(--cream);
-      background:rgba(255,255,255,.02);
-    }
+clip-path:polygon(20% 0,100% 0,100% 100%,0 100%);
+}
 
-    .meta{
-      animation-delay:.56s;
-      display:flex;
-      align-items:center;
-      gap:14px;
-      flex-wrap:wrap;
-    }
+/* CREATOR WORD */
 
-    .avatars{
-      display:flex;
-      align-items:center;
-    }
+.creator{
+position:absolute;
+bottom:60px;
+right:40px;
+font-size:180px;
+color:rgba(255,255,255,.06);
+font-family:Impact;
+}
 
-    .avatar{
-      width:34px;
-      height:34px;
-      border-radius:50%;
-      margin-left:-8px;
-      border:2px solid #0a0a0a;
-      background:linear-gradient(135deg,#f0e2cf 0%, #d0b59a 48%, #856350 100%);
-      box-shadow:0 8px 18px rgba(0,0,0,.22);
-    }
+/* IMAGE */
 
-    .avatar:first-child{
-      margin-left:0;
-    }
+.model{
+position:absolute;
+bottom:0;
+right:80px;
 
-    .meta-text{
-      color:var(--cream-soft);
-      font-size:14px;
-      line-height:1.4;
-    }
+width:460px;
 
-    .visual{
-      position:relative;
-      min-height:760px;
-      display:flex;
-      align-items:flex-end;
-      justify-content:center;
-    }
+filter:drop-shadow(0 30px 50px rgba(0,0,0,.6));
+}
 
-    .badge{
-      position:absolute;
-      top:74px;
-      right:34px;
-      z-index:4;
-      font-family:Georgia, serif;
-      font-size:clamp(34px, 3vw, 56px);
-      line-height:.95;
-      color:var(--cream);
-      opacity:0;
-      transform:translateY(20px);
-      animation:fadeUp .9s cubic-bezier(.22,.8,.2,1) .3s forwards;
-    }
+/* MOBILE */
 
-    .word{
-      position:absolute;
-      left:50%;
-      bottom:92px;
-      transform:translateX(-30%);
-      font-family:Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-      font-size:clamp(120px, 12vw, 220px);
-      color:rgba(232,219,201,.13);
-      white-space:nowrap;
-      pointer-events:none;
-      user-select:none;
-      will-change:transform;
-      z-index:1;
-      line-height:.84;
-      letter-spacing:-.04em;
-    }
+@media(max-width:900px){
 
-    .glow{
-      position:absolute;
-      width:58%;
-      height:18%;
-      bottom:6%;
-      border-radius:50%;
-      background:radial-gradient(circle, rgba(232,219,201,.12) 0%, rgba(232,219,201,0) 72%);
-      filter:blur(16px);
-      z-index:0;
-      pointer-events:none;
-    }
+.hero{
+grid-template-columns:1fr;
+}
 
-    .model{
-      position:relative;
-      z-index:3;
-      width:520px;
-      max-width:100%;
-      height:auto;
-      display:block;
-      object-fit:contain;
-      filter:drop-shadow(0 30px 60px rgba(0,0,0,.5));
-      opacity:0;
-      transform:translateY(36px);
-      animation:fadeUp .95s cubic-bezier(.22,.8,.2,1) .42s forwards;
-      will-change:transform;
-    }
+.right{
+height:400px;
+}
 
-    .section{
-      width:min(1200px, calc(100% - 48px));
-      margin:0 auto;
-      padding:120px 0;
-    }
+.panel{
+width:100%;
+clip-path:polygon(0 20%,100% 0,100% 100%,0 100%);
+}
 
-    .section-title{
-      font-family:Georgia, serif;
-      font-size:clamp(42px, 5vw, 64px);
-      line-height:.95;
-      letter-spacing:-.05em;
-      margin-bottom:18px;
-    }
+.model{
+right:50%;
+transform:translateX(50%);
+width:320px;
+}
 
-    .section-text{
-      max-width:640px;
-      color:var(--cream-soft);
-      font-size:18px;
-      line-height:1.7;
-    }
+}
 
-    .reveal{
-      opacity:0;
-      transform:translateY(34px);
-      transition:opacity .9s cubic-bezier(.22,.8,.2,1), transform .9s cubic-bezier(.22,.8,.2,1);
-    }
+</style>
 
-    .reveal.show{
-      opacity:1;
-      transform:translateY(0);
-    }
-
-    @keyframes fadeUp{
-      from{
-        opacity:0;
-        transform:translateY(28px);
-      }
-      to{
-        opacity:1;
-        transform:translateY(0);
-      }
-    }
-
-    @media (max-width: 980px){
-      .site-header{
-        padding:16px 0;
-      }
-
-      .nav{
-        display:none;
-      }
-
-      .hero{
-        padding:110px 0 30px;
-      }
-
-      .container{
-        grid-template-columns:1fr;
-        gap:24px;
-      }
-
-      .panel{
-        width:100%;
-        height:54%;
-        top:auto;
-        bottom:0;
-        right:0;
-        clip-path:polygon(0 20%,100% 0,100% 100%,0 100%);
-      }
-
-      .copy h1{
-        font-size:clamp(46px, 12vw, 68px);
-      }
-
-      .copy p{
-        font-size:16px;
-      }
-
-      .actions{
-        flex-direction:column;
-        align-items:stretch;
-      }
-
-      .btn{
-        width:100%;
-      }
-
-      .visual{
-        min-height:520px;
-      }
-
-      .badge{
-        top:16px;
-        right:8px;
-        font-size:36px;
-      }
-
-      .word{
-        left:50%;
-        bottom:42px;
-        transform:translateX(-50%);
-        font-size:min(28vw, 150px);
-      }
-
-      .model{
-        width:min(100%, 420px);
-      }
-
-      .section{
-        padding:88px 0;
-      }
-    }
-  </style>
 </head>
+
 <body>
 
-  <header class="site-header" id="siteHeader">
-    <div class="nav-wrap">
-      <a href="#home" class="logo">Sara Cavaliere</a>
+<header>
 
-      <nav class="nav">
-        <a href="#home">Home</a>
-        <a href="#portfolio">Portfolio</a>
-        <a href="#services">Services</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-      </nav>
+<div class="logo">Sara Cavaliere</div>
 
-      <a href="#contact" class="nav-cta">Work With Me</a>
-    </div>
-  </header>
+<nav>
+<a href="#">Home</a>
+<a href="#">Portfolio</a>
+<a href="#">Services</a>
+<a href="#">About</a>
+<a href="#">Contact</a>
+</nav>
 
-  <section class="hero" id="home">
-    <div class="panel" id="heroPanel"></div>
+<a class="cta">Work With Me</a>
 
-    <div class="container">
-      <div class="copy">
-        <div class="eyebrow">Fashion • Beauty • Lifestyle • UGC</div>
+</header>
 
-        <h1>
-          Premium UGC<br>
-          for brands<br>
-          that stand out
-        </h1>
+<section class="hero">
 
-        <p>
-          Authentic and elegant content designed to elevate brand perception,
-          build trust and create meaningful engagement.
-        </p>
+<div class="left">
 
-        <div class="actions">
-          <a href="#portfolio" class="btn btn-primary">View Portfolio</a>
-          <a href="#contact" class="btn btn-secondary">Book a Collaboration</a>
-        </div>
+<div class="tag">
+FASHION • BEAUTY • LIFESTYLE • UGC
+</div>
 
-        <div class="meta">
-          <div class="avatars">
-            <span class="avatar"></span>
-            <span class="avatar"></span>
-            <span class="avatar"></span>
-            <span class="avatar"></span>
-          </div>
-          <div class="meta-text">Trusted by beauty, fashion and lifestyle brands</div>
-        </div>
-      </div>
+<h1>
+Premium UGC<br>
+for brands<br>
+that stand out
+</h1>
 
-      <div class="visual">
-        <div class="badge">UGC</div>
-        <div class="word" id="creatorWord">CREATOR</div>
-        <div class="glow"></div>
-        <img
-          class="model"
-          id="heroModel"
-          src="https://raw.githubusercontent.com/Recolapp/Sarasite/main/images/sara-hero.jpg"
-          alt="Sara Cavaliere"
-        >
-      </div>
-    </div>
-  </section>
+<p>
+Authentic and elegant content designed to elevate brand perception,
+build trust and create meaningful engagement.
+</p>
 
-  <section class="section reveal" id="portfolio">
-    <h2 class="section-title">Portfolio</h2>
-    <p class="section-text">
-      Showcase your strongest UGC pieces here: beauty, fashion, lifestyle and product storytelling.
-      Keep it curated, clean and conversion-aware.
-    </p>
-  </section>
+<div class="buttons">
 
-  <section class="section reveal" id="services">
-    <h2 class="section-title">Services</h2>
-    <p class="section-text">
-      Add your packages here: product videos, talking head content, testimonial style UGC,
-      lifestyle visuals and paid ad creatives.
-    </p>
-  </section>
+<a class="btn primary">
+View Portfolio
+</a>
 
-  <section class="section reveal" id="about">
-    <h2 class="section-title">About</h2>
-    <p class="section-text">
-      Introduce Sara with a short, premium and strategic positioning statement.
-      Less biography, more trust, image and brand fit.
-    </p>
-  </section>
+<a class="btn secondary">
+Book a Collaboration
+</a>
 
-  <section class="section reveal" id="contact">
-    <h2 class="section-title">Contact</h2>
-    <p class="section-text">
-      Add email, Instagram, response time and a clear call to collaborate.
-    </p>
-  </section>
+</div>
 
-  <script>
-    const header = document.getElementById('siteHeader');
-    const creatorWord = document.getElementById('creatorWord');
-    const heroModel = document.getElementById('heroModel');
-    const heroPanel = document.getElementById('heroPanel');
-    const reveals = document.querySelectorAll('.reveal');
+</div>
 
-    function handleScroll() {
-      const y = window.scrollY;
+<div class="right">
 
-      if (y > 30) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
-      }
+<div class="panel"></div>
 
-      creatorWord.style.transform = `translateX(-30%) translateY(${y * -0.08}px)`;
-      heroModel.style.transform = `translateY(${y * -0.05}px)`;
-      heroPanel.style.transform = `translateY(${y * -0.03}px)`;
-    }
+<div class="creator">
+CREATOR
+</div>
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
+<img
+class="model"
+src="/images/sara-hero.jpg"
+alt="Sara Cavaliere"
+>
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('show');
-        }
-      });
-    }, { threshold: 0.16 });
+</div>
 
-    reveals.forEach((item) => observer.observe(item));
-  </script>
+</section>
+
 </body>
 </html>
-
