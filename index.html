@@ -1,272 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Sara Cavaliere</title>
-
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
-body{
-background:#050505;
-color:#e8dbc9;
-font-family:Arial, sans-serif;
-overflow-x:hidden;
-}
-
-/* HEADER */
-
-header{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-padding:24px 60px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-z-index:100;
-}
-
-.logo{
-font-family:Georgia, serif;
-font-size:28px;
-}
-
-nav{
-display:flex;
-gap:30px;
-}
-
-nav a{
-font-size:13px;
-letter-spacing:.15em;
-text-transform:uppercase;
-color:#e8dbc9;
-text-decoration:none;
-}
-
-.cta{
-border:1px solid rgba(255,255,255,.2);
-padding:12px 22px;
-border-radius:30px;
-}
-
-/* HERO */
-
-.hero{
-height:100vh;
-display:grid;
-grid-template-columns:1fr 1fr;
-align-items:center;
-padding:120px 60px;
-position:relative;
-}
-
-.left{
-max-width:560px;
-}
-
-.tag{
-font-size:12px;
-letter-spacing:.2em;
-text-transform:uppercase;
-margin-bottom:20px;
-opacity:.7;
-}
-
-h1{
-font-family:Georgia, serif;
-font-size:84px;
-line-height:.9;
-margin-bottom:25px;
-}
-
-p{
-font-size:18px;
-line-height:1.6;
-opacity:.8;
-margin-bottom:30px;
-}
-
-.buttons{
-display:flex;
-gap:16px;
-}
-
-.btn{
-padding:16px 26px;
-border-radius:30px;
-font-weight:600;
-text-decoration:none;
-}
-
-.primary{
-background:#e8dbc9;
-color:#111;
-}
-
-.secondary{
-border:1px solid rgba(255,255,255,.2);
-color:#e8dbc9;
-}
-
-/* RIGHT SIDE */
-
-.right{
-position:relative;
-height:100%;
-display:flex;
-align-items:flex-end;
-justify-content:flex-end;
-}
-
-/* BROWN PANEL */
-
-.panel{
-position:absolute;
-right:0;
-top:0;
-height:100%;
-width:420px;
-
-background:linear-gradient(
-135deg,
-#3a2a22,
-#6b4e3f
-);
-
-clip-path:polygon(20% 0,100% 0,100% 100%,0 100%);
-}
-
-/* CREATOR WORD */
-
-.creator{
-position:absolute;
-bottom:60px;
-right:40px;
-font-size:180px;
-color:rgba(255,255,255,.06);
-font-family:Impact;
-}
-
-/* IMAGE */
-
-.model{
-position:absolute;
-bottom:0;
-right:80px;
-
-width:460px;
-
-filter:drop-shadow(0 30px 50px rgba(0,0,0,.6));
-}
-
-/* MOBILE */
-
-@media(max-width:900px){
-
-.hero{
-grid-template-columns:1fr;
-}
-
-.right{
-height:400px;
-}
-
-.panel{
-width:100%;
-clip-path:polygon(0 20%,100% 0,100% 100%,0 100%);
-}
-
-.model{
-right:50%;
-transform:translateX(50%);
-width:320px;
-}
-
-}
-
-</style>
-
-</head>
-
-<body>
-
-<header>
-
-<div class="logo">Sara Cavaliere</div>
-
-<nav>
-<a href="#">Home</a>
-<a href="#">Portfolio</a>
-<a href="#">Services</a>
-<a href="#">About</a>
-<a href="#">Contact</a>
-</nav>
-
-<a class="cta">Work With Me</a>
-
-</header>
-
-<section class="hero">
-
-<div class="left">
-
-<div class="tag">
-FASHION • BEAUTY • LIFESTYLE • UGC
-</div>
-
-<h1>
-Premium UGC<br>
-for brands<br>
-that stand out
-</h1>
-
-<p>
-Authentic and elegant content designed to elevate brand perception,
-build trust and create meaningful engagement.
-</p>
-
-<div class="buttons">
-
-<a class="btn primary">
-View Portfolio
-</a>
-
-<a class="btn secondary">
-Book a Collaboration
-</a>
-
-</div>
-
-</div>
-
-<div class="right">
-
-<div class="panel"></div>
-
-<div class="creator">
-CREATOR
-</div>
-
-<img
-class="model"
-src="/images/sara-hero.jpg"
-alt="Sara Cavaliere"
->
-
-</div>
-
-</section>
-
-</body>
-</html>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sara Cavaliere</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap');
+
+    :root{
+      --bg:#050505;
+      --cream:#e9ddcc;
+      --cream-soft:rgba(233,221,204,.76);
+      --line:rgba(233,221,204,.16);
+      --panel-1:#35241d;
+      --panel-2:#6d4c3c;
+      --panel-3:#4f372d;
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      background:var(--bg);
+      color:var(--cream);
+      font-family:'Inter', sans-serif;
+      overflow-x:hidden;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    .site-header{
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      z-index:1000;
+      padding:24px 0;
+      background:transparent;
+      border-bottom:1px solid transparent;
+      transition:
+        background-color .35s ease,
+        backdrop-filter .35s ease,
+        -webkit-backdrop-filter .35s ease,
+        border-color .35s ease,
+        padding .35s ease,
+        box-shadow .35s ease;
+    }
+
+    .site-header.scrolled{
+      background:rgba(10,10,10,.56);
+      backdrop-filter:blur(14px);
+      -webkit-backdrop-filter:blur(14px);
+      border-bottom:1px solid rgba(233,221,204,.08);
+      box-shadow:0 10px 30px rgba(0,0,0,.12);
+      padding:14px 0;
+    }
+
+    .nav-wrap{
+      width:min(1280px, calc(100% - 64px));
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+
+    .logo{
+      font-family:'Cormorant Garamond', serif;
+      font-size:28px;
+      font-weight:600;
+      line-height:1;
+      color:var(--cream);
+      white-space:nowrap;
+    }
+
+    .nav{
+      display:flex;
+      align-items:center;
+      gap:34px;
+    }
+
+    .nav a{
+      font-size:13px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:rgba(233,221,204,.86);
+      transition:opacity .25s ease;
+    }
+
+    .nav a:hover{
+      opacity:.7;
+    }
+
+    .nav-cta{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:46px;
+      padding:0 22px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.02);
+      color:var(--cream);
+      font-size:14px;
+      font-weight:600;
+      white-space:nowrap;
+      transition:transform .25s ease, background-color .25s ease, border-color .25s ease;
+    }
+
+    .nav-cta:hover{
+      transform:translateY(-1px);
+      background:rgba(255,255,255,.05);
+      border-color:rgba(233,221,204,.28);
+    }
+
+    .hero{
+      position:relative;
+      min-height:100vh;
+      padding:130px 0 36px;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at 12% 22%, rgba(233,221,204,.04), transparent 22%),
+        linear-gradient(180deg, #040404 0%, #080808 100%);
+    }
+
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:
