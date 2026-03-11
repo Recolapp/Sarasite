@@ -20,15 +20,11 @@
 
       --panel-a:#6f5245;
       --panel-b:#8a6a5c;
-      --script:#d9c3b4;
 
-      /* preloader */
       --loader-bg:#f5efe8;
       --loader-base:#d9cec2;
-      --loader-fill:#b88b78; /* marrón rosado claro */
-      --loader-text-shadow:rgba(0,0,0,.04);
+      --loader-fill:#b88b78;
 
-      /* cursor */
       --cursor-size:22px;
       --cursor-border:1.5px;
       --cursor-color:rgba(233,221,204,.92);
@@ -38,6 +34,13 @@
       --cursor-hover-border:rgba(233,221,204,1);
       --cursor-opacity:1;
       --cursor-z:99999;
+
+      --collab-bg:#0a0a0a;
+      --collab-line:rgba(233,221,204,.08);
+      --logo-color:rgba(233,221,204,.82);
+      --logo-soft:rgba(233,221,204,.58);
+      --logo-accent:#b98a78;
+      --logo-accent-2:#d9c2b4;
     }
 
     html,
@@ -106,7 +109,6 @@
       letter-spacing:-0.04em;
       line-height:1;
       color:var(--loader-base);
-      text-shadow:0 2px 10px var(--loader-text-shadow);
       user-select:none;
     }
 
@@ -358,6 +360,265 @@
     }
 
     /* =========================
+       COLLABORATIONS
+       ========================= */
+
+    .collaborations{
+      position:relative;
+      padding:72px 0 88px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.01), rgba(255,255,255,0)),
+        var(--collab-bg);
+      border-top:1px solid var(--collab-line);
+      border-bottom:1px solid var(--collab-line);
+      overflow:hidden;
+    }
+
+    .collab-head{
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:24px;
+      align-items:end;
+      margin-bottom:36px;
+    }
+
+    .collab-kicker{
+      font-size:11px;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      color:var(--logo-soft);
+      margin-bottom:12px;
+    }
+
+    .collab-title{
+      font-family:Georgia, serif;
+      font-size:42px;
+      line-height:.95;
+      letter-spacing:-.04em;
+      color:var(--text);
+      max-width:620px;
+    }
+
+    .collab-note{
+      font-size:13px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:var(--logo-soft);
+      white-space:nowrap;
+      align-self:start;
+      padding-top:18px;
+    }
+
+    .logo-marquee{
+      position:relative;
+      display:flex;
+      flex-direction:column;
+      gap:20px;
+      mask-image:linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+      -webkit-mask-image:linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    }
+
+    .logo-row{
+      position:relative;
+      display:flex;
+      width:max-content;
+      gap:18px;
+      will-change:transform;
+    }
+
+    .logo-row.top{
+      animation:marqueeRight 42s linear infinite;
+    }
+
+    .logo-row.bottom{
+      animation:marqueeLeft 46s linear infinite;
+    }
+
+    @keyframes marqueeRight{
+      from{ transform:translateX(-50%); }
+      to{ transform:translateX(0); }
+    }
+
+    @keyframes marqueeLeft{
+      from{ transform:translateX(0); }
+      to{ transform:translateX(-50%); }
+    }
+
+    .logo-chip{
+      flex:0 0 auto;
+      min-width:220px;
+      height:78px;
+      padding:0 28px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
+      border:1px solid rgba(233,221,204,.08);
+      border-radius:999px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.025), rgba(255,255,255,.01));
+      color:var(--logo-color);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.02);
+    }
+
+    .logo-word{
+      display:flex;
+      align-items:baseline;
+      gap:6px;
+      white-space:nowrap;
+    }
+
+    .logo-word.serif{
+      font-family:Georgia, serif;
+      font-size:28px;
+      letter-spacing:-.04em;
+    }
+
+    .logo-word.sans{
+      font-family:Arial, sans-serif;
+      font-size:19px;
+      font-weight:600;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+    }
+
+    .logo-word.mixed .main{
+      font-family:Georgia, serif;
+      font-size:28px;
+      letter-spacing:-.04em;
+    }
+
+    .logo-word.mixed .sub{
+      font-family:Arial, sans-serif;
+      font-size:10px;
+      letter-spacing:.28em;
+      text-transform:uppercase;
+      color:var(--logo-soft);
+      transform:translateY(-1px);
+    }
+
+    .logo-word.scriptish{
+      font-family:Georgia, serif;
+      font-style:italic;
+      font-size:30px;
+      letter-spacing:-.03em;
+    }
+
+    .logo-icon{
+      position:relative;
+      flex:0 0 auto;
+      width:26px;
+      height:26px;
+      color:var(--logo-accent-2);
+    }
+
+    .logo-icon.ring{
+      border:1.5px solid currentColor;
+      border-radius:50%;
+    }
+
+    .logo-icon.ring::after{
+      content:"";
+      position:absolute;
+      inset:6px;
+      border:1px solid rgba(217,194,180,.6);
+      border-radius:50%;
+    }
+
+    .logo-icon.square{
+      border:1.5px solid currentColor;
+      border-radius:7px;
+      transform:rotate(45deg);
+    }
+
+    .logo-icon.square::after{
+      content:"";
+      position:absolute;
+      inset:6px;
+      background:currentColor;
+      border-radius:3px;
+      opacity:.22;
+    }
+
+    .logo-icon.spark{
+      width:22px;
+      height:22px;
+    }
+
+    .logo-icon.spark::before,
+    .logo-icon.spark::after{
+      content:"";
+      position:absolute;
+      left:50%;
+      top:50%;
+      width:2px;
+      height:100%;
+      background:currentColor;
+      border-radius:999px;
+      transform:translate(-50%, -50%);
+      opacity:.9;
+    }
+
+    .logo-icon.spark::after{
+      width:100%;
+      height:2px;
+    }
+
+    .logo-icon.oval{
+      width:30px;
+      height:20px;
+      border:1.5px solid currentColor;
+      border-radius:999px;
+    }
+
+    .logo-icon.oval::after{
+      content:"";
+      position:absolute;
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:currentColor;
+      left:50%;
+      top:50%;
+      transform:translate(-50%, -50%);
+      opacity:.35;
+    }
+
+    .logo-icon.double{
+      width:30px;
+      height:20px;
+    }
+
+    .logo-icon.double::before,
+    .logo-icon.double::after{
+      content:"";
+      position:absolute;
+      top:50%;
+      width:13px;
+      height:13px;
+      border:1.5px solid currentColor;
+      border-radius:50%;
+      transform:translateY(-50%);
+    }
+
+    .logo-icon.double::before{ left:0; }
+    .logo-icon.double::after{ right:0; }
+
+    .logo-chip.small{
+      min-width:190px;
+    }
+
+    .logo-chip.large{
+      min-width:250px;
+    }
+
+    .logo-divider{
+      margin-top:18px;
+      height:1px;
+      background:linear-gradient(90deg, transparent, rgba(233,221,204,.08), transparent);
+    }
+
+    /* =========================
        CUSTOM CURSOR
        ========================= */
 
@@ -451,6 +712,10 @@
         height:min(82vh, 730px);
         right:20px;
       }
+
+      .collab-title{
+        font-size:36px;
+      }
     }
 
     @media (max-width: 980px){
@@ -523,6 +788,38 @@
         bottom:0;
         height:430px;
       }
+
+      .collaborations{
+        padding:56px 0 68px;
+      }
+
+      .collab-head{
+        grid-template-columns:1fr;
+        gap:10px;
+      }
+
+      .collab-title{
+        font-size:30px;
+      }
+
+      .collab-note{
+        padding-top:0;
+        white-space:normal;
+      }
+
+      .logo-chip{
+        min-width:200px;
+        height:72px;
+        padding:0 24px;
+      }
+
+      .logo-row.top{
+        animation-duration:34s;
+      }
+
+      .logo-row.bottom{
+        animation-duration:38s;
+      }
     }
 
     @media (max-width: 640px){
@@ -575,6 +872,51 @@
         height:335px;
         right:0;
       }
+
+      .collaborations{
+        padding:48px 0 58px;
+      }
+
+      .collab-kicker{
+        font-size:10px;
+      }
+
+      .collab-title{
+        font-size:26px;
+      }
+
+      .logo-marquee{
+        gap:14px;
+      }
+
+      .logo-chip{
+        min-width:170px;
+        height:64px;
+        padding:0 18px;
+        gap:10px;
+      }
+
+      .logo-word.serif{
+        font-size:23px;
+      }
+
+      .logo-word.sans{
+        font-size:15px;
+      }
+
+      .logo-word.mixed .main{
+        font-size:22px;
+      }
+
+      .logo-word.scriptish{
+        font-size:24px;
+      }
+
+      .logo-row.top,
+      .logo-row.bottom{
+        animation-play-state:running;
+        animation-duration:28s;
+      }
     }
 
     @media (hover:none), (pointer:coarse){
@@ -597,7 +939,6 @@
 </head>
 <body class="is-loading">
 
-  <!-- PRELOADER -->
   <div class="preloader" id="preloader" aria-hidden="true">
     <div class="preloader-logo">
       Sara Cavaliere
@@ -605,7 +946,6 @@
     </div>
   </div>
 
-  <!-- SITE -->
   <div class="site-shell">
 
     <header>
@@ -659,19 +999,205 @@
       </div>
     </section>
 
+    <section class="collaborations">
+      <div class="container">
+        <div class="collab-head">
+          <div>
+            <div class="collab-kicker">Selected collaborations</div>
+            <h2 class="collab-title">
+              Trusted by refined beauty, fashion and lifestyle brands.
+            </h2>
+          </div>
+          <div class="collab-note">Editorial partners · beauty · skincare · luxury essentials</div>
+        </div>
+
+        <div class="logo-marquee">
+
+          <div class="logo-row top">
+            <!-- set 1 -->
+            <div class="logo-chip large">
+              <span class="logo-icon ring"></span>
+              <div class="logo-word serif">Veloura</div>
+            </div>
+
+            <div class="logo-chip">
+              <span class="logo-icon spark"></span>
+              <div class="logo-word sans">LUMÉA</div>
+            </div>
+
+            <div class="logo-chip">
+              <span class="logo-icon oval"></span>
+              <div class="logo-word mixed">
+                <span class="main">Auréline</span>
+                <span class="sub">skin</span>
+              </div>
+            </div>
+
+            <div class="logo-chip small">
+              <span class="logo-icon square"></span>
+              <div class="logo-word sans">NOVAIRE</div>
+            </div>
+
+            <div class="logo-chip large">
+              <span class="logo-icon double"></span>
+              <div class="logo-word serif">Maison Elia</div>
+            </div>
+
+            <div class="logo-chip">
+              <span class="logo-icon spark"></span>
+              <div class="logo-word scriptish">Roséa</div>
+            </div>
+
+            <div class="logo-chip">
+              <span class="logo-icon ring"></span>
+              <div class="logo-word mixed">
+                <span class="main">Calyn</span>
+                <span class="sub">beauty</span>
+              </div>
+            </div>
+
+            <!-- duplicate -->
+            <div class="logo-chip large">
+              <span class="logo-icon ring"></span>
+              <div class="logo-word serif">Veloura</div>
+            </div>
+
+            <div class="logo-chip">
+              <span class="logo-icon spark"></span>
+              <div class="logo-word sans">LUMÉA</div>
+            </div>
+
+            <div class="logo-chip">
+              <span class="logo-icon oval"></span>
+              <div class="logo-word mixed">
+                <span class="main">Auréline</span>
+                <span class="sub">skin</span>
+              </div>
+            </div>
+
+            <div class="logo-chip small">
+              <span class="logo-icon square"></span>
+              <div class="logo-word sans">NOVAIRE</div>
+            </div>
+
+            <div class="logo-chip large">
+              <span class="logo-icon double"></span>
+              <div class="logo-word serif">Maison Elia</div>
+            </div>
+
+            <div class="logo-chip">
+              <span class="logo-icon spark"></span>
+              <div class="logo-word scriptish">Roséa</div>
+            </div>
+
+            <div class="logo-chip">
+              <span class="logo-icon ring"></span>
+              <div class="logo-word mixed">
+                <span class="main">Calyn</span>
+                <span class="sub">beauty</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="logo-row bottom">
+            <!-- set 2 -->
+            <div class="logo-chip">
+              <span class="logo-icon square"></span>
+              <div class="logo-word serif">Sorella</div>
+            </div>
+
+            <div class="logo-chip large">
+              <span class="logo-icon double"></span>
+              <div class="logo-word mixed">
+                <span class="main">Mireva</span>
+                <span class="sub">atelier</span>
+              </div>
+            </div>
+
+            <div class="logo-chip small">
+              <span class="logo-icon spark"></span>
+              <div class="logo-word sans">ÉLANE</div>
+            </div>
+
+            <div class="logo-chip">
+              <span class="logo-icon oval"></span>
+              <div class="logo-word scriptish">Orvielle</div>
+            </div>
+
+            <div class="logo-chip large">
+              <span class="logo-icon ring"></span>
+              <div class="logo-word serif">Tévere</div>
+            </div>
+
+            <div class="logo-chip">
+              <span class="logo-icon square"></span>
+              <div class="logo-word mixed">
+                <span class="main">Liora</span>
+                <span class="sub">wellness</span>
+              </div>
+            </div>
+
+            <div class="logo-chip">
+              <span class="logo-icon spark"></span>
+              <div class="logo-word sans">VÉNIA</div>
+            </div>
+
+            <!-- duplicate -->
+            <div class="logo-chip">
+              <span class="logo-icon square"></span>
+              <div class="logo-word serif">Sorella</div>
+            </div>
+
+            <div class="logo-chip large">
+              <span class="logo-icon double"></span>
+              <div class="logo-word mixed">
+                <span class="main">Mireva</span>
+                <span class="sub">atelier</span>
+              </div>
+            </div>
+
+            <div class="logo-chip small">
+              <span class="logo-icon spark"></span>
+              <div class="logo-word sans">ÉLANE</div>
+            </div>
+
+            <div class="logo-chip">
+              <span class="logo-icon oval"></span>
+              <div class="logo-word scriptish">Orvielle</div>
+            </div>
+
+            <div class="logo-chip large">
+              <span class="logo-icon ring"></span>
+              <div class="logo-word serif">Tévere</div>
+            </div>
+
+            <div class="logo-chip">
+              <span class="logo-icon square"></span>
+              <div class="logo-word mixed">
+                <span class="main">Liora</span>
+                <span class="sub">wellness</span>
+              </div>
+            </div>
+
+            <div class="logo-chip">
+              <span class="logo-icon spark"></span>
+              <div class="logo-word sans">VÉNIA</div>
+            </div>
+          </div>
+
+          <div class="logo-divider"></div>
+        </div>
+      </div>
+    </section>
+
   </div>
 
-  <!-- CUSTOM CURSOR -->
   <div class="custom-cursor" aria-hidden="true"></div>
 
   <script>
-    /* =========================
-       PRELOADER
-       ========================= */
     (() => {
       const preloader = document.getElementById('preloader');
-      const MIN_LOADER_TIME = 2500; // ajusta duración total visible
-
+      const MIN_LOADER_TIME = 2500;
       const start = performance.now();
 
       function hideLoader() {
@@ -696,9 +1222,6 @@
       }
     })();
 
-    /* =========================
-       CUSTOM CURSOR
-       ========================= */
     (() => {
       const cursor = document.querySelector('.custom-cursor');
       if (!cursor) return;
@@ -762,10 +1285,8 @@
       function animate(){
         currentX += (mouseX - currentX) * ease;
         currentY += (mouseY - currentY) * ease;
-
         cursor.style.left = currentX + 'px';
         cursor.style.top = currentY + 'px';
-
         requestAnimationFrame(animate);
       }
 
