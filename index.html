@@ -17,8 +17,8 @@
       --text:#e9ddcc;
       --muted:rgba(233,221,204,.76);
       --line:rgba(255,255,255,.16);
-      --panel-1:#7a5b4d;
-      --panel-2:#66493e;
+      --panel-a:#7b5c4f;
+      --panel-b:#66483d;
     }
 
     body{
@@ -35,7 +35,6 @@
 
     img{
       display:block;
-      max-width:100%;
     }
 
     .container{
@@ -96,16 +95,16 @@
     .hero{
       position:relative;
       min-height:100vh;
-      padding-top:118px;
+      padding-top:112px;
       overflow:hidden;
     }
 
-    .hero-grid{
-      display:grid;
-      grid-template-columns: 0.95fr 1.05fr;
-      align-items:end;
-      min-height:calc(100vh - 118px);
+    .hero-inner{
       position:relative;
+      min-height:calc(100vh - 112px);
+      display:grid;
+      grid-template-columns:620px 1fr;
+      align-items:center;
     }
 
     /* LEFT */
@@ -114,7 +113,8 @@
       position:relative;
       z-index:3;
       max-width:620px;
-      padding-bottom:58px;
+      padding-top:10px;
+      padding-bottom:40px;
     }
 
     .tag{
@@ -127,17 +127,17 @@
 
     h1{
       font-family:Georgia, serif;
-      font-size:102px;
-      line-height:.88;
-      letter-spacing:-.05em;
+      font-size:104px;
+      line-height:.87;
+      letter-spacing:-.055em;
       margin-bottom:28px;
     }
 
     .desc{
+      max-width:620px;
       font-size:18px;
       line-height:1.5;
       color:var(--muted);
-      max-width:620px;
       margin-bottom:34px;
     }
 
@@ -167,45 +167,49 @@
       border:1px solid var(--line);
     }
 
-    /* RIGHT */
+    /* RIGHT VISUAL */
 
-    .right{
-      position:relative;
-      min-height:760px;
+    .visual{
+      position:absolute;
+      right:0;
+      top:112px;
+      width:min(47vw, 760px);
+      height:calc(100vh - 112px);
+      pointer-events:none;
     }
 
     .panel{
       position:absolute;
       right:0;
-      top:60px;
-      width:360px;
-      height:610px;
-      background:linear-gradient(180deg, var(--panel-1), var(--panel-2));
+      top:105px;
+      width:min(22vw, 360px);
+      height:620px;
+      background:linear-gradient(180deg, var(--panel-a), var(--panel-b));
       clip-path:polygon(18% 0,100% 0,100% 100%,0 100%);
       z-index:1;
     }
 
     .creator{
       position:absolute;
-      left:-10px;
-      bottom:70px;
+      left:-235px;
+      bottom:72px;
       font-family:Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-      font-size:210px;
+      font-size:220px;
       line-height:.85;
       color:rgba(255,255,255,.045);
       z-index:0;
-      pointer-events:none;
       user-select:none;
+      pointer-events:none;
     }
 
     .model{
       position:absolute;
-      right:55px;
+      right:34px;
       bottom:0;
-      width:760px;
-      max-width:none;
+      height:min(88vh, 840px);
+      width:auto;
       z-index:2;
-      filter:drop-shadow(0 30px 55px rgba(0,0,0,.36));
+      filter:drop-shadow(0 28px 50px rgba(0,0,0,.34));
     }
 
     /* RESPONSIVE */
@@ -215,28 +219,32 @@
         padding:0 40px;
       }
 
-      h1{
-        font-size:88px;
+      .hero-inner{
+        grid-template-columns:560px 1fr;
       }
 
-      .right{
-        min-height:690px;
+      h1{
+        font-size:90px;
+      }
+
+      .visual{
+        width:min(46vw, 660px);
       }
 
       .panel{
-        width:320px;
+        width:min(24vw, 320px);
         height:560px;
-        top:70px;
+        top:110px;
       }
 
       .creator{
-        font-size:170px;
-        bottom:78px;
+        font-size:175px;
+        left:-170px;
       }
 
       .model{
-        width:660px;
-        right:25px;
+        height:min(82vh, 730px);
+        right:18px;
       }
     }
 
@@ -257,44 +265,52 @@
         padding-top:98px;
       }
 
-      .hero-grid{
-        grid-template-columns:1fr;
+      .hero-inner{
         min-height:auto;
+        display:block;
       }
 
       .left{
         max-width:100%;
-        padding-bottom:20px;
+        padding-top:12px;
+        padding-bottom:18px;
       }
 
       h1{
-        font-size:60px;
+        font-size:62px;
       }
 
       .desc{
         font-size:16px;
+        max-width:100%;
       }
 
-      .right{
-        min-height:500px;
+      .visual{
+        position:relative;
+        top:auto;
+        right:auto;
+        width:100%;
+        height:500px;
+        margin-top:10px;
       }
 
       .panel{
-        top:30px;
-        width:290px;
+        right:0;
+        top:35px;
+        width:300px;
         height:410px;
       }
 
       .creator{
-        font-size:120px;
         left:0;
-        bottom:35px;
+        bottom:34px;
+        font-size:120px;
       }
 
       .model{
-        width:430px;
         right:10px;
         bottom:0;
+        height:430px;
       }
     }
 
@@ -325,13 +341,13 @@
         width:100%;
       }
 
-      .right{
-        min-height:420px;
+      .visual{
+        height:420px;
       }
 
       .panel{
-        width:240px;
-        height:330px;
+        width:245px;
+        height:340px;
       }
 
       .creator{
@@ -339,7 +355,7 @@
       }
 
       .model{
-        width:330px;
+        height:335px;
         right:0;
       }
     }
@@ -367,8 +383,7 @@
 
   <section class="hero">
     <div class="container">
-      <div class="hero-grid">
-
+      <div class="hero-inner">
         <div class="left">
           <div class="tag">FASHION • BEAUTY • LIFESTYLE • UGC</div>
 
@@ -388,14 +403,13 @@
             <a href="#" class="btn secondary">Book a Collaboration</a>
           </div>
         </div>
-
-        <div class="right">
-          <div class="panel"></div>
-          <div class="creator">CREATOR</div>
-          <img class="model" src="/images/sara-hero.jpg" alt="Sara Cavaliere" />
-        </div>
-
       </div>
+    </div>
+
+    <div class="visual">
+      <div class="panel"></div>
+      <div class="creator">CREATOR</div>
+      <img class="model" src="/images/sara-hero.jpg" alt="Sara Cavaliere">
     </div>
   </section>
 
