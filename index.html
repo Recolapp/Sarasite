@@ -17,8 +17,11 @@
       --text:#e9ddcc;
       --muted:rgba(233,221,204,.76);
       --line:rgba(255,255,255,.16);
-      --panel-a:#7b5c4f;
-      --panel-b:#66483d;
+
+      /* tonos nuevos inspirados en tu referencia */
+      --panel-a:#6f5245;
+      --panel-b:#8a6a5c;
+      --script:#d9c3b4;
     }
 
     body{
@@ -111,7 +114,7 @@
 
     .left{
       position:relative;
-      z-index:3;
+      z-index:4;
       max-width:620px;
       padding-top:10px;
       padding-bottom:40px;
@@ -173,42 +176,74 @@
       position:absolute;
       right:0;
       top:112px;
-      width:min(47vw, 760px);
+      width:min(49vw, 820px);
       height:calc(100vh - 112px);
       pointer-events:none;
     }
 
+    /* PANEL DIAGONAL GRANDE */
     .panel{
       position:absolute;
       right:0;
-      top:105px;
-      width:min(22vw, 360px);
-      height:620px;
-      background:linear-gradient(180deg, var(--panel-a), var(--panel-b));
-      clip-path:polygon(18% 0,100% 0,100% 100%,0 100%);
+      top:70px;
+      width:min(27vw, 420px);
+      height:680px;
+      background:linear-gradient(180deg, var(--panel-a) 0%, var(--panel-b) 100%);
+      clip-path:polygon(26% 0, 100% 0, 100% 100%, 0 100%);
       z-index:1;
+      opacity:.98;
     }
 
-    .creator{
+    /* GLOW SUAVE PARA QUE NO SE VEA TAN DURO */
+    .panel::before{
+      content:"";
       position:absolute;
-      left:-235px;
-      bottom:72px;
+      inset:-30px 0 auto -80px;
+      height:120px;
+      background:radial-gradient(circle at center, rgba(144,102,82,.28), transparent 70%);
+      filter:blur(18px);
+      pointer-events:none;
+    }
+
+    /* TEXTO DE FONDO EDITORIAL */
+    .bg-script{
+      position:absolute;
+      right:60px;
+      top:225px;
+      font-family:"Times New Roman", Georgia, serif;
+      font-style:italic;
+      font-size:260px;
+      line-height:.8;
+      color:rgba(217,195,180,.23);
+      letter-spacing:-0.04em;
+      z-index:2;
+      transform:rotate(-4deg);
+      user-select:none;
+      white-space:nowrap;
+    }
+
+    /* TEXTO OSCURO INFERIOR */
+    .bg-block{
+      position:absolute;
+      left:-40px;
+      bottom:45px;
       font-family:Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
       font-size:220px;
       line-height:.85;
-      color:rgba(255,255,255,.045);
+      color:rgba(255,255,255,.04);
       z-index:0;
       user-select:none;
       pointer-events:none;
     }
 
+    /* IMAGEN */
     .model{
       position:absolute;
-      right:34px;
+      right:42px;
       bottom:0;
       height:min(88vh, 840px);
       width:auto;
-      z-index:2;
+      z-index:3;
       filter:drop-shadow(0 28px 50px rgba(0,0,0,.34));
     }
 
@@ -228,23 +263,28 @@
       }
 
       .visual{
-        width:min(46vw, 660px);
+        width:min(48vw, 700px);
       }
 
       .panel{
-        width:min(24vw, 320px);
-        height:560px;
-        top:110px;
+        width:min(28vw, 360px);
+        height:610px;
       }
 
-      .creator{
+      .bg-script{
+        font-size:210px;
+        right:40px;
+        top:250px;
+      }
+
+      .bg-block{
         font-size:175px;
-        left:-170px;
+        left:-20px;
       }
 
       .model{
         height:min(82vh, 730px);
-        right:18px;
+        right:20px;
       }
     }
 
@@ -290,20 +330,26 @@
         top:auto;
         right:auto;
         width:100%;
-        height:500px;
+        height:520px;
         margin-top:10px;
       }
 
       .panel{
         right:0;
-        top:35px;
+        top:40px;
         width:300px;
-        height:410px;
+        height:420px;
       }
 
-      .creator{
+      .bg-script{
+        font-size:130px;
+        right:20px;
+        top:160px;
+      }
+
+      .bg-block{
         left:0;
-        bottom:34px;
+        bottom:28px;
         font-size:120px;
       }
 
@@ -350,7 +396,13 @@
         height:340px;
       }
 
-      .creator{
+      .bg-script{
+        font-size:88px;
+        right:10px;
+        top:140px;
+      }
+
+      .bg-block{
         font-size:88px;
       }
 
@@ -408,7 +460,8 @@
 
     <div class="visual">
       <div class="panel"></div>
-      <div class="creator">CREATOR</div>
+      <div class="bg-script">story</div>
+      <div class="bg-block">CREATOR</div>
       <img class="model" src="/images/sara-hero.jpg" alt="Sara Cavaliere">
     </div>
   </section>
