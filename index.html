@@ -22,6 +22,13 @@
       --panel-b:#8a6a5c;
       --script:#d9c3b4;
 
+      /* preloader */
+      --loader-bg:#f5efe8;
+      --loader-base:#d9cec2;
+      --loader-fill:#b88b78; /* marrón rosado claro */
+      --loader-text-shadow:rgba(0,0,0,.04);
+
+      /* cursor */
       --cursor-size:22px;
       --cursor-border:1.5px;
       --cursor-color:rgba(233,221,204,.92);
@@ -46,6 +53,10 @@
       overflow-x:hidden;
     }
 
+    body.is-loading{
+      overflow:hidden;
+    }
+
     a{
       text-decoration:none;
       color:inherit;
@@ -61,7 +72,80 @@
       padding:0 56px;
     }
 
-    /* HEADER */
+    /* =========================
+       PRELOADER
+       ========================= */
+
+    .preloader{
+      position:fixed;
+      inset:0;
+      background:var(--loader-bg);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      z-index:100000;
+      opacity:1;
+      visibility:visible;
+      transition:
+        opacity .9s cubic-bezier(.22,1,.36,1),
+        visibility .9s cubic-bezier(.22,1,.36,1);
+    }
+
+    .preloader.is-hidden{
+      opacity:0;
+      visibility:hidden;
+      pointer-events:none;
+    }
+
+    .preloader-logo{
+      position:relative;
+      display:inline-block;
+      font-family:Georgia, serif;
+      font-size:clamp(44px, 7vw, 96px);
+      font-weight:600;
+      letter-spacing:-0.04em;
+      line-height:1;
+      color:var(--loader-base);
+      text-shadow:0 2px 10px var(--loader-text-shadow);
+      user-select:none;
+    }
+
+    .preloader-logo-fill{
+      position:absolute;
+      inset:0;
+      color:var(--loader-fill);
+      white-space:nowrap;
+      overflow:hidden;
+      width:0%;
+      will-change:width;
+      animation:logoFill 2.3s cubic-bezier(.22,1,.36,1) forwards;
+    }
+
+    @keyframes logoFill{
+      0%{ width:0%; }
+      100%{ width:100%; }
+    }
+
+    /* =========================
+       PAGE REVEAL
+       ========================= */
+
+    .site-shell{
+      opacity:0;
+      transform:translateY(22px);
+      transition:
+        opacity 1s cubic-bezier(.22,1,.36,1),
+        transform 1s cubic-bezier(.22,1,.36,1);
+    }
+
+    body.is-loaded .site-shell{
+      opacity:1;
+      transform:none;
+    }
+
+    /* =========================
+       HEADER
+       ========================= */
 
     header{
       position:fixed;
@@ -113,7 +197,9 @@
       background:rgba(255,255,255,.04);
     }
 
-    /* HERO */
+    /* =========================
+       HERO
+       ========================= */
 
     .hero{
       position:relative;
@@ -129,8 +215,6 @@
       grid-template-columns:620px 1fr;
       align-items:center;
     }
-
-    /* LEFT */
 
     .left{
       position:relative;
@@ -199,7 +283,9 @@
       background:rgba(255,255,255,.04);
     }
 
-    /* RIGHT VISUAL */
+    /* =========================
+       RIGHT VISUAL
+       ========================= */
 
     .visual{
       position:absolute;
@@ -271,7 +357,9 @@
       filter:drop-shadow(0 28px 50px rgba(0,0,0,.34));
     }
 
-    /* CUSTOM CURSOR */
+    /* =========================
+       CUSTOM CURSOR
+       ========================= */
 
     .custom-cursor{
       position:fixed;
@@ -322,7 +410,9 @@
       cursor:none !important;
     }
 
-    /* RESPONSIVE */
+    /* =========================
+       RESPONSIVE
+       ========================= */
 
     @media (max-width: 1280px){
       .container{
@@ -505,62 +595,110 @@
     }
   </style>
 </head>
-<body>
+<body class="is-loading">
 
-  <header>
-    <div class="container">
-      <div class="header-inner">
-        <div class="logo">Sara Cavaliere</div>
-
-        <nav>
-          <a href="#">Home</a>
-          <a href="#">Portfolio</a>
-          <a href="#">Services</a>
-          <a href="#">About</a>
-          <a href="#">Contact</a>
-        </nav>
-
-        <a href="#" class="header-cta">Work With Me</a>
-      </div>
+  <!-- PRELOADER -->
+  <div class="preloader" id="preloader" aria-hidden="true">
+    <div class="preloader-logo">
+      Sara Cavaliere
+      <span class="preloader-logo-fill">Sara Cavaliere</span>
     </div>
-  </header>
+  </div>
 
-  <section class="hero">
-    <div class="container">
-      <div class="hero-inner">
-        <div class="left">
-          <div class="tag">FASHION • BEAUTY • LIFESTYLE • UGC</div>
+  <!-- SITE -->
+  <div class="site-shell">
 
-          <h1>
-            Premium UGC<br>
-            for brands<br>
-            that stand out
-          </h1>
+    <header>
+      <div class="container">
+        <div class="header-inner">
+          <div class="logo">Sara Cavaliere</div>
 
-          <div class="desc">
-            Authentic and elegant content designed to elevate brand perception,
-            build trust and create meaningful engagement.
-          </div>
+          <nav>
+            <a href="#">Home</a>
+            <a href="#">Portfolio</a>
+            <a href="#">Services</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+          </nav>
 
-          <div class="buttons">
-            <a href="#" class="btn primary">View Portfolio</a>
-            <a href="#" class="btn secondary">Book a Collaboration</a>
+          <a href="#" class="header-cta">Work With Me</a>
+        </div>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="container">
+        <div class="hero-inner">
+          <div class="left">
+            <div class="tag">FASHION • BEAUTY • LIFESTYLE • UGC</div>
+
+            <h1>
+              Premium UGC<br>
+              for brands<br>
+              that stand out
+            </h1>
+
+            <div class="desc">
+              Authentic and elegant content designed to elevate brand perception,
+              build trust and create meaningful engagement.
+            </div>
+
+            <div class="buttons">
+              <a href="#" class="btn primary">View Portfolio</a>
+              <a href="#" class="btn secondary">Book a Collaboration</a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="visual">
-      <div class="panel"></div>
-      <div class="bg-script">story</div>
-      <div class="bg-block">CREATOR</div>
-      <img class="model" src="/images/sara-hero.jpg" alt="Sara Cavaliere">
-    </div>
-  </section>
+      <div class="visual">
+        <div class="panel"></div>
+        <div class="bg-script">story</div>
+        <div class="bg-block">CREATOR</div>
+        <img class="model" src="/images/sara-hero.jpg" alt="Sara Cavaliere">
+      </div>
+    </section>
 
+  </div>
+
+  <!-- CUSTOM CURSOR -->
   <div class="custom-cursor" aria-hidden="true"></div>
 
   <script>
+    /* =========================
+       PRELOADER
+       ========================= */
+    (() => {
+      const preloader = document.getElementById('preloader');
+      const MIN_LOADER_TIME = 2500; // ajusta duración total visible
+
+      const start = performance.now();
+
+      function hideLoader() {
+        const elapsed = performance.now() - start;
+        const remaining = Math.max(0, MIN_LOADER_TIME - elapsed);
+
+        setTimeout(() => {
+          preloader.classList.add('is-hidden');
+          document.body.classList.remove('is-loading');
+          document.body.classList.add('is-loaded');
+
+          setTimeout(() => {
+            if (preloader) preloader.remove();
+          }, 1000);
+        }, remaining);
+      }
+
+      if (document.readyState === 'complete') {
+        hideLoader();
+      } else {
+        window.addEventListener('load', hideLoader, { once: true });
+      }
+    })();
+
+    /* =========================
+       CUSTOM CURSOR
+       ========================= */
     (() => {
       const cursor = document.querySelector('.custom-cursor');
       if (!cursor) return;
