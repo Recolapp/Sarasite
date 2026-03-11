@@ -27,15 +27,15 @@ color:inherit;
 
 img{
 display:block;
-max-width:100%;
+max-width:none;
 }
 
 /* CONTAINER */
 
 .container{
-width:min(1480px,100%);
+width:min(1500px,100%);
 margin:auto;
-padding:0 60px;
+padding:0 70px;
 }
 
 /* HEADER */
@@ -91,11 +91,11 @@ min-height:100vh;
 display:grid;
 grid-template-columns:.9fr 1.1fr;
 align-items:start;
-padding-top:120px;
+padding-top:110px;
 position:relative;
 }
 
-/* LEFT */
+/* LEFT SIDE */
 
 .left{
 max-width:640px;
@@ -113,17 +113,17 @@ opacity:.65;
 
 h1{
 font-family:Georgia, serif;
-font-size:104px;
-line-height:.88;
+font-size:108px;
+line-height:.86;
 letter-spacing:-0.05em;
-margin-bottom:30px;
+margin-bottom:28px;
 }
 
 .desc{
 font-size:18px;
 line-height:1.5;
 opacity:.75;
-margin-bottom:36px;
+margin-bottom:34px;
 max-width:640px;
 }
 
@@ -149,26 +149,29 @@ color:#111;
 border:1px solid rgba(255,255,255,.18);
 }
 
-/* RIGHT */
+/* RIGHT SIDE */
 
 .right{
 position:relative;
-min-height:850px;
+min-height:700px;
+overflow:visible;
 }
 
-/* PANEL */
+/* BROWN PANEL */
 
 .panel{
 position:absolute;
-right:60px;
-top:80px;
-width:360px;
-height:620px;
+right:80px;
+top:20px;
+width:380px;
+height:600px;
+
 background:linear-gradient(
 180deg,
 #7a5b4d,
 #66493e
 );
+
 clip-path:polygon(18% 0,100% 0,100% 100%,0 100%);
 z-index:1;
 }
@@ -177,25 +180,31 @@ z-index:1;
 
 .creator{
 position:absolute;
-left:0;
-bottom:120px;
-font-family:Impact;
-font-size:220px;
+left:-40px;
+bottom:60px;
+
+font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+font-size:240px;
+
 color:rgba(255,255,255,.045);
+
 pointer-events:none;
 z-index:0;
 }
 
-/* MODEL */
+/* MODEL IMAGE */
 
 .model{
 position:absolute;
-right:-60px;
-bottom:0;
-width:780px;
-max-width:none;
+
+right:-220px;
+bottom:140px;
+
+width:1100px;
+
 z-index:2;
-filter:drop-shadow(0 35px 60px rgba(0,0,0,.4));
+
+filter:drop-shadow(0 40px 60px rgba(0,0,0,.4));
 }
 
 /* RESPONSIVE */
@@ -207,13 +216,14 @@ font-size:86px;
 }
 
 .model{
-width:640px;
-right:-20px;
+width:820px;
+right:-120px;
+bottom:90px;
 }
 
 .panel{
 width:320px;
-height:560px;
+height:540px;
 }
 
 .creator{
@@ -233,7 +243,7 @@ grid-template-columns:1fr;
 }
 
 h1{
-font-size:62px;
+font-size:60px;
 }
 
 .right{
@@ -242,8 +252,9 @@ margin-top:20px;
 }
 
 .model{
-width:420px;
-right:0;
+width:440px;
+right:-20px;
+bottom:40px;
 }
 
 .panel{
@@ -254,7 +265,7 @@ right:0;
 
 .creator{
 font-size:120px;
-bottom:80px;
+bottom:40px;
 }
 
 }
