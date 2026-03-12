@@ -12,6 +12,9 @@
     rel="stylesheet"
   >
 
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
   <style>
     *{
       margin:0;
@@ -57,7 +60,6 @@
       --phones-line:rgba(106,78,67,.12);
 
       --ease-premium:cubic-bezier(.22,1,.36,1);
-      --ease-soft:cubic-bezier(.25,.46,.45,.94);
       --header-h:92px;
 
       --font-main:"Poppins", sans-serif;
@@ -719,15 +721,15 @@
     }
 
     /* =========================
-       PHONES PINNED SECTION
+       REFINED PHONES SECTION
        ========================= */
 
     .phones-scroll{
       position:relative;
-      height:430vh;
+      height:470vh;
       background:
-        radial-gradient(circle at 12% 10%, rgba(198,160,139,.10), transparent 24%),
-        radial-gradient(circle at 82% 18%, rgba(216,192,177,.13), transparent 24%),
+        radial-gradient(circle at 14% 12%, rgba(198,160,139,.08), transparent 22%),
+        radial-gradient(circle at 84% 16%, rgba(216,192,177,.10), transparent 22%),
         linear-gradient(180deg, var(--phones-bg) 0%, var(--phones-bg-2) 100%);
       overflow:hidden;
     }
@@ -737,7 +739,7 @@
       position:absolute;
       inset:0;
       background:
-        linear-gradient(180deg, rgba(255,255,255,.14), transparent 16%, transparent 84%, rgba(255,255,255,.08));
+        linear-gradient(180deg, rgba(255,255,255,.13), transparent 18%, transparent 82%, rgba(255,255,255,.06));
       pointer-events:none;
     }
 
@@ -753,16 +755,16 @@
     .phones-inner{
       position:relative;
       width:min(1440px, 100%);
-      margin:0 auto;
-      padding:120px 56px 80px;
       height:100vh;
+      margin:0 auto;
+      padding:116px 56px 56px;
     }
 
     .phones-copy{
       position:absolute;
       left:56px;
-      top:118px;
-      width:min(500px, 38vw);
+      top:116px;
+      width:min(500px, 36vw);
       z-index:10;
     }
 
@@ -773,6 +775,7 @@
       text-transform:uppercase;
       color:var(--phones-soft);
       margin-bottom:14px;
+      opacity:.96;
     }
 
     .phones-title{
@@ -803,7 +806,7 @@
     .phones-meta{
       position:absolute;
       left:56px;
-      bottom:48px;
+      bottom:44px;
       display:flex;
       gap:24px;
       align-items:center;
@@ -812,7 +815,7 @@
     }
 
     .phones-meta-line{
-      width:120px;
+      width:126px;
       height:1px;
       background:linear-gradient(90deg, rgba(108,80,68,.08), rgba(108,80,68,.22), rgba(108,80,68,.08));
     }
@@ -829,16 +832,17 @@
       inset:0;
       z-index:4;
       pointer-events:none;
+      perspective:1400px;
     }
 
     .phone-accent-word{
       position:absolute;
-      right:150px;
-      top:116px;
+      right:158px;
+      top:120px;
       font-family:var(--font-accent);
-      font-size:142px;
+      font-size:138px;
       line-height:1;
-      color:rgba(177,132,115,.16);
+      color:rgba(177,132,115,.14);
       transform:rotate(-6deg);
       user-select:none;
       pointer-events:none;
@@ -847,20 +851,21 @@
 
     .phone{
       position:absolute;
+      left:50%;
+      top:50%;
       width:258px;
       aspect-ratio:9 / 18.8;
       border-radius:42px;
       padding:10px;
-      background:linear-gradient(180deg, #201916 0%, #0e0b0a 100%);
+      background:linear-gradient(180deg, #201916 0%, #0d0b0a 100%);
       box-shadow:
-        0 36px 100px rgba(77,52,42,.16),
-        0 10px 26px rgba(0,0,0,.16),
+        0 42px 120px rgba(77,52,42,.14),
+        0 14px 28px rgba(0,0,0,.12),
         inset 0 1px 0 rgba(255,255,255,.06);
       transform-origin:center center;
       opacity:0;
-      z-index:2;
-      will-change:transform, opacity, filter;
       filter:blur(0px);
+      will-change:transform, opacity, filter;
     }
 
     .phone::before{
@@ -880,7 +885,7 @@
       transform:translateX(-50%);
       width:34%;
       height:22px;
-      background:#0a0909;
+      background:#090909;
       border-radius:0 0 16px 16px;
       z-index:5;
       box-shadow:0 1px 0 rgba(255,255,255,.04);
@@ -892,7 +897,6 @@
       height:100%;
       border-radius:34px;
       overflow:hidden;
-      background:var(--screen-bg, linear-gradient(180deg, #ead1c4, #c38f78));
     }
 
     .phone-screen::before{
@@ -900,7 +904,7 @@
       position:absolute;
       inset:0;
       background:
-        linear-gradient(180deg, rgba(255,255,255,.18), transparent 26%, transparent 70%, rgba(0,0,0,.14) 100%),
+        linear-gradient(180deg, rgba(255,255,255,.18), transparent 26%, transparent 72%, rgba(0,0,0,.14) 100%),
         radial-gradient(circle at 26% 14%, rgba(255,255,255,.26), transparent 18%);
       pointer-events:none;
     }
@@ -916,6 +920,26 @@
       filter:blur(18px);
       opacity:.55;
       pointer-events:none;
+    }
+
+    .phone-1 .phone-screen{
+      background:linear-gradient(180deg, #f1ddd3 0%, #d5a896 54%, #bb826c 100%);
+    }
+
+    .phone-2 .phone-screen{
+      background:linear-gradient(180deg, #efe3db 0%, #d8b7a8 50%, #b98b79 100%);
+    }
+
+    .phone-3 .phone-screen{
+      background:linear-gradient(180deg, #ead2c5 0%, #d19f8c 52%, #ab725f 100%);
+    }
+
+    .phone-4 .phone-screen{
+      background:linear-gradient(180deg, #f3e7df 0%, #dcc2b4 50%, #b88876 100%);
+    }
+
+    .phone-5 .phone-screen{
+      background:linear-gradient(180deg, #ecd7cb 0%, #d4a892 52%, #a96f5c 100%);
     }
 
     .phone-ui-top{
@@ -995,8 +1019,8 @@
       left:50%;
       top:50%;
       transform:translate(-50%, -50%);
-      width:74px;
-      height:74px;
+      width:72px;
+      height:72px;
       border-radius:50%;
       background:rgba(255,255,255,.14);
       border:1px solid rgba(255,255,255,.26);
@@ -1005,7 +1029,7 @@
       align-items:center;
       justify-content:center;
       z-index:3;
-      box-shadow:0 8px 24px rgba(0,0,0,.10);
+      box-shadow:0 8px 24px rgba(0,0,0,.08);
     }
 
     .phone-center-play::before{
@@ -1084,32 +1108,10 @@
       color:rgba(64,45,37,.58);
     }
 
-    .phone-1 .phone-screen{
-      background:linear-gradient(180deg, #f1ddd3 0%, #d4a996 54%, #bb826c 100%);
-    }
-    .phone-2 .phone-screen{
-      background:linear-gradient(180deg, #efe3db 0%, #d9b8a9 50%, #b98b79 100%);
-    }
-    .phone-3 .phone-screen{
-      background:linear-gradient(180deg, #ead2c5 0%, #d19f8c 52%, #ab725f 100%);
-    }
-    .phone-4 .phone-screen{
-      background:linear-gradient(180deg, #f3e7df 0%, #dcc2b4 50%, #b88876 100%);
-    }
-    .phone-5 .phone-screen{
-      background:linear-gradient(180deg, #ecd7cb 0%, #d4a892 52%, #a96f5c 100%);
-    }
+    /* =========================
+       REVEALS
+       ========================= */
 
-    .phone-1,
-    .phone-2,
-    .phone-3,
-    .phone-4,
-    .phone-5{
-      left:50%;
-      top:50%;
-    }
-
-    /* generic reveal */
     [data-reveal]{
       opacity:0;
       transform:translateY(34px);
@@ -1138,6 +1140,10 @@
       will-change:transform;
       transform:translate3d(0,0,0);
     }
+
+    /* =========================
+       CURSOR
+       ========================= */
 
     .custom-cursor{
       position:fixed;
@@ -1188,6 +1194,10 @@
       cursor:none !important;
     }
 
+    /* =========================
+       RESPONSIVE
+       ========================= */
+
     @media (max-width: 1280px){
       .container{ padding:0 40px; }
       .hero-inner{ grid-template-columns:560px 1fr; }
@@ -1200,7 +1210,7 @@
       .collab-title{ font-size:34px; }
 
       .phones-copy{
-        width:min(450px, 38vw);
+        width:min(450px, 36vw);
       }
       .phones-title{
         font-size:40px;
@@ -1209,8 +1219,8 @@
         width:228px;
       }
       .phone-accent-word{
-        right:92px;
-        font-size:124px;
+        right:96px;
+        font-size:120px;
       }
     }
 
@@ -1263,10 +1273,10 @@
       .logo-row.bottom{ animation-duration:38s; }
 
       .phones-scroll{
-        height:340vh;
+        height:350vh;
       }
       .phones-inner{
-        padding:96px 22px 40px;
+        padding:96px 22px 38px;
       }
       .phones-copy{
         position:relative;
@@ -1274,7 +1284,7 @@
         top:auto;
         width:100%;
         max-width:100%;
-        margin-bottom:26px;
+        margin-bottom:18px;
       }
       .phones-title{
         font-size:34px;
@@ -1285,15 +1295,15 @@
       .phones-meta{
         left:22px;
         right:22px;
-        bottom:24px;
+        bottom:20px;
       }
       .phones-meta-line{
         flex:1;
         width:auto;
       }
       .phone-accent-word{
-        top:176px;
-        right:20px;
+        top:174px;
+        right:22px;
         font-size:82px;
       }
       .phone{
@@ -1308,8 +1318,8 @@
         border-radius:28px;
       }
       .phone::after{
-        height:18px;
         top:11px;
+        height:18px;
       }
       .phone-title{
         font-size:22px;
@@ -1351,7 +1361,7 @@
       .logo-row.bottom{ animation-duration:28s; }
 
       .phones-scroll{
-        height:310vh;
+        height:320vh;
       }
       .phones-inner{
         padding-top:88px;
@@ -1390,7 +1400,7 @@
         height:58px;
       }
       .phone-accent-word{
-        top:214px;
+        top:216px;
         font-size:58px;
       }
       .phones-meta{
@@ -1691,6 +1701,8 @@
   <div class="custom-cursor" aria-hidden="true"></div>
 
   <script>
+    gsap.registerPlugin(ScrollTrigger);
+
     (() => {
       const preloader = document.getElementById('preloader');
       const MIN_LOADER_TIME = 2500;
@@ -1777,166 +1789,370 @@
     })();
 
     /* =========================
-       REFINED PINNED PHONES ANIMATION
+       REFINED PINNED PHONES SCENE
        ========================= */
     (() => {
       const section = document.querySelector('.phones-scroll');
-      const phones = Array.from(document.querySelectorAll('.js-phone'));
-      if (!section || !phones.length) return;
+      if (!section) return;
+
+      const phones = {
+        p1: document.querySelector('.phone-1'),
+        p2: document.querySelector('.phone-2'),
+        p3: document.querySelector('.phone-3'),
+        p4: document.querySelector('.phone-4'),
+        p5: document.querySelector('.phone-5')
+      };
 
       const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       if (reduceMotion) {
-        phones.forEach((phone) => {
-          phone.style.opacity = '1';
-          phone.style.transform = 'translate(-50%, -50%) scale(1)';
+        Object.values(phones).forEach((el) => {
+          gsap.set(el, { opacity: 1, xPercent: -50, yPercent: -50, scale: 1, rotation: 0, filter: "blur(0px)" });
         });
         return;
       }
 
-      const clamp = (v, min, max) => Math.min(Math.max(v, min), max);
-
-      const easeCubic = (t) => 1 - Math.pow(1 - t, 3);
-
-      const segment = (p, start, end) => {
-        const raw = clamp((p - start) / (end - start), 0, 1);
-        return easeCubic(raw);
-      };
-
-      const lerp = (a, b, t) => a + (b - a) * t;
-
-      function getProgress() {
-        const rect = section.getBoundingClientRect();
-        const scrollable = rect.height - window.innerHeight;
-        const raw = (-rect.top) / scrollable;
-        return clamp(raw, 0, 1);
-      }
-
-      function getLayouts(isMobile) {
-        if (isMobile) {
-          return [
-            {
-              appear:[0.00, 0.16],
-              drift:[0.16, 0.90],
-              from:{x:-14, y:26, s:.985, r:-2.5, o:.26, b:1.6},
-              to:{x:-54, y:18, s:1.00, r:-2.5, o:1.00, b:0},
-              driftTo:{x:-68, y:6, s:.985, r:-3}
-            },
-            {
-              appear:[0.10, 0.28],
-              drift:[0.28, 0.92],
-              from:{x:86, y:38, s:.975, r:3.5, o:.12, b:2.4},
-              to:{x:82, y:98, s:.99, r:3.5, o:.96, b:.4},
-              driftTo:{x:74, y:88, s:.98, r:2.5}
-            },
-            {
-              appear:[0.18, 0.40],
-              drift:[0.40, 1.00],
-              from:{x:0, y:44, s:.965, r:0, o:.10, b:2.6},
-              to:{x:0, y:-2, s:1.03, r:0, o:1.00, b:0},
-              driftTo:{x:0, y:-10, s:1.02, r:0}
-            },
-            {
-              appear:[0.34, 0.56],
-              drift:[0.56, 1.00],
-              from:{x:118, y:42, s:.965, r:5, o:.08, b:2.8},
-              to:{x:92, y:146, s:.985, r:4.5, o:.92, b:.6},
-              driftTo:{x:84, y:140, s:.975, r:4}
-            },
-            {
-              appear:[0.52, 0.74],
-              drift:[0.74, 1.00],
-              from:{x:-118, y:46, s:.965, r:-5.5, o:.07, b:3},
-              to:{x:-92, y:154, s:.985, r:-4.5, o:.90, b:.8},
-              driftTo:{x:-84, y:146, s:.975, r:-4}
-            }
-          ];
-        }
-
-        return [
-          {
-            appear:[0.00, 0.15],
-            drift:[0.15, 0.92],
-            from:{x:-80, y:20, s:.985, r:-4, o:.24, b:1.2},
-            to:{x:-290, y:12, s:1.00, r:-4, o:1.00, b:0},
-            driftTo:{x:-308, y:-2, s:.985, r:-4.8}
-          },
-          {
-            appear:[0.09, 0.26],
-            drift:[0.26, 0.94],
-            from:{x:220, y:26, s:.975, r:4.8, o:.10, b:2.2},
-            to:{x:228, y:68, s:.99, r:4.6, o:.96, b:.5},
-            driftTo:{x:214, y:56, s:.98, r:4.2}
-          },
-          {
-            appear:[0.16, 0.38],
-            drift:[0.38, 1.00],
-            from:{x:0, y:34, s:.965, r:0, o:.10, b:2.2},
-            to:{x:0, y:-8, s:1.045, r:0, o:1.00, b:0},
-            driftTo:{x:0, y:-18, s:1.03, r:0}
-          },
-          {
-            appear:[0.32, 0.54],
-            drift:[0.54, 1.00],
-            from:{x:330, y:34, s:.965, r:6.2, o:.07, b:2.6},
-            to:{x:314, y:104, s:.985, r:5.6, o:.92, b:.7},
-            driftTo:{x:300, y:92, s:.975, r:5.2}
-          },
-          {
-            appear:[0.48, 0.72],
-            drift:[0.72, 1.00],
-            from:{x:-340, y:38, s:.965, r:-6.8, o:.06, b:3},
-            to:{x:-246, y:128, s:.985, r:-5.8, o:.90, b:.9},
-            driftTo:{x:-232, y:116, s:.975, r:-5.2}
-          }
-        ];
-      }
-
-      function renderPhone(phone, cfg, progress) {
-        const inT = segment(progress, cfg.appear[0], cfg.appear[1]);
-
-        let x = lerp(cfg.from.x, cfg.to.x, inT);
-        let y = lerp(cfg.from.y, cfg.to.y, inT);
-        let s = lerp(cfg.from.s, cfg.to.s, inT);
-        let r = lerp(cfg.from.r, cfg.to.r, inT);
-        let o = lerp(cfg.from.o, cfg.to.o, inT);
-        let b = lerp(cfg.from.b, cfg.to.b, inT);
-
-        const driftT = segment(progress, cfg.drift[0], cfg.drift[1]);
-        x = lerp(x, cfg.driftTo.x, driftT);
-        y = lerp(y, cfg.driftTo.y, driftT);
-        s = lerp(s, cfg.driftTo.s, driftT);
-        r = lerp(r, cfg.driftTo.r, driftT);
-
-        phone.style.opacity = o.toFixed(3);
-        phone.style.filter = `blur(${b.toFixed(2)}px)`;
-        phone.style.transform =
-          `translate(-50%, -50%) translate3d(${x}px, ${y}px, 0) scale(${s}) rotate(${r}deg)`;
-      }
-
-      let ticking = false;
-
-      function updateScene() {
-        const progress = getProgress();
-        const isMobile = window.matchMedia('(max-width: 980px)').matches;
-        const layouts = getLayouts(isMobile);
-
-        phones.forEach((phone, index) => {
-          renderPhone(phone, layouts[index], progress);
+      function buildDesktop() {
+        gsap.set(phones.p1, {
+          xPercent: -50,
+          yPercent: -50,
+          x: -120,
+          y: 8,
+          scale: 0.99,
+          rotation: -4,
+          opacity: 0.56,
+          filter: "blur(0.8px)",
+          zIndex: 6
         });
 
-        ticking = false;
+        gsap.set(phones.p2, {
+          xPercent: -50,
+          yPercent: -50,
+          x: 230,
+          y: 64,
+          scale: 0.975,
+          rotation: 4.5,
+          opacity: 0.20,
+          filter: "blur(1.8px)",
+          zIndex: 3
+        });
+
+        gsap.set(phones.p3, {
+          xPercent: -50,
+          yPercent: -50,
+          x: 24,
+          y: 40,
+          scale: 0.972,
+          rotation: 0,
+          opacity: 0.10,
+          filter: "blur(2px)",
+          zIndex: 5
+        });
+
+        gsap.set(phones.p4, {
+          xPercent: -50,
+          yPercent: -50,
+          x: 336,
+          y: 116,
+          scale: 0.968,
+          rotation: 5.5,
+          opacity: 0.07,
+          filter: "blur(2.4px)",
+          zIndex: 2
+        });
+
+        gsap.set(phones.p5, {
+          xPercent: -50,
+          yPercent: -50,
+          x: -314,
+          y: 124,
+          scale: 0.968,
+          rotation: -5.5,
+          opacity: 0.06,
+          filter: "blur(2.6px)",
+          zIndex: 1
+        });
+
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: section,
+            start: "top top",
+            end: "+=3200",
+            scrub: 1.2,
+            pin: true,
+            anticipatePin: 1,
+            invalidateOnRefresh: true
+          },
+          defaults: {
+            ease: "none"
+          }
+        });
+
+        tl
+          /* fase 1: presencia inmediata */
+          .to(phones.p1, {
+            x: -284,
+            y: 6,
+            scale: 1.005,
+            opacity: 1,
+            filter: "blur(0px)",
+            duration: 0.18
+          }, 0)
+          .to(phones.p2, {
+            x: 222,
+            y: 74,
+            scale: 0.986,
+            opacity: 0.68,
+            filter: "blur(0.4px)",
+            duration: 0.22
+          }, 0.02)
+
+          /* fase 2: consolidación temprana */
+          .to(phones.p3, {
+            x: 12,
+            y: -10,
+            scale: 1.03,
+            opacity: 0.92,
+            filter: "blur(0px)",
+            duration: 0.22
+          }, 0.16)
+          .to(phones.p2, {
+            x: 206,
+            y: 60,
+            scale: 0.98,
+            opacity: 0.88,
+            filter: "blur(0px)",
+            duration: 0.22
+          }, 0.18)
+
+          /* fase 3: construcción central */
+          .to(phones.p4, {
+            x: 306,
+            y: 106,
+            scale: 0.985,
+            opacity: 0.78,
+            filter: "blur(0.2px)",
+            duration: 0.24
+          }, 0.38)
+          .to(phones.p5, {
+            x: -234,
+            y: 126,
+            scale: 0.985,
+            opacity: 0.74,
+            filter: "blur(0.3px)",
+            duration: 0.24
+          }, 0.42)
+
+          /* fase 4: refinamiento compositivo */
+          .to(phones.p1, {
+            x: -300,
+            y: -2,
+            scale: 0.992,
+            rotation: -4.6,
+            duration: 0.20
+          }, 0.60)
+          .to(phones.p2, {
+            x: 192,
+            y: 54,
+            scale: 0.972,
+            rotation: 4.2,
+            duration: 0.20
+          }, 0.60)
+          .to(phones.p3, {
+            x: 0,
+            y: -18,
+            scale: 1.04,
+            rotation: 0,
+            duration: 0.22
+          }, 0.62)
+          .to(phones.p4, {
+            x: 292,
+            y: 92,
+            scale: 0.972,
+            rotation: 5,
+            duration: 0.20
+          }, 0.62)
+          .to(phones.p5, {
+            x: -220,
+            y: 114,
+            scale: 0.972,
+            rotation: -5,
+            duration: 0.20
+          }, 0.62)
+
+          /* fase final: drift silencioso */
+          .to(phones.p1, { y: -8, duration: 0.16 }, 0.82)
+          .to(phones.p2, { y: 48, duration: 0.16 }, 0.82)
+          .to(phones.p3, { y: -24, duration: 0.16 }, 0.82)
+          .to(phones.p4, { y: 86, duration: 0.16 }, 0.82)
+          .to(phones.p5, { y: 108, duration: 0.16 }, 0.82);
       }
 
-      function requestTick() {
-        if (!ticking) {
-          requestAnimationFrame(updateScene);
-          ticking = true;
+      function buildMobile() {
+        gsap.set(phones.p1, {
+          xPercent: -50,
+          yPercent: -50,
+          x: -30,
+          y: 34,
+          scale: 0.99,
+          rotation: -2.2,
+          opacity: 0.60,
+          filter: "blur(0.8px)",
+          zIndex: 6
+        });
+
+        gsap.set(phones.p2, {
+          xPercent: -50,
+          yPercent: -50,
+          x: 92,
+          y: 88,
+          scale: 0.975,
+          rotation: 3.2,
+          opacity: 0.22,
+          filter: "blur(1.8px)",
+          zIndex: 3
+        });
+
+        gsap.set(phones.p3, {
+          xPercent: -50,
+          yPercent: -50,
+          x: 0,
+          y: 50,
+          scale: 0.972,
+          rotation: 0,
+          opacity: 0.10,
+          filter: "blur(2px)",
+          zIndex: 5
+        });
+
+        gsap.set(phones.p4, {
+          xPercent: -50,
+          yPercent: -50,
+          x: 118,
+          y: 148,
+          scale: 0.965,
+          rotation: 4.2,
+          opacity: 0.07,
+          filter: "blur(2.4px)",
+          zIndex: 2
+        });
+
+        gsap.set(phones.p5, {
+          xPercent: -50,
+          yPercent: -50,
+          x: -116,
+          y: 156,
+          scale: 0.965,
+          rotation: -4.4,
+          opacity: 0.07,
+          filter: "blur(2.4px)",
+          zIndex: 1
+        });
+
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: section,
+            start: "top top",
+            end: "+=2400",
+            scrub: 1.15,
+            pin: true,
+            anticipatePin: 1,
+            invalidateOnRefresh: true
+          },
+          defaults: { ease: "none" }
+        });
+
+        tl
+          .to(phones.p1, {
+            x: -72,
+            y: 28,
+            scale: 1,
+            opacity: 1,
+            filter: "blur(0px)",
+            duration: 0.18
+          }, 0)
+          .to(phones.p2, {
+            x: 82,
+            y: 98,
+            scale: 0.986,
+            opacity: 0.70,
+            filter: "blur(0.4px)",
+            duration: 0.22
+          }, 0.02)
+
+          .to(phones.p3, {
+            x: 0,
+            y: 4,
+            scale: 1.028,
+            opacity: 0.92,
+            filter: "blur(0px)",
+            duration: 0.24
+          }, 0.18)
+
+          .to(phones.p4, {
+            x: 92,
+            y: 146,
+            scale: 0.982,
+            opacity: 0.80,
+            filter: "blur(0.2px)",
+            duration: 0.24
+          }, 0.40)
+          .to(phones.p5, {
+            x: -92,
+            y: 152,
+            scale: 0.982,
+            opacity: 0.76,
+            filter: "blur(0.2px)",
+            duration: 0.24
+          }, 0.44)
+
+          .to(phones.p1, {
+            x: -82,
+            y: 22,
+            scale: 0.992,
+            rotation: -2.8,
+            duration: 0.20
+          }, 0.66)
+          .to(phones.p2, {
+            x: 74,
+            y: 90,
+            scale: 0.975,
+            rotation: 2.8,
+            duration: 0.20
+          }, 0.66)
+          .to(phones.p3, {
+            x: 0,
+            y: -4,
+            scale: 1.02,
+            duration: 0.20
+          }, 0.66)
+          .to(phones.p4, {
+            x: 84,
+            y: 138,
+            scale: 0.972,
+            duration: 0.20
+          }, 0.66)
+          .to(phones.p5, {
+            x: -84,
+            y: 144,
+            scale: 0.972,
+            duration: 0.20
+          }, 0.66)
+
+          .to(phones.p1, { y: 18, duration: 0.14 }, 0.84)
+          .to(phones.p2, { y: 84, duration: 0.14 }, 0.84)
+          .to(phones.p3, { y: -8, duration: 0.14 }, 0.84)
+          .to(phones.p4, { y: 132, duration: 0.14 }, 0.84)
+          .to(phones.p5, { y: 138, duration: 0.14 }, 0.84);
+      }
+
+      ScrollTrigger.matchMedia({
+        "(min-width: 981px)"() {
+          buildDesktop();
+        },
+        "(max-width: 980px)"() {
+          buildMobile();
         }
-      }
-
-      updateScene();
-      window.addEventListener('scroll', requestTick, { passive:true });
-      window.addEventListener('resize', requestTick);
+      });
     })();
 
     (() => {
