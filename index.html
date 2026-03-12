@@ -44,6 +44,7 @@
       --logo-accent-2:#c3a494;
 
       --ease-premium:cubic-bezier(.22,1,.36,1);
+      --header-h:92px;
     }
 
     html,
@@ -150,7 +151,7 @@
     }
 
     .header-inner{
-      height:92px;
+      height:var(--header-h);
       display:grid;
       grid-template-columns:1fr auto 1fr;
       align-items:center;
@@ -196,9 +197,9 @@
     .hero{
       position:relative;
       min-height:100vh;
-      padding-top:112px;
-      overflow:hidden;
+      padding-top:var(--header-h);
       z-index:1;
+      overflow:hidden;
     }
 
     .hero::after{
@@ -223,7 +224,7 @@
 
     .hero-inner{
       position:relative;
-      min-height:calc(100vh - 112px);
+      min-height:calc(100vh - var(--header-h));
       display:grid;
       grid-template-columns:620px 1fr;
       align-items:center;
@@ -245,52 +246,12 @@
       margin-bottom:18px;
     }
 
-    .hero-copy{
-      opacity:1;
-    }
-
     h1{
       font-family:Georgia, serif;
       font-size:104px;
       line-height:.87;
       letter-spacing:-.055em;
       margin-bottom:28px;
-      min-height:2.75em;
-    }
-
-    .typewriter-wrap{
-      display:block;
-    }
-
-    .typewriter{
-      display:inline;
-      white-space:pre-wrap;
-    }
-
-    .type-caret{
-      display:inline-block;
-      width:1px;
-      height:.88em;
-      background:rgba(233,221,204,.92);
-      margin-left:7px;
-      vertical-align:baseline;
-      transform:translateY(6px);
-      animation:caretBlink .9s step-end infinite;
-      opacity:1;
-    }
-
-    .type-caret.is-ending{
-      animation:caretBlink .9s step-end 3;
-    }
-
-    .type-caret.is-hidden{
-      opacity:0;
-      transition:opacity .45s var(--ease-premium);
-    }
-
-    @keyframes caretBlink{
-      0%,49%{ opacity:1; }
-      50%,100%{ opacity:0; }
     }
 
     .desc{
@@ -336,24 +297,31 @@
       background:rgba(255,255,255,.04);
     }
 
-    /* stable hero entrance */
+    /* =========================
+       HERO ENTRANCE
+       ========================= */
+
     .hero-entrance{
       opacity:0;
-      transform:translateY(18px);
+      transform:translate3d(0,24px,0);
+      filter:blur(6px);
       transition:
-        opacity 1.05s var(--ease-premium),
-        transform 1.05s var(--ease-premium);
-      will-change:transform, opacity;
+        opacity 1.15s var(--ease-premium),
+        transform 1.15s var(--ease-premium),
+        filter 1.15s var(--ease-premium);
+      will-change:transform, opacity, filter;
     }
 
     body.is-loaded .hero-entrance{
       opacity:1;
-      transform:none;
+      transform:translate3d(0,0,0);
+      filter:blur(0);
     }
 
-    .hero-entrance.delay-1{ transition-delay:.10s; }
-    .hero-entrance.delay-2{ transition-delay:.24s; }
-    .hero-entrance.delay-3{ transition-delay:.34s; }
+    .delay-1{ transition-delay:.10s; }
+    .delay-2{ transition-delay:.24s; }
+    .delay-3{ transition-delay:.36s; }
+    .delay-4{ transition-delay:.48s; }
 
     /* =========================
        RIGHT VISUAL
@@ -362,9 +330,9 @@
     .visual{
       position:absolute;
       right:0;
-      top:112px;
+      top:var(--header-h);
       width:min(49vw, 820px);
-      height:calc(100vh - 112px);
+      height:calc(100vh - var(--header-h));
       pointer-events:none;
     }
 
@@ -428,17 +396,17 @@
       z-index:3;
       filter:drop-shadow(0 28px 50px rgba(0,0,0,.34));
       opacity:0;
-      transform:translateY(82px);
+      transform:translate3d(0,82px,0);
       transition:
-        transform 1.8s var(--ease-premium),
+        transform 1.7s var(--ease-premium),
         opacity 1.45s var(--ease-premium);
       will-change:transform, opacity;
     }
 
     body.is-loaded .model{
       opacity:1;
-      transform:translateY(0);
-      transition-delay:.16s;
+      transform:translate3d(0,0,0);
+      transition-delay:.18s;
     }
 
     /* =========================
@@ -868,6 +836,10 @@
     }
 
     @media (max-width: 980px){
+      :root{
+        --header-h:86px;
+      }
+
       .header-inner{
         grid-template-columns:1fr auto;
       }
@@ -881,7 +853,7 @@
       }
 
       .hero{
-        padding-top:98px;
+        padding-top:var(--header-h);
       }
 
       .hero::after{
@@ -901,7 +873,6 @@
 
       h1{
         font-size:62px;
-        min-height:2.9em;
       }
 
       .desc{
@@ -994,12 +965,6 @@
       h1{
         font-size:48px;
         line-height:.9;
-        min-height:3em;
-      }
-
-      .type-caret{
-        margin-left:4px;
-        transform:translateY(4px);
       }
 
       .buttons{
@@ -1095,10 +1060,7 @@
       [data-reveal]{
         opacity:1 !important;
         transform:none !important;
-      }
-
-      .type-caret{
-        display:none !important;
+        filter:none !important;
       }
     }
 
@@ -1151,21 +1113,21 @@
     <section class="hero">
       <div class="container">
         <div class="hero-inner">
-          <div class="left hero-copy">
+          <div class="left">
             <div class="tag hero-entrance delay-1">FASHION • BEAUTY • LIFESTYLE • UGC</div>
 
-            <h1>
-              <span class="typewriter-wrap">
-                <span class="typewriter" id="typewriter"></span><span class="type-caret" id="typeCaret" aria-hidden="true"></span>
-              </span>
+            <h1 class="hero-entrance delay-2">
+              Premium UGC<br>
+              for brands<br>
+              that stand out
             </h1>
 
-            <div class="desc hero-entrance delay-2">
+            <div class="desc hero-entrance delay-3">
               Authentic and elegant content designed to elevate brand perception,
               build trust and create meaningful engagement.
             </div>
 
-            <div class="buttons hero-entrance delay-3">
+            <div class="buttons hero-entrance delay-4">
               <a href="#" class="btn primary">View Portfolio</a>
               <a href="#" class="btn secondary">Book a Collaboration</a>
             </div>
@@ -1195,171 +1157,39 @@
 
         <div class="logo-marquee" data-reveal="soft">
           <div class="logo-row top">
-            <div class="logo-chip large">
-              <span class="logo-icon ring"></span>
-              <div class="logo-word serif">Veloura</div>
-            </div>
+            <div class="logo-chip large"><span class="logo-icon ring"></span><div class="logo-word serif">Veloura</div></div>
+            <div class="logo-chip"><span class="logo-icon spark"></span><div class="logo-word sans">LUMÉA</div></div>
+            <div class="logo-chip"><span class="logo-icon oval"></span><div class="logo-word mixed"><span class="main">Auréline</span><span class="sub">skin</span></div></div>
+            <div class="logo-chip small"><span class="logo-icon square"></span><div class="logo-word sans">NOVAIRE</div></div>
+            <div class="logo-chip large"><span class="logo-icon double"></span><div class="logo-word serif">Maison Elia</div></div>
+            <div class="logo-chip"><span class="logo-icon spark"></span><div class="logo-word scriptish">Roséa</div></div>
+            <div class="logo-chip"><span class="logo-icon ring"></span><div class="logo-word mixed"><span class="main">Calyn</span><span class="sub">beauty</span></div></div>
 
-            <div class="logo-chip">
-              <span class="logo-icon spark"></span>
-              <div class="logo-word sans">LUMÉA</div>
-            </div>
-
-            <div class="logo-chip">
-              <span class="logo-icon oval"></span>
-              <div class="logo-word mixed">
-                <span class="main">Auréline</span>
-                <span class="sub">skin</span>
-              </div>
-            </div>
-
-            <div class="logo-chip small">
-              <span class="logo-icon square"></span>
-              <div class="logo-word sans">NOVAIRE</div>
-            </div>
-
-            <div class="logo-chip large">
-              <span class="logo-icon double"></span>
-              <div class="logo-word serif">Maison Elia</div>
-            </div>
-
-            <div class="logo-chip">
-              <span class="logo-icon spark"></span>
-              <div class="logo-word scriptish">Roséa</div>
-            </div>
-
-            <div class="logo-chip">
-              <span class="logo-icon ring"></span>
-              <div class="logo-word mixed">
-                <span class="main">Calyn</span>
-                <span class="sub">beauty</span>
-              </div>
-            </div>
-
-            <div class="logo-chip large">
-              <span class="logo-icon ring"></span>
-              <div class="logo-word serif">Veloura</div>
-            </div>
-
-            <div class="logo-chip">
-              <span class="logo-icon spark"></span>
-              <div class="logo-word sans">LUMÉA</div>
-            </div>
-
-            <div class="logo-chip">
-              <span class="logo-icon oval"></span>
-              <div class="logo-word mixed">
-                <span class="main">Auréline</span>
-                <span class="sub">skin</span>
-              </div>
-            </div>
-
-            <div class="logo-chip small">
-              <span class="logo-icon square"></span>
-              <div class="logo-word sans">NOVAIRE</div>
-            </div>
-
-            <div class="logo-chip large">
-              <span class="logo-icon double"></span>
-              <div class="logo-word serif">Maison Elia</div>
-            </div>
-
-            <div class="logo-chip">
-              <span class="logo-icon spark"></span>
-              <div class="logo-word scriptish">Roséa</div>
-            </div>
-
-            <div class="logo-chip">
-              <span class="logo-icon ring"></span>
-              <div class="logo-word mixed">
-                <span class="main">Calyn</span>
-                <span class="sub">beauty</span>
-              </div>
-            </div>
+            <div class="logo-chip large"><span class="logo-icon ring"></span><div class="logo-word serif">Veloura</div></div>
+            <div class="logo-chip"><span class="logo-icon spark"></span><div class="logo-word sans">LUMÉA</div></div>
+            <div class="logo-chip"><span class="logo-icon oval"></span><div class="logo-word mixed"><span class="main">Auréline</span><span class="sub">skin</span></div></div>
+            <div class="logo-chip small"><span class="logo-icon square"></span><div class="logo-word sans">NOVAIRE</div></div>
+            <div class="logo-chip large"><span class="logo-icon double"></span><div class="logo-word serif">Maison Elia</div></div>
+            <div class="logo-chip"><span class="logo-icon spark"></span><div class="logo-word scriptish">Roséa</div></div>
+            <div class="logo-chip"><span class="logo-icon ring"></span><div class="logo-word mixed"><span class="main">Calyn</span><span class="sub">beauty</span></div></div>
           </div>
 
           <div class="logo-row bottom">
-            <div class="logo-chip">
-              <span class="logo-icon square"></span>
-              <div class="logo-word serif">Sorella</div>
-            </div>
+            <div class="logo-chip"><span class="logo-icon square"></span><div class="logo-word serif">Sorella</div></div>
+            <div class="logo-chip large"><span class="logo-icon double"></span><div class="logo-word mixed"><span class="main">Mireva</span><span class="sub">atelier</span></div></div>
+            <div class="logo-chip small"><span class="logo-icon spark"></span><div class="logo-word sans">ÉLANE</div></div>
+            <div class="logo-chip"><span class="logo-icon oval"></span><div class="logo-word scriptish">Orvielle</div></div>
+            <div class="logo-chip large"><span class="logo-icon ring"></span><div class="logo-word serif">Tévere</div></div>
+            <div class="logo-chip"><span class="logo-icon square"></span><div class="logo-word mixed"><span class="main">Liora</span><span class="sub">wellness</span></div></div>
+            <div class="logo-chip"><span class="logo-icon spark"></span><div class="logo-word sans">VÉNIA</div></div>
 
-            <div class="logo-chip large">
-              <span class="logo-icon double"></span>
-              <div class="logo-word mixed">
-                <span class="main">Mireva</span>
-                <span class="sub">atelier</span>
-              </div>
-            </div>
-
-            <div class="logo-chip small">
-              <span class="logo-icon spark"></span>
-              <div class="logo-word sans">ÉLANE</div>
-            </div>
-
-            <div class="logo-chip">
-              <span class="logo-icon oval"></span>
-              <div class="logo-word scriptish">Orvielle</div>
-            </div>
-
-            <div class="logo-chip large">
-              <span class="logo-icon ring"></span>
-              <div class="logo-word serif">Tévere</div>
-            </div>
-
-            <div class="logo-chip">
-              <span class="logo-icon square"></span>
-              <div class="logo-word mixed">
-                <span class="main">Liora</span>
-                <span class="sub">wellness</span>
-              </div>
-            </div>
-
-            <div class="logo-chip">
-              <span class="logo-icon spark"></span>
-              <div class="logo-word sans">VÉNIA</div>
-            </div>
-
-            <div class="logo-chip">
-              <span class="logo-icon square"></span>
-              <div class="logo-word serif">Sorella</div>
-            </div>
-
-            <div class="logo-chip large">
-              <span class="logo-icon double"></span>
-              <div class="logo-word mixed">
-                <span class="main">Mireva</span>
-                <span class="sub">atelier</span>
-              </div>
-            </div>
-
-            <div class="logo-chip small">
-              <span class="logo-icon spark"></span>
-              <div class="logo-word sans">ÉLANE</div>
-            </div>
-
-            <div class="logo-chip">
-              <span class="logo-icon oval"></span>
-              <div class="logo-word scriptish">Orvielle</div>
-            </div>
-
-            <div class="logo-chip large">
-              <span class="logo-icon ring"></span>
-              <div class="logo-word serif">Tévere</div>
-            </div>
-
-            <div class="logo-chip">
-              <span class="logo-icon square"></span>
-              <div class="logo-word mixed">
-                <span class="main">Liora</span>
-                <span class="sub">wellness</span>
-              </div>
-            </div>
-
-            <div class="logo-chip">
-              <span class="logo-icon spark"></span>
-              <div class="logo-word sans">VÉNIA</div>
-            </div>
+            <div class="logo-chip"><span class="logo-icon square"></span><div class="logo-word serif">Sorella</div></div>
+            <div class="logo-chip large"><span class="logo-icon double"></span><div class="logo-word mixed"><span class="main">Mireva</span><span class="sub">atelier</span></div></div>
+            <div class="logo-chip small"><span class="logo-icon spark"></span><div class="logo-word sans">ÉLANE</div></div>
+            <div class="logo-chip"><span class="logo-icon oval"></span><div class="logo-word scriptish">Orvielle</div></div>
+            <div class="logo-chip large"><span class="logo-icon ring"></span><div class="logo-word serif">Tévere</div></div>
+            <div class="logo-chip"><span class="logo-icon square"></span><div class="logo-word mixed"><span class="main">Liora</span><span class="sub">wellness</span></div></div>
+            <div class="logo-chip"><span class="logo-icon spark"></span><div class="logo-word sans">VÉNIA</div></div>
           </div>
 
           <div class="logo-divider"></div>
@@ -1371,9 +1201,6 @@
   <div class="custom-cursor" aria-hidden="true"></div>
 
   <script>
-    /* =========================
-       PRELOADER
-       ========================= */
     (() => {
       const preloader = document.getElementById('preloader');
       const MIN_LOADER_TIME = 2500;
@@ -1401,51 +1228,6 @@
       }
     })();
 
-    /* =========================
-       TYPEWRITER
-       ========================= */
-    (() => {
-      const output = document.getElementById('typewriter');
-      const caret = document.getElementById('typeCaret');
-      if (!output || !caret) return;
-
-      const lines = [
-        'Premium UGC',
-        'for brands',
-        'that stand out'
-      ];
-
-      const text = lines.join('\n');
-      let index = 0;
-
-      function render(value){
-        output.innerHTML = value.replace(/\n/g, '<br>');
-      }
-
-      function typeNext(){
-        if (index <= text.length) {
-          render(text.slice(0, index));
-          index++;
-
-          const char = text[index - 1];
-          const delay = char === '\n' ? 125 : 52 + Math.random() * 18;
-          setTimeout(typeNext, delay);
-        } else {
-          caret.classList.add('is-ending');
-          setTimeout(() => {
-            caret.classList.add('is-hidden');
-          }, 1200);
-        }
-      }
-
-      window.addEventListener('load', () => {
-        setTimeout(typeNext, 720);
-      }, { once:true });
-    })();
-
-    /* =========================
-       SCROLL REVEAL
-       ========================= */
     (() => {
       const revealItems = document.querySelectorAll('[data-reveal]');
       if (!revealItems.length) return;
@@ -1465,9 +1247,6 @@
       revealItems.forEach((item) => observer.observe(item));
     })();
 
-    /* =========================
-       PARALLAX
-       ========================= */
     (() => {
       const items = [...document.querySelectorAll('[data-parallax]')];
       if (!items.length) return;
@@ -1507,9 +1286,6 @@
       window.addEventListener('resize', requestTick);
     })();
 
-    /* =========================
-       CUSTOM CURSOR
-       ========================= */
     (() => {
       const cursor = document.querySelector('.custom-cursor');
       if (!cursor) return;
@@ -1592,4 +1368,3 @@
 
 </body>
 </html>
-
