@@ -90,6 +90,7 @@
 
     img{
       display:block;
+      max-width:100%;
     }
 
     .container{
@@ -126,7 +127,6 @@
     .preloader-logo{
       position:relative;
       display:inline-block;
-      font-family:var(--font-main);
       font-size:clamp(34px, 5.8vw, 72px);
       font-weight:600;
       letter-spacing:-0.04em;
@@ -142,8 +142,7 @@
       white-space:nowrap;
       overflow:hidden;
       width:0%;
-      will-change:width;
-      animation:logoFill 2.3s var(--ease-premium) forwards;
+      animation:logoFill 2.2s var(--ease-premium) forwards;
     }
 
     @keyframes logoFill{
@@ -709,38 +708,36 @@
     }
 
     /* =========================
-       EDITORIAL PHONES SECTION
+       EDITORIAL STICKY PHONES
        ========================= */
 
-    .editorial-phones{
+    .phones-editorial-section{
       position:relative;
-      height:480vh;
+      height:360vh;
       background:
-        radial-gradient(circle at 14% 12%, rgba(198,160,139,.08), transparent 22%),
-        radial-gradient(circle at 84% 16%, rgba(216,192,177,.10), transparent 22%),
-        linear-gradient(180deg, var(--phones-bg) 0%, var(--phones-bg-2) 100%);
+        radial-gradient(circle at 14% 12%, rgba(198,160,139,.08), transparent 24%),
+        radial-gradient(circle at 84% 16%, rgba(216,192,177,.10), transparent 24%),
+        linear-gradient(180deg, #f7f0e8 0%, #f2e7dc 100%);
       overflow:hidden;
     }
 
-    .editorial-phones::before{
+    .phones-editorial-section::before{
       content:"";
       position:absolute;
       inset:0;
       background:
-        linear-gradient(180deg, rgba(255,255,255,.12), transparent 18%, transparent 82%, rgba(255,255,255,.06));
+        linear-gradient(180deg, rgba(255,255,255,.10), transparent 18%, transparent 82%, rgba(255,255,255,.05));
       pointer-events:none;
     }
 
-    .editorial-phones .phones-pin{
+    .phones-editorial-sticky{
       position:sticky;
       top:0;
       height:100vh;
       overflow:hidden;
-      display:flex;
-      align-items:center;
     }
 
-    .editorial-phones .phones-inner{
+    .phones-editorial-scene{
       position:relative;
       width:min(1440px, 100%);
       height:100vh;
@@ -748,86 +745,53 @@
       padding:116px 56px 56px;
     }
 
-    .editorial-phones .phones-copy{
+    .phones-editorial-copy{
       position:absolute;
       left:56px;
       top:116px;
       width:min(500px, 36vw);
-      z-index:20;
+      z-index:30;
     }
 
-    .editorial-phones .phones-kicker{
+    .phones-editorial-kicker{
       font-size:11px;
       font-weight:500;
       letter-spacing:.22em;
       text-transform:uppercase;
-      color:var(--phones-soft);
+      color:rgba(70,52,45,.60);
       margin-bottom:14px;
-      opacity:.96;
     }
 
-    .editorial-phones .phones-title{
+    .phones-editorial-title{
       font-size:48px;
       font-weight:700;
       line-height:1.02;
       letter-spacing:-0.055em;
-      color:var(--phones-ink);
+      color:#46342d;
       max-width:560px;
     }
 
-    .editorial-phones .phones-title .accent{
-      font-family:var(--font-accent);
+    .phones-editorial-title span{
+      font-family:"Great Vibes", cursive;
       font-weight:400;
       color:#b38472;
       font-size:1.06em;
       margin-left:.08em;
     }
 
-    .editorial-phones .phones-desc{
+    .phones-editorial-desc{
       margin-top:18px;
       font-size:16px;
       line-height:1.75;
-      color:var(--phones-soft);
+      color:rgba(70,52,45,.60);
       max-width:430px;
     }
 
-    .editorial-phones .phones-meta{
-      position:absolute;
-      left:56px;
-      bottom:44px;
-      display:flex;
-      gap:24px;
-      align-items:center;
-      z-index:20;
-      color:var(--phones-soft);
-    }
-
-    .editorial-phones .phones-meta-line{
-      width:126px;
-      height:1px;
-      background:linear-gradient(90deg, rgba(108,80,68,.08), rgba(108,80,68,.22), rgba(108,80,68,.08));
-    }
-
-    .editorial-phones .phones-meta-text{
-      font-size:12px;
-      font-weight:500;
-      letter-spacing:.16em;
-      text-transform:uppercase;
-    }
-
-    .editorial-phones .phones-stage{
-      position:absolute;
-      inset:0;
-      z-index:4;
-      pointer-events:none;
-      perspective:1600px;
-    }
-
-    .editorial-phones .phone-accent-word{
+    .phones-editorial-accent{
       position:absolute;
       right:158px;
       top:120px;
-      font-family:var(--font-accent);
+      font-family:"Great Vibes", cursive;
       font-size:138px;
       line-height:1;
       color:rgba(177,132,115,.14);
@@ -837,7 +801,38 @@
       z-index:1;
     }
 
-    .editorial-phones .phone{
+    .phones-editorial-meta{
+      position:absolute;
+      left:56px;
+      bottom:44px;
+      display:flex;
+      gap:24px;
+      align-items:center;
+      z-index:30;
+      color:rgba(70,52,45,.60);
+    }
+
+    .phones-editorial-meta-text{
+      font-size:12px;
+      font-weight:500;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+    }
+
+    .phones-editorial-meta-line{
+      width:126px;
+      height:1px;
+      background:linear-gradient(90deg, rgba(108,80,68,.08), rgba(108,80,68,.22), rgba(108,80,68,.08));
+    }
+
+    .phones-cluster{
+      position:absolute;
+      inset:0;
+      overflow:hidden;
+      pointer-events:none;
+    }
+
+    .phone-mockup{
       position:absolute;
       left:50%;
       top:50%;
@@ -851,11 +846,10 @@
         0 14px 28px rgba(0,0,0,.12),
         inset 0 1px 0 rgba(255,255,255,.06);
       transform-origin:center center;
-      will-change:transform, opacity, filter;
-      opacity:1;
+      will-change:transform, opacity;
     }
 
-    .editorial-phones .phone::before{
+    .phone-mockup::before{
       content:"";
       position:absolute;
       inset:3px;
@@ -864,7 +858,7 @@
       pointer-events:none;
     }
 
-    .editorial-phones .phone::after{
+    .phone-mockup::after{
       content:"";
       position:absolute;
       top:14px;
@@ -878,7 +872,13 @@
       box-shadow:0 1px 0 rgba(255,255,255,.04);
     }
 
-    .editorial-phones .phone-screen{
+    .phone-shell{
+      position:relative;
+      width:100%;
+      height:100%;
+    }
+
+    .phone-screen{
       position:relative;
       width:100%;
       height:100%;
@@ -886,7 +886,7 @@
       overflow:hidden;
     }
 
-    .editorial-phones .phone-screen::before{
+    .phone-screen::before{
       content:"";
       position:absolute;
       inset:0;
@@ -896,7 +896,7 @@
       pointer-events:none;
     }
 
-    .editorial-phones .phone-screen::after{
+    .phone-screen::after{
       content:"";
       position:absolute;
       right:-14%;
@@ -909,27 +909,27 @@
       pointer-events:none;
     }
 
-    .editorial-phones .phone-1 .phone-screen{
+    .screen-beauty{
       background:linear-gradient(180deg, #f1ddd3 0%, #d5a896 54%, #bb826c 100%);
     }
 
-    .editorial-phones .phone-2 .phone-screen{
+    .screen-skincare{
       background:linear-gradient(180deg, #efe3db 0%, #d8b7a8 50%, #b98b79 100%);
     }
 
-    .editorial-phones .phone-3 .phone-screen{
+    .screen-fashion{
       background:linear-gradient(180deg, #ead2c5 0%, #d19f8c 52%, #ab725f 100%);
     }
 
-    .editorial-phones .phone-4 .phone-screen{
+    .screen-travel{
       background:linear-gradient(180deg, #f3e7df 0%, #dcc2b4 50%, #b88876 100%);
     }
 
-    .editorial-phones .phone-5 .phone-screen{
+    .screen-wellness{
       background:linear-gradient(180deg, #ecd7cb 0%, #d4a892 52%, #a96f5c 100%);
     }
 
-    .editorial-phones .phone-ui-top{
+    .phone-top-ui{
       position:absolute;
       top:14px;
       left:14px;
@@ -940,7 +940,7 @@
       align-items:flex-start;
     }
 
-    .editorial-phones .phone-tag{
+    .phone-chip{
       display:inline-flex;
       align-items:center;
       gap:7px;
@@ -957,7 +957,7 @@
       color:rgba(64,45,37,.86);
     }
 
-    .editorial-phones .phone-dot{
+    .phone-chip span{
       width:6px;
       height:6px;
       border-radius:50%;
@@ -965,7 +965,7 @@
       box-shadow:0 0 0 4px rgba(199,137,114,.12);
     }
 
-    .editorial-phones .phone-mini{
+    .phone-mini{
       display:inline-flex;
       align-items:center;
       min-height:28px;
@@ -980,7 +980,7 @@
       text-transform:uppercase;
     }
 
-    .editorial-phones .phone-bars{
+    .phone-bars{
       position:absolute;
       top:56px;
       left:14px;
@@ -990,18 +990,18 @@
       z-index:3;
     }
 
-    .editorial-phones .phone-bars span{
+    .phone-bars i{
       flex:1;
       height:3px;
       border-radius:999px;
       background:rgba(255,255,255,.44);
     }
 
-    .editorial-phones .phone-bars span.dim{
+    .phone-bars i.dim{
       opacity:.34;
     }
 
-    .editorial-phones .phone-center-play{
+    .phone-play{
       position:absolute;
       left:50%;
       top:50%;
@@ -1012,16 +1012,16 @@
       background:rgba(255,255,255,.14);
       border:1px solid rgba(255,255,255,.26);
       backdrop-filter:blur(10px);
-      display:flex;
-      align-items:center;
-      justify-content:center;
       z-index:3;
       box-shadow:0 8px 24px rgba(0,0,0,.08);
     }
 
-    .editorial-phones .phone-center-play::before{
+    .phone-play::before{
       content:"";
-      margin-left:5px;
+      position:absolute;
+      left:50%;
+      top:50%;
+      transform:translate(-40%, -50%);
       width:0;
       height:0;
       border-top:11px solid transparent;
@@ -1029,7 +1029,7 @@
       border-left:17px solid rgba(64,45,37,.82);
     }
 
-    .editorial-phones .phone-bottom{
+    .phone-bottom-ui{
       position:absolute;
       left:16px;
       right:16px;
@@ -1039,7 +1039,7 @@
       gap:8px;
     }
 
-    .editorial-phones .phone-category{
+    .phone-category{
       font-size:10px;
       font-weight:600;
       letter-spacing:.18em;
@@ -1047,7 +1047,7 @@
       color:rgba(64,45,37,.56);
     }
 
-    .editorial-phones .phone-title{
+    .phone-bottom-ui h3{
       font-size:26px;
       font-weight:700;
       line-height:1.02;
@@ -1056,14 +1056,14 @@
       max-width:88%;
     }
 
-    .editorial-phones .phone-sub{
+    .phone-bottom-ui p{
       font-size:12px;
       line-height:1.5;
       color:rgba(64,45,37,.66);
       max-width:86%;
     }
 
-    .editorial-phones .phone-actions{
+    .phone-actions{
       position:absolute;
       right:16px;
       bottom:18px;
@@ -1073,7 +1073,7 @@
       justify-items:center;
     }
 
-    .editorial-phones .phone-action{
+    .phone-action{
       width:34px;
       height:34px;
       border-radius:50%;
@@ -1088,44 +1088,42 @@
       font-weight:600;
     }
 
-    .editorial-phones .phone-stat{
+    .phone-actions small{
       font-size:10px;
       font-weight:500;
       letter-spacing:.06em;
       color:rgba(64,45,37,.58);
     }
 
-    /* =========================
-       REVEALS
-       ========================= */
-
-    [data-reveal]{
-      opacity:0;
-      transform:translateY(34px);
-      transition:
-        opacity 1s var(--ease-premium),
-        transform 1s var(--ease-premium);
-      will-change:transform, opacity;
-    }
-
-    [data-reveal].is-inview{
+    /* composición inicial */
+    .phone-hero{
+      z-index:7;
+      transform:translate(-50%, -50%) translate3d(-6px, -10px, 0) scale(1.04) rotate(0deg);
       opacity:1;
-      transform:translateY(0);
     }
 
-    [data-reveal="soft"]{
-      transform:translateY(22px);
-      transition-duration:.9s;
+    .phone-right-main{
+      z-index:5;
+      transform:translate(-50%, -50%) translate3d(240px, 52px, 0) scale(.97) rotate(4.2deg);
+      opacity:.88;
     }
 
-    [data-reveal="slow"]{
-      transform:translateY(48px);
-      transition-duration:1.2s;
+    .phone-right-edge{
+      z-index:3;
+      transform:translate(-50%, -50%) translate3d(430px, 116px, 0) scale(.92) rotate(6deg);
+      opacity:.58;
     }
 
-    [data-parallax]{
-      will-change:transform;
-      transform:translate3d(0,0,0);
+    .phone-left-main{
+      z-index:6;
+      transform:translate(-50%, -50%) translate3d(-260px, 36px, 0) scale(.99) rotate(-4.5deg);
+      opacity:.92;
+    }
+
+    .phone-left-edge{
+      z-index:2;
+      transform:translate(-50%, -50%) translate3d(-460px, 126px, 0) scale(.90) rotate(-6deg);
+      opacity:.52;
     }
 
     /* =========================
@@ -1181,10 +1179,6 @@
       cursor:none !important;
     }
 
-    /* =========================
-       RESPONSIVE
-       ========================= */
-
     @media (max-width: 1280px){
       .container{ padding:0 40px; }
       .hero-inner{ grid-template-columns:560px 1fr; }
@@ -1196,21 +1190,29 @@
       .model{ height:min(82vh, 730px); right:20px; }
       .collab-title{ font-size:34px; }
 
-      .editorial-phones .phones-copy{
+      .phones-editorial-copy{
         width:min(450px, 36vw);
       }
 
-      .editorial-phones .phones-title{
+      .phones-editorial-title{
         font-size:40px;
       }
 
-      .editorial-phones .phone{
+      .phone-mockup{
         width:228px;
       }
 
-      .editorial-phones .phone-accent-word{
+      .phones-editorial-accent{
         right:96px;
         font-size:120px;
+      }
+
+      .phone-right-edge{
+        transform:translate(-50%, -50%) translate3d(380px, 112px, 0) scale(.90) rotate(6deg);
+      }
+
+      .phone-left-edge{
+        transform:translate(-50%, -50%) translate3d(-405px, 124px, 0) scale(.88) rotate(-6deg);
       }
     }
 
@@ -1262,15 +1264,15 @@
       .logo-row.top{ animation-duration:34s; }
       .logo-row.bottom{ animation-duration:38s; }
 
-      .editorial-phones{
-        height:360vh;
+      .phones-editorial-section{
+        height:340vh;
       }
 
-      .editorial-phones .phones-inner{
+      .phones-editorial-scene{
         padding:96px 22px 38px;
       }
 
-      .editorial-phones .phones-copy{
+      .phones-editorial-copy{
         position:relative;
         left:auto;
         top:auto;
@@ -1279,52 +1281,72 @@
         margin-bottom:18px;
       }
 
-      .editorial-phones .phones-title{
+      .phones-editorial-title{
         font-size:34px;
       }
 
-      .editorial-phones .phones-desc{
+      .phones-editorial-desc{
         max-width:100%;
       }
 
-      .editorial-phones .phones-meta{
+      .phones-editorial-meta{
         left:22px;
         right:22px;
         bottom:20px;
       }
 
-      .editorial-phones .phones-meta-line{
+      .phones-editorial-meta-line{
         flex:1;
         width:auto;
       }
 
-      .editorial-phones .phone-accent-word{
+      .phones-editorial-accent{
         top:174px;
         right:22px;
         font-size:82px;
       }
 
-      .editorial-phones .phone{
+      .phone-mockup{
         width:176px;
         border-radius:34px;
         padding:8px;
       }
 
-      .editorial-phones .phone::before{
+      .phone-mockup::before{
         border-radius:31px;
       }
 
-      .editorial-phones .phone-screen{
+      .phone-screen{
         border-radius:28px;
       }
 
-      .editorial-phones .phone::after{
+      .phone-mockup::after{
         top:11px;
         height:18px;
       }
 
-      .editorial-phones .phone-title{
+      .phone-bottom-ui h3{
         font-size:22px;
+      }
+
+      .phone-hero{
+        transform:translate(-50%, -50%) translate3d(0px, 0px, 0) scale(1.02) rotate(0deg);
+      }
+
+      .phone-left-main{
+        transform:translate(-50%, -50%) translate3d(-90px, 92px, 0) scale(.96) rotate(-3deg);
+      }
+
+      .phone-right-main{
+        transform:translate(-50%, -50%) translate3d(92px, 100px, 0) scale(.96) rotate(3deg);
+      }
+
+      .phone-left-edge{
+        transform:translate(-50%, -50%) translate3d(-122px, 162px, 0) scale(.90) rotate(-4deg);
+      }
+
+      .phone-right-edge{
+        transform:translate(-50%, -50%) translate3d(122px, 156px, 0) scale(.90) rotate(4deg);
       }
     }
 
@@ -1362,66 +1384,66 @@
       .logo-row.top,
       .logo-row.bottom{ animation-duration:28s; }
 
-      .editorial-phones{
-        height:330vh;
+      .phones-editorial-section{
+        height:320vh;
       }
 
-      .editorial-phones .phones-inner{
+      .phones-editorial-scene{
         padding-top:88px;
       }
 
-      .editorial-phones .phones-title{
+      .phones-editorial-title{
         font-size:28px;
         line-height:1.06;
       }
 
-      .editorial-phones .phones-desc{
+      .phones-editorial-desc{
         font-size:15px;
       }
 
-      .editorial-phones .phone{
+      .phone-mockup{
         width:146px;
         padding:7px;
         border-radius:30px;
       }
 
-      .editorial-phones .phone::before{
+      .phone-mockup::before{
         border-radius:27px;
       }
 
-      .editorial-phones .phone::after{
+      .phone-mockup::after{
         height:15px;
         top:10px;
       }
 
-      .editorial-phones .phone-screen{
+      .phone-screen{
         border-radius:24px;
       }
 
-      .editorial-phones .phone-title{
+      .phone-bottom-ui h3{
         font-size:18px;
         max-width:92%;
       }
 
-      .editorial-phones .phone-sub{
+      .phone-bottom-ui p{
         font-size:11px;
       }
 
-      .editorial-phones .phone-center-play{
+      .phone-play{
         width:58px;
         height:58px;
       }
 
-      .editorial-phones .phone-accent-word{
+      .phones-editorial-accent{
         top:216px;
         font-size:58px;
       }
 
-      .editorial-phones .phones-meta{
+      .phones-editorial-meta{
         gap:14px;
       }
 
-      .editorial-phones .phones-meta-text{
+      .phones-editorial-meta-text{
         font-size:10px;
       }
     }
@@ -1438,8 +1460,7 @@
 
       .model,
       .hero-entrance,
-      [data-reveal],
-      .phone{
+      .phone-mockup{
         opacity:1 !important;
         transform:none !important;
         filter:none !important;
@@ -1527,7 +1548,7 @@
 
     <section class="collaborations" id="collaborations">
       <div class="container">
-        <div class="collab-head" data-reveal="slow">
+        <div class="collab-head">
           <div>
             <div class="collab-kicker">Selected collaborations</div>
             <h2 class="collab-title">
@@ -1537,7 +1558,7 @@
           <div class="collab-note">Editorial partners · beauty · skincare · luxury essentials</div>
         </div>
 
-        <div class="logo-marquee" data-reveal="soft">
+        <div class="logo-marquee">
           <div class="logo-row top">
             <div class="logo-chip large"><span class="logo-icon ring"></span><div class="logo-word serif">Veloura</div></div>
             <div class="logo-chip"><span class="logo-icon spark"></span><div class="logo-word sans">LUMÉA</div></div>
@@ -1579,138 +1600,160 @@
       </div>
     </section>
 
-    <section class="phones-scroll editorial-phones" id="phones-section">
-      <div class="phones-pin">
-        <div class="phones-inner">
-          <div class="phones-copy">
-            <div class="phones-kicker">Editorial pinned social showcase</div>
-            <h2 class="phones-title">
+    <section class="phones-editorial-section" id="phones-section">
+      <div class="phones-editorial-sticky">
+        <div class="phones-editorial-scene" id="phonesScene">
+          <div class="phones-editorial-copy">
+            <div class="phones-editorial-kicker">Editorial pinned social showcase</div>
+            <h2 class="phones-editorial-title">
               Vertical content staged as a premium
-              <span class="accent">editorial scene</span>
+              <span>editorial scene</span>
             </h2>
-            <div class="phones-desc">
-              A scroll-driven composition where premium smartphone mockups already exist
-              from the beginning, and the scroll only reorganizes the scene with subtle,
-              cinematic motion.
-            </div>
+            <p class="phones-editorial-desc">
+              A fixed visual composition of premium smartphone mockups that already exists from the first frame.
+              Scroll only refines hierarchy, spacing and depth inside the scene.
+            </p>
           </div>
 
-          <div class="phones-stage" id="phonesStage">
-            <div class="phone-accent-word">social</div>
+          <div class="phones-editorial-accent">social</div>
 
-            <article class="phone phone-1 js-phone">
-              <div class="phone-screen">
-                <div class="phone-bars"><span></span><span></span><span class="dim"></span></div>
-                <div class="phone-ui-top">
-                  <div class="phone-tag"><span class="phone-dot"></span> Beauty</div>
-                  <div class="phone-mini">Hero</div>
-                </div>
-                <div class="phone-center-play"></div>
-                <div class="phone-bottom">
-                  <div class="phone-category">Featured Reel</div>
-                  <div class="phone-title">Soft-focus beauty story</div>
-                  <div class="phone-sub">Luxury close-up content with elegant pacing and premium framing.</div>
-                </div>
-                <div class="phone-actions">
-                  <div class="phone-action">♥</div>
-                  <div class="phone-stat">24k</div>
-                  <div class="phone-action">↗</div>
-                  <div class="phone-stat">1.8k</div>
+          <div class="phones-cluster" id="phonesCluster">
+            <article class="phone-mockup phone-hero" data-phone="hero">
+              <div class="phone-shell">
+                <div class="phone-screen screen-beauty">
+                  <div class="phone-top-ui">
+                    <div class="phone-chip"><span></span> Beauty</div>
+                    <div class="phone-mini">Hero</div>
+                  </div>
+
+                  <div class="phone-bars">
+                    <i></i><i></i><i class="dim"></i>
+                  </div>
+
+                  <div class="phone-play"></div>
+
+                  <div class="phone-bottom-ui">
+                    <div class="phone-category">Featured Reel</div>
+                    <h3>Soft-focus beauty story</h3>
+                    <p>Premium close-up content with elegant pacing and luxury framing.</p>
+                  </div>
+
+                  <div class="phone-actions">
+                    <div class="phone-action">♥</div>
+                    <small>24k</small>
+                    <div class="phone-action">↗</div>
+                    <small>1.8k</small>
+                  </div>
                 </div>
               </div>
             </article>
 
-            <article class="phone phone-2 js-phone">
-              <div class="phone-screen">
-                <div class="phone-bars"><span></span><span class="dim"></span><span class="dim"></span></div>
-                <div class="phone-ui-top">
-                  <div class="phone-tag"><span class="phone-dot"></span> Skincare</div>
-                  <div class="phone-mini">Demo</div>
-                </div>
-                <div class="phone-bottom">
-                  <div class="phone-category">Product Demo</div>
-                  <div class="phone-title">Textures & serum ritual</div>
-                  <div class="phone-sub">Clean premium storytelling for formulas, texture and soft light.</div>
-                </div>
-                <div class="phone-actions">
-                  <div class="phone-action">▶</div>
-                  <div class="phone-stat">12s</div>
-                  <div class="phone-action">♡</div>
-                  <div class="phone-stat">9.1k</div>
+            <article class="phone-mockup phone-right-main" data-phone="right-main">
+              <div class="phone-shell">
+                <div class="phone-screen screen-skincare">
+                  <div class="phone-top-ui">
+                    <div class="phone-chip"><span></span> Skincare</div>
+                    <div class="phone-mini">Demo</div>
+                  </div>
+
+                  <div class="phone-bars">
+                    <i></i><i class="dim"></i><i class="dim"></i>
+                  </div>
+
+                  <div class="phone-bottom-ui">
+                    <div class="phone-category">Product Demo</div>
+                    <h3>Textures & serum ritual</h3>
+                    <p>Clean premium storytelling for formulas, texture and soft light.</p>
+                  </div>
+
+                  <div class="phone-actions">
+                    <div class="phone-action">▶</div>
+                    <small>12s</small>
+                    <div class="phone-action">♡</div>
+                    <small>9.1k</small>
+                  </div>
                 </div>
               </div>
             </article>
 
-            <article class="phone phone-3 js-phone">
-              <div class="phone-screen">
-                <div class="phone-bars"><span></span><span></span><span></span></div>
-                <div class="phone-ui-top">
-                  <div class="phone-tag"><span class="phone-dot"></span> Fashion</div>
-                  <div class="phone-mini">Story</div>
-                </div>
-                <div class="phone-center-play"></div>
-                <div class="phone-bottom">
-                  <div class="phone-category">Look & Motion</div>
-                  <div class="phone-title">Editorial outfit transitions</div>
-                  <div class="phone-sub">A central flagship mockup with the strongest visual priority.</div>
-                </div>
-                <div class="phone-actions">
-                  <div class="phone-action">♥</div>
-                  <div class="phone-stat">31k</div>
-                  <div class="phone-action">✦</div>
-                  <div class="phone-stat">save</div>
+            <article class="phone-mockup phone-right-edge" data-phone="right-edge">
+              <div class="phone-shell">
+                <div class="phone-screen screen-travel">
+                  <div class="phone-top-ui">
+                    <div class="phone-chip"><span></span> Travel</div>
+                    <div class="phone-mini">UGC</div>
+                  </div>
+
+                  <div class="phone-bars">
+                    <i></i><i class="dim"></i><i class="dim"></i>
+                  </div>
+
+                  <div class="phone-bottom-ui">
+                    <div class="phone-category">Lifestyle Clip</div>
+                    <h3>Travel diary mood</h3>
+                    <p>Atmospheric supporting content for softer narrative depth.</p>
+                  </div>
                 </div>
               </div>
             </article>
 
-            <article class="phone phone-4 js-phone">
-              <div class="phone-screen">
-                <div class="phone-bars"><span></span><span class="dim"></span><span class="dim"></span></div>
-                <div class="phone-ui-top">
-                  <div class="phone-tag"><span class="phone-dot"></span> Travel</div>
-                  <div class="phone-mini">UGC</div>
-                </div>
-                <div class="phone-bottom">
-                  <div class="phone-category">Lifestyle Clip</div>
-                  <div class="phone-title">Travel diary with brand mood</div>
-                  <div class="phone-sub">Supporting content that broadens the scene with softer depth.</div>
-                </div>
-                <div class="phone-actions">
-                  <div class="phone-action">↺</div>
-                  <div class="phone-stat">loop</div>
-                  <div class="phone-action">♥</div>
-                  <div class="phone-stat">15k</div>
+            <article class="phone-mockup phone-left-main" data-phone="left-main">
+              <div class="phone-shell">
+                <div class="phone-screen screen-fashion">
+                  <div class="phone-top-ui">
+                    <div class="phone-chip"><span></span> Fashion</div>
+                    <div class="phone-mini">Story</div>
+                  </div>
+
+                  <div class="phone-bars">
+                    <i></i><i></i><i></i>
+                  </div>
+
+                  <div class="phone-play"></div>
+
+                  <div class="phone-bottom-ui">
+                    <div class="phone-category">Look & Motion</div>
+                    <h3>Editorial outfit transitions</h3>
+                    <p>A premium story panel with strong visual presence and movement.</p>
+                  </div>
+
+                  <div class="phone-actions">
+                    <div class="phone-action">♥</div>
+                    <small>31k</small>
+                    <div class="phone-action">✦</div>
+                    <small>save</small>
+                  </div>
                 </div>
               </div>
             </article>
 
-            <article class="phone phone-5 js-phone">
-              <div class="phone-screen">
-                <div class="phone-bars"><span></span><span></span><span class="dim"></span></div>
-                <div class="phone-ui-top">
-                  <div class="phone-tag"><span class="phone-dot"></span> Wellness</div>
-                  <div class="phone-mini">Review</div>
-                </div>
-                <div class="phone-bottom">
-                  <div class="phone-category">UGC Review</div>
-                  <div class="phone-title">Haircare & lifestyle proof</div>
-                  <div class="phone-sub">Testimonial-led content in a softer, luxury interface language.</div>
-                </div>
-                <div class="phone-actions">
-                  <div class="phone-action">★</div>
-                  <div class="phone-stat">4.9</div>
-                  <div class="phone-action">♥</div>
-                  <div class="phone-stat">7.8k</div>
+            <article class="phone-mockup phone-left-edge" data-phone="left-edge">
+              <div class="phone-shell">
+                <div class="phone-screen screen-wellness">
+                  <div class="phone-top-ui">
+                    <div class="phone-chip"><span></span> Wellness</div>
+                    <div class="phone-mini">Review</div>
+                  </div>
+
+                  <div class="phone-bars">
+                    <i></i><i></i><i class="dim"></i>
+                  </div>
+
+                  <div class="phone-bottom-ui">
+                    <div class="phone-category">UGC Review</div>
+                    <h3>Haircare & routine proof</h3>
+                    <p>Soft testimonial content presented with a luxury interface language.</p>
+                  </div>
                 </div>
               </div>
             </article>
           </div>
 
-          <div class="phones-meta">
-            <div class="phones-meta-text">
+          <div class="phones-editorial-meta">
+            <div class="phones-editorial-meta-text">
               Beauty · Skincare · Haircare · Travel · Lifestyle · Fashion · Wellness · Product Demo · UGC Review
             </div>
-            <div class="phones-meta-line"></div>
+            <div class="phones-editorial-meta-line"></div>
           </div>
         </div>
       </div>
@@ -1724,7 +1767,7 @@
 
     (() => {
       const preloader = document.getElementById('preloader');
-      const MIN_LOADER_TIME = 2500;
+      const MIN_LOADER_TIME = 2400;
       const start = performance.now();
 
       function hideLoader() {
@@ -1747,25 +1790,6 @@
       } else {
         window.addEventListener('load', hideLoader, { once: true });
       }
-    })();
-
-    (() => {
-      const revealItems = document.querySelectorAll('[data-reveal]');
-      if (!revealItems.length) return;
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-inview');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, {
-        threshold: 0.14,
-        rootMargin: '0px 0px -8% 0px'
-      });
-
-      revealItems.forEach((item) => observer.observe(item));
     })();
 
     (() => {
@@ -1808,269 +1832,49 @@
     })();
 
     (() => {
-      const section = document.querySelector('.editorial-phones');
+      const section = document.querySelector('.phones-editorial-section');
       if (!section) return;
 
-      const phones = {
-        p1: document.querySelector('.editorial-phones .phone-1'),
-        p2: document.querySelector('.editorial-phones .phone-2'),
-        p3: document.querySelector('.editorial-phones .phone-3'),
-        p4: document.querySelector('.editorial-phones .phone-4'),
-        p5: document.querySelector('.editorial-phones .phone-5')
-      };
+      const hero = section.querySelector('.phone-hero');
+      const leftMain = section.querySelector('.phone-left-main');
+      const rightMain = section.querySelector('.phone-right-main');
+      const leftEdge = section.querySelector('.phone-left-edge');
+      const rightEdge = section.querySelector('.phone-right-edge');
 
       const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (reduceMotion) {
-        Object.values(phones).forEach((el) => {
-          gsap.set(el, {
-            opacity: 1,
-            xPercent: -50,
-            yPercent: -50,
-            scale: 1,
-            rotation: 0,
-            filter: "blur(0px)"
-          });
-        });
-        return;
-      }
+      if (reduceMotion) return;
 
       function setupDesktop() {
-        gsap.set(phones.p1, {
-          xPercent: -50,
-          yPercent: -50,
-          x: -255,
-          y: 20,
-          scale: 1.01,
-          rotation: -4,
-          opacity: 0.92,
-          filter: "blur(0px)",
-          zIndex: 6
+        gsap.set(hero, {
+          xPercent: -50, yPercent: -50,
+          x: -6, y: -10, scale: 1.04, rotation: 0, opacity: 1, zIndex: 7
         });
 
-        gsap.set(phones.p2, {
-          xPercent: -50,
-          yPercent: -50,
-          x: 238,
-          y: 88,
-          scale: 0.985,
-          rotation: 4.5,
-          opacity: 0.62,
-          filter: "blur(0.4px)",
-          zIndex: 4
+        gsap.set(leftMain, {
+          xPercent: -50, yPercent: -50,
+          x: -260, y: 36, scale: 0.99, rotation: -4.5, opacity: 0.92, zIndex: 6
         });
 
-        gsap.set(phones.p3, {
-          xPercent: -50,
-          yPercent: -50,
-          x: 12,
-          y: 10,
-          scale: 1.02,
-          rotation: 0,
-          opacity: 0.84,
-          filter: "blur(0px)",
-          zIndex: 7
+        gsap.set(rightMain, {
+          xPercent: -50, yPercent: -50,
+          x: 240, y: 52, scale: 0.97, rotation: 4.2, opacity: 0.88, zIndex: 5
         });
 
-        gsap.set(phones.p4, {
-          xPercent: -50,
-          yPercent: -50,
-          x: 388,
-          y: 122,
-          scale: 0.95,
-          rotation: 5.5,
-          opacity: 0.34,
-          filter: "blur(0.8px)",
-          zIndex: 3
+        gsap.set(leftEdge, {
+          xPercent: -50, yPercent: -50,
+          x: -460, y: 126, scale: 0.90, rotation: -6, opacity: 0.52, zIndex: 2
         });
 
-        gsap.set(phones.p5, {
-          xPercent: -50,
-          yPercent: -50,
-          x: -430,
-          y: 136,
-          scale: 0.95,
-          rotation: -5.5,
-          opacity: 0.28,
-          filter: "blur(1px)",
-          zIndex: 2
+        gsap.set(rightEdge, {
+          xPercent: -50, yPercent: -50,
+          x: 430, y: 116, scale: 0.92, rotation: 6, opacity: 0.58, zIndex: 3
         });
 
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: section,
             start: "top top",
-            end: "+=3400",
-            scrub: 1.35,
-            pin: true,
-            anticipatePin: 1,
-            invalidateOnRefresh: true
-          },
-          defaults: { ease: "none" }
-        });
-
-        tl.to(phones.p1, {
-          x: -286,
-          y: 10,
-          scale: 1.005,
-          rotation: -4.3,
-          opacity: 1,
-          duration: 0.16
-        }, 0);
-
-        tl.to(phones.p2, {
-          x: 224,
-          y: 74,
-          scale: 0.988,
-          opacity: 0.78,
-          filter: "blur(0.2px)",
-          duration: 0.16
-        }, 0);
-
-        tl.to(phones.p3, {
-          x: 0,
-          y: -6,
-          scale: 1.035,
-          opacity: 0.96,
-          duration: 0.16
-        }, 0.02);
-
-        tl.to(phones.p4, {
-          x: 330,
-          y: 104,
-          scale: 0.97,
-          opacity: 0.56,
-          filter: "blur(0.3px)",
-          duration: 0.18
-        }, 0.16);
-
-        tl.to(phones.p5, {
-          x: -308,
-          y: 118,
-          scale: 0.972,
-          opacity: 0.50,
-          filter: "blur(0.4px)",
-          duration: 0.18
-        }, 0.18);
-
-        tl.to(phones.p1, {
-          x: -304,
-          y: 2,
-          scale: 0.996,
-          rotation: -4.7,
-          duration: 0.24
-        }, 0.36);
-
-        tl.to(phones.p2, {
-          x: 204,
-          y: 54,
-          scale: 0.975,
-          rotation: 4.1,
-          opacity: 0.88,
-          duration: 0.24
-        }, 0.36);
-
-        tl.to(phones.p3, {
-          x: 0,
-          y: -18,
-          scale: 1.04,
-          opacity: 1,
-          duration: 0.24
-        }, 0.38);
-
-        tl.to(phones.p4, {
-          x: 292,
-          y: 92,
-          scale: 0.962,
-          rotation: 5.1,
-          opacity: 0.74,
-          duration: 0.24
-        }, 0.38);
-
-        tl.to(phones.p5, {
-          x: -236,
-          y: 108,
-          scale: 0.964,
-          rotation: -5.1,
-          opacity: 0.70,
-          duration: 0.24
-        }, 0.40);
-
-        tl.to(phones.p1, { y: -6, duration: 0.20 }, 0.72);
-        tl.to(phones.p2, { y: 46, duration: 0.20 }, 0.72);
-        tl.to(phones.p3, { y: -24, duration: 0.20 }, 0.72);
-        tl.to(phones.p4, { y: 84, duration: 0.20 }, 0.72);
-        tl.to(phones.p5, { y: 100, duration: 0.20 }, 0.72);
-
-        tl.to(phones.p4, { opacity: 0.82, duration: 0.14 }, 0.84);
-        tl.to(phones.p5, { opacity: 0.80, duration: 0.14 }, 0.84);
-      }
-
-      function setupMobile() {
-        gsap.set(phones.p1, {
-          xPercent: -50,
-          yPercent: -50,
-          x: -74,
-          y: 34,
-          scale: 1.0,
-          rotation: -2.4,
-          opacity: 0.92,
-          filter: "blur(0px)",
-          zIndex: 6
-        });
-
-        gsap.set(phones.p2, {
-          xPercent: -50,
-          yPercent: -50,
-          x: 88,
-          y: 104,
-          scale: 0.982,
-          rotation: 3.2,
-          opacity: 0.62,
-          filter: "blur(0.3px)",
-          zIndex: 4
-        });
-
-        gsap.set(phones.p3, {
-          xPercent: -50,
-          yPercent: -50,
-          x: 0,
-          y: 18,
-          scale: 1.015,
-          rotation: 0,
-          opacity: 0.86,
-          filter: "blur(0px)",
-          zIndex: 7
-        });
-
-        gsap.set(phones.p4, {
-          xPercent: -50,
-          yPercent: -50,
-          x: 116,
-          y: 152,
-          scale: 0.95,
-          rotation: 4,
-          opacity: 0.34,
-          filter: "blur(0.8px)",
-          zIndex: 3
-        });
-
-        gsap.set(phones.p5, {
-          xPercent: -50,
-          yPercent: -50,
-          x: -118,
-          y: 158,
-          scale: 0.95,
-          rotation: -4.2,
-          opacity: 0.30,
-          filter: "blur(0.9px)",
-          zIndex: 2
-        });
-
-        const tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: section,
-            start: "top top",
-            end: "+=2500",
+            end: "+=3200",
             scrub: 1.2,
             pin: true,
             anticipatePin: 1,
@@ -2079,86 +1883,148 @@
           defaults: { ease: "none" }
         });
 
-        tl.to(phones.p1, {
-          x: -84,
-          y: 24,
-          scale: 0.996,
-          opacity: 1,
-          duration: 0.16
-        }, 0);
-
-        tl.to(phones.p2, {
-          x: 80,
-          y: 94,
-          opacity: 0.78,
-          duration: 0.16
-        }, 0);
-
-        tl.to(phones.p3, {
+        tl.to(hero, {
           x: 0,
-          y: 2,
-          scale: 1.026,
-          opacity: 0.97,
+          y: -18,
+          scale: 1.045,
           duration: 0.16
-        }, 0.02);
+        }, 0);
 
-        tl.to(phones.p4, {
-          x: 96,
-          y: 142,
-          opacity: 0.58,
-          duration: 0.18
+        tl.to(leftMain, {
+          x: -282,
+          y: 22,
+          scale: 0.985,
+          opacity: 0.96,
+          duration: 0.16
+        }, 0);
+
+        tl.to(rightMain, {
+          x: 222,
+          y: 42,
+          scale: 0.975,
+          opacity: 0.92,
+          duration: 0.16
+        }, 0);
+
+        tl.to(leftEdge, {
+          x: -388,
+          y: 112,
+          scale: 0.92,
+          opacity: 0.62,
+          duration: 0.20
         }, 0.18);
 
-        tl.to(phones.p5, {
-          x: -96,
-          y: 146,
-          opacity: 0.54,
-          duration: 0.18
+        tl.to(rightEdge, {
+          x: 360,
+          y: 98,
+          scale: 0.94,
+          opacity: 0.68,
+          duration: 0.20
         }, 0.18);
 
-        tl.to(phones.p1, {
-          x: -88,
-          y: 18,
-          scale: 0.992,
-          duration: 0.24
-        }, 0.38);
-
-        tl.to(phones.p2, {
-          x: 74,
-          y: 88,
-          scale: 0.972,
-          opacity: 0.88,
-          duration: 0.24
-        }, 0.38);
-
-        tl.to(phones.p3, {
-          y: -8,
-          scale: 1.02,
-          opacity: 1,
-          duration: 0.24
-        }, 0.38);
-
-        tl.to(phones.p4, {
-          x: 84,
-          y: 134,
-          scale: 0.962,
-          opacity: 0.78,
+        tl.to(leftMain, {
+          x: -300,
+          y: 12,
+          scale: 0.975,
+          rotation: -4.8,
           duration: 0.24
         }, 0.40);
 
-        tl.to(phones.p5, {
-          x: -84,
-          y: 138,
-          scale: 0.964,
-          opacity: 0.74,
+        tl.to(rightMain, {
+          x: 204,
+          y: 30,
+          scale: 0.965,
+          rotation: 4,
           duration: 0.24
         }, 0.40);
 
-        tl.to(phones.p1, { y: 14, duration: 0.18 }, 0.74);
-        tl.to(phones.p2, { y: 82, duration: 0.18 }, 0.74);
-        tl.to(phones.p3, { y: -12, duration: 0.18 }, 0.74);
-        tl.to(phones.p4, { y: 128, duration: 0.18 }, 0.74);
-        tl.to(phones.p5, { y: 132, duration: 0.18 }, 0.74);
+        tl.to(leftEdge, {
+          x: -340,
+          y: 102,
+          scale: 0.93,
+          opacity: 0.72,
+          duration: 0.24
+        }, 0.42);
+
+        tl.to(rightEdge, {
+          x: 324,
+          y: 90,
+          scale: 0.95,
+          opacity: 0.76,
+          duration: 0.24
+        }, 0.42);
+
+        tl.to(hero, {
+          x: 0,
+          y: -28,
+          scale: 1.045,
+          duration: 0.24
+        }, 0.42);
+
+        tl.to(hero, { y: -32, duration: 0.22 }, 0.76);
+        tl.to(leftMain, { y: 4, duration: 0.22 }, 0.76);
+        tl.to(rightMain, { y: 24, duration: 0.22 }, 0.76);
+        tl.to(leftEdge, { y: 96, duration: 0.22 }, 0.76);
+        tl.to(rightEdge, { y: 84, duration: 0.22 }, 0.76);
+      }
+
+      function setupMobile() {
+        gsap.set(hero, {
+          xPercent: -50, yPercent: -50,
+          x: 0, y: 0, scale: 1.02, rotation: 0, opacity: 1, zIndex: 7
+        });
+
+        gsap.set(leftMain, {
+          xPercent: -50, yPercent: -50,
+          x: -90, y: 92, scale: 0.96, rotation: -3, opacity: 0.92, zIndex: 6
+        });
+
+        gsap.set(rightMain, {
+          xPercent: -50, yPercent: -50,
+          x: 92, y: 100, scale: 0.96, rotation: 3, opacity: 0.90, zIndex: 5
+        });
+
+        gsap.set(leftEdge, {
+          xPercent: -50, yPercent: -50,
+          x: -122, y: 162, scale: 0.90, rotation: -4, opacity: 0.54, zIndex: 2
+        });
+
+        gsap.set(rightEdge, {
+          xPercent: -50, yPercent: -50,
+          x: 122, y: 156, scale: 0.90, rotation: 4, opacity: 0.58, zIndex: 3
+        });
+
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: section,
+            start: "top top",
+            end: "+=2300",
+            scrub: 1.15,
+            pin: true,
+            anticipatePin: 1,
+            invalidateOnRefresh: true
+          },
+          defaults: { ease: "none" }
+        });
+
+        tl.to(hero, { y: -10, scale: 1.03, duration: 0.18 }, 0);
+        tl.to(leftMain, { x: -98, y: 80, opacity: 0.96, duration: 0.18 }, 0);
+        tl.to(rightMain, { x: 84, y: 88, opacity: 0.94, duration: 0.18 }, 0);
+
+        tl.to(leftEdge, { x: -102, y: 148, opacity: 0.66, duration: 0.22 }, 0.20);
+        tl.to(rightEdge, { x: 104, y: 142, opacity: 0.70, duration: 0.22 }, 0.20);
+
+        tl.to(hero, { y: -16, scale: 1.028, duration: 0.24 }, 0.44);
+        tl.to(leftMain, { x: -104, y: 72, duration: 0.24 }, 0.44);
+        tl.to(rightMain, { x: 78, y: 80, duration: 0.24 }, 0.44);
+        tl.to(leftEdge, { x: -92, y: 138, duration: 0.24 }, 0.44);
+        tl.to(rightEdge, { x: 94, y: 132, duration: 0.24 }, 0.44);
+
+        tl.to(hero, { y: -20, duration: 0.20 }, 0.76);
+        tl.to(leftMain, { y: 66, duration: 0.20 }, 0.76);
+        tl.to(rightMain, { y: 74, duration: 0.20 }, 0.76);
+        tl.to(leftEdge, { y: 132, duration: 0.20 }, 0.76);
+        tl.to(rightEdge, { y: 126, duration: 0.20 }, 0.76);
       }
 
       ScrollTrigger.matchMedia({
