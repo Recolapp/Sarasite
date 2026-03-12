@@ -5,6 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sara Cavaliere</title>
 
+  <!-- Google Fonts: Poppins + Great Vibes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
   <style>
     *{
       margin:0;
@@ -45,6 +53,9 @@
 
       --ease-premium:cubic-bezier(.22,1,.36,1);
       --header-h:92px;
+
+      --font-main:"Poppins", sans-serif;
+      --font-accent:"Great Vibes", cursive;
     }
 
     html,
@@ -60,7 +71,7 @@
     body{
       background:var(--bg);
       color:var(--text);
-      font-family:Arial, sans-serif;
+      font-family:var(--font-main);
       overflow-x:hidden;
     }
 
@@ -111,8 +122,8 @@
     .preloader-logo{
       position:relative;
       display:inline-block;
-      font-family:Georgia, serif;
-      font-size:clamp(44px, 7vw, 96px);
+      font-family:var(--font-main);
+      font-size:clamp(34px, 5.8vw, 72px);
       font-weight:600;
       letter-spacing:-0.04em;
       line-height:1;
@@ -158,10 +169,10 @@
     }
 
     .logo{
-      font-family:Georgia, serif;
+      font-family:var(--font-main);
       font-size:24px;
       font-weight:600;
-      letter-spacing:-0.02em;
+      letter-spacing:-0.03em;
     }
 
     nav{
@@ -172,6 +183,7 @@
 
     nav a{
       font-size:12px;
+      font-weight:500;
       letter-spacing:.18em;
       text-transform:uppercase;
       opacity:.86;
@@ -183,6 +195,7 @@
       padding:14px 24px;
       border-radius:999px;
       font-size:14px;
+      font-weight:500;
       transition:.25s ease;
     }
 
@@ -240,6 +253,7 @@
 
     .tag{
       font-size:12px;
+      font-weight:500;
       letter-spacing:.22em;
       text-transform:uppercase;
       opacity:.62;
@@ -247,17 +261,20 @@
     }
 
     h1{
-      font-family:Georgia, serif;
-      font-size:104px;
-      line-height:.87;
-      letter-spacing:-.055em;
+      font-family:var(--font-main);
+      font-size:92px;
+      font-weight:700;
+      line-height:.95;
+      letter-spacing:-0.06em;
       margin-bottom:28px;
+      max-width:640px;
     }
 
     .desc{
       max-width:620px;
       font-size:18px;
-      line-height:1.5;
+      font-weight:400;
+      line-height:1.7;
       color:var(--muted);
       margin-bottom:34px;
     }
@@ -276,7 +293,7 @@
       padding:0 30px;
       border-radius:999px;
       font-size:15px;
-      font-weight:600;
+      font-weight:500;
       transition:.25s ease;
     }
 
@@ -360,14 +377,13 @@
 
     .bg-script{
       position:absolute;
-      right:60px;
-      top:225px;
-      font-family:"Times New Roman", Georgia, serif;
-      font-style:italic;
-      font-size:260px;
-      line-height:.8;
-      color:rgba(217,195,180,.23);
-      letter-spacing:-0.04em;
+      right:55px;
+      top:210px;
+      font-family:var(--font-accent);
+      font-size:240px;
+      line-height:.85;
+      color:rgba(217,195,180,.22);
+      letter-spacing:0;
       z-index:2;
       transform:rotate(-4deg);
       user-select:none;
@@ -378,13 +394,16 @@
       position:absolute;
       left:-40px;
       bottom:45px;
-      font-family:Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-      font-size:220px;
+      font-family:var(--font-main);
+      font-size:170px;
+      font-weight:700;
       line-height:.85;
-      color:rgba(255,255,255,.04);
+      letter-spacing:-0.08em;
+      color:rgba(255,255,255,.035);
       z-index:0;
       user-select:none;
       pointer-events:none;
+      text-transform:uppercase;
     }
 
     .model{
@@ -464,6 +483,7 @@
 
     .collab-kicker{
       font-size:11px;
+      font-weight:500;
       letter-spacing:.22em;
       text-transform:uppercase;
       color:var(--logo-soft);
@@ -471,16 +491,18 @@
     }
 
     .collab-title{
-      font-family:Georgia, serif;
-      font-size:42px;
-      line-height:.95;
-      letter-spacing:-.04em;
+      font-family:var(--font-main);
+      font-size:40px;
+      font-weight:700;
+      line-height:1.05;
+      letter-spacing:-0.05em;
       color:#46362f;
       max-width:620px;
     }
 
     .collab-note{
       font-size:13px;
+      font-weight:500;
       letter-spacing:.14em;
       text-transform:uppercase;
       color:var(--logo-soft);
@@ -553,28 +575,31 @@
     }
 
     .logo-word.serif{
-      font-family:Georgia, serif;
-      font-size:28px;
-      letter-spacing:-.04em;
+      font-family:var(--font-main);
+      font-size:24px;
+      font-weight:600;
+      letter-spacing:-0.05em;
     }
 
     .logo-word.sans{
-      font-family:Arial, sans-serif;
-      font-size:19px;
+      font-family:var(--font-main);
+      font-size:18px;
       font-weight:600;
       letter-spacing:.14em;
       text-transform:uppercase;
     }
 
     .logo-word.mixed .main{
-      font-family:Georgia, serif;
-      font-size:28px;
-      letter-spacing:-.04em;
+      font-family:var(--font-main);
+      font-size:24px;
+      font-weight:600;
+      letter-spacing:-0.05em;
     }
 
     .logo-word.mixed .sub{
-      font-family:Arial, sans-serif;
+      font-family:var(--font-main);
       font-size:10px;
+      font-weight:500;
       letter-spacing:.28em;
       text-transform:uppercase;
       color:var(--logo-soft);
@@ -582,10 +607,10 @@
     }
 
     .logo-word.scriptish{
-      font-family:Georgia, serif;
-      font-style:italic;
-      font-size:30px;
-      letter-spacing:-.03em;
+      font-family:var(--font-accent);
+      font-size:34px;
+      line-height:1;
+      letter-spacing:0;
     }
 
     .logo-icon{
@@ -802,7 +827,7 @@
       }
 
       h1{
-        font-size:90px;
+        font-size:80px;
       }
 
       .visual{
@@ -821,7 +846,7 @@
       }
 
       .bg-block{
-        font-size:175px;
+        font-size:145px;
         left:-20px;
       }
 
@@ -831,7 +856,7 @@
       }
 
       .collab-title{
-        font-size:36px;
+        font-size:34px;
       }
     }
 
@@ -872,7 +897,8 @@
       }
 
       h1{
-        font-size:62px;
+        font-size:58px;
+        line-height:.96;
       }
 
       .desc{
@@ -905,7 +931,7 @@
       .bg-block{
         left:0;
         bottom:28px;
-        font-size:120px;
+        font-size:100px;
       }
 
       .model{
@@ -963,8 +989,8 @@
       }
 
       h1{
-        font-size:48px;
-        line-height:.9;
+        font-size:46px;
+        line-height:.95;
       }
 
       .buttons{
@@ -991,7 +1017,7 @@
       }
 
       .bg-block{
-        font-size:88px;
+        font-size:74px;
       }
 
       .model{
@@ -1024,7 +1050,7 @@
       }
 
       .logo-word.serif{
-        font-size:23px;
+        font-size:21px;
       }
 
       .logo-word.sans{
@@ -1032,11 +1058,11 @@
       }
 
       .logo-word.mixed .main{
-        font-size:22px;
+        font-size:21px;
       }
 
       .logo-word.scriptish{
-        font-size:24px;
+        font-size:28px;
       }
 
       .logo-row.top,
