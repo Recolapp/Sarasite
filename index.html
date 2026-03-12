@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sara Cavaliere</title>
 
-  <!-- Google Fonts: Poppins + Great Vibes -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -51,6 +50,14 @@
       --logo-accent:#b98a78;
       --logo-accent-2:#c3a494;
 
+      --reels-bg:#f6f0e9;
+      --reels-bg-2:#f3e9df;
+      --reels-ink:#4d3a33;
+      --reels-soft:rgba(77,58,51,.62);
+      --reels-line:rgba(99,73,63,.11);
+      --reels-glass:rgba(255,255,255,.28);
+      --reels-shadow:0 24px 60px rgba(88,59,48,.10);
+
       --ease-premium:cubic-bezier(.22,1,.36,1);
       --header-h:92px;
 
@@ -58,8 +65,7 @@
       --font-accent:"Great Vibes", cursive;
     }
 
-    html,
-    body{
+    html, body{
       width:100%;
       min-height:100%;
     }
@@ -93,10 +99,6 @@
       margin:0 auto;
       padding:0 56px;
     }
-
-    /* =========================
-       PRELOADER
-       ========================= */
 
     .preloader{
       position:fixed;
@@ -146,10 +148,6 @@
       0%{ width:0%; }
       100%{ width:100%; }
     }
-
-    /* =========================
-       HEADER
-       ========================= */
 
     header{
       position:fixed;
@@ -202,10 +200,6 @@
     .header-cta:hover{
       background:rgba(255,255,255,.04);
     }
-
-    /* =========================
-       HERO
-       ========================= */
 
     .hero{
       position:relative;
@@ -314,10 +308,6 @@
       background:rgba(255,255,255,.04);
     }
 
-    /* =========================
-       HERO ENTRANCE
-       ========================= */
-
     .hero-entrance{
       opacity:0;
       transform:translate3d(0,24px,0);
@@ -339,10 +329,6 @@
     .delay-2{ transition-delay:.24s; }
     .delay-3{ transition-delay:.36s; }
     .delay-4{ transition-delay:.48s; }
-
-    /* =========================
-       RIGHT VISUAL
-       ========================= */
 
     .visual{
       position:absolute;
@@ -383,7 +369,6 @@
       font-size:240px;
       line-height:.85;
       color:rgba(217,195,180,.22);
-      letter-spacing:0;
       z-index:2;
       transform:rotate(-4deg);
       user-select:none;
@@ -427,10 +412,6 @@
       transform:translate3d(0,0,0);
       transition-delay:.18s;
     }
-
-    /* =========================
-       COLLABORATIONS
-       ========================= */
 
     .collaborations{
       position:relative;
@@ -610,7 +591,6 @@
       font-family:var(--font-accent);
       font-size:34px;
       line-height:1;
-      letter-spacing:0;
     }
 
     .logo-icon{
@@ -713,13 +693,8 @@
     .logo-icon.double::before{ left:0; }
     .logo-icon.double::after{ right:0; }
 
-    .logo-chip.small{
-      min-width:190px;
-    }
-
-    .logo-chip.large{
-      min-width:250px;
-    }
+    .logo-chip.small{ min-width:190px; }
+    .logo-chip.large{ min-width:250px; }
 
     .logo-divider{
       margin-top:18px;
@@ -728,9 +703,389 @@
     }
 
     /* =========================
-       REVEAL / PARALLAX
+       VERTICAL CONTENT SECTION
        ========================= */
 
+    .vertical-showcase{
+      position:relative;
+      padding:120px 0 140px;
+      background:
+        radial-gradient(circle at 20% 10%, rgba(190,150,129,.10), transparent 24%),
+        radial-gradient(circle at 82% 22%, rgba(210,184,168,.12), transparent 24%),
+        linear-gradient(180deg, var(--reels-bg) 0%, var(--reels-bg-2) 100%);
+      overflow:hidden;
+    }
+
+    .vertical-showcase::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.22), transparent 20%, transparent 80%, rgba(255,255,255,.10));
+      pointer-events:none;
+    }
+
+    .showcase-head{
+      position:relative;
+      z-index:2;
+      display:grid;
+      grid-template-columns:minmax(0, 640px) 1fr;
+      gap:40px;
+      align-items:end;
+      margin-bottom:52px;
+    }
+
+    .showcase-kicker{
+      font-size:11px;
+      font-weight:500;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      color:var(--reels-soft);
+      margin-bottom:14px;
+    }
+
+    .showcase-title{
+      font-family:var(--font-main);
+      font-size:46px;
+      font-weight:700;
+      line-height:1.02;
+      letter-spacing:-0.055em;
+      color:var(--reels-ink);
+      max-width:760px;
+    }
+
+    .showcase-title .accent{
+      font-family:var(--font-accent);
+      font-weight:400;
+      font-size:1.05em;
+      letter-spacing:0;
+      margin-left:.08em;
+      color:#b18473;
+    }
+
+    .showcase-copy{
+      font-size:16px;
+      line-height:1.75;
+      font-weight:400;
+      color:var(--reels-soft);
+      max-width:440px;
+      justify-self:end;
+      padding-bottom:4px;
+    }
+
+    .story-stage{
+      position:relative;
+      min-height:2200px;
+      z-index:2;
+    }
+
+    .story-column{
+      position:sticky;
+      top:110px;
+      height:calc(100vh - 130px);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .story-stack{
+      position:relative;
+      width:min(100%, 1220px);
+      height:min(78vh, 760px);
+      margin:0 auto;
+    }
+
+    .story-card{
+      position:absolute;
+      width:220px;
+      height:410px;
+      border-radius:34px;
+      padding:14px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.46), rgba(255,255,255,.16));
+      border:1px solid rgba(255,255,255,.42);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.55),
+        inset 0 -1px 0 rgba(255,255,255,.14),
+        var(--reels-shadow);
+      backdrop-filter:blur(16px);
+      -webkit-backdrop-filter:blur(16px);
+      opacity:0;
+      transform:translate3d(0,70px,0) scale(.94) rotate(var(--rot, 0deg));
+      transition:
+        opacity .9s var(--ease-premium),
+        transform 1s var(--ease-premium),
+        box-shadow .4s ease;
+      overflow:hidden;
+    }
+
+    .story-card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.12), transparent 22%, transparent 76%, rgba(255,255,255,.10));
+      pointer-events:none;
+    }
+
+    .story-card::after{
+      content:"";
+      position:absolute;
+      left:10px;
+      right:10px;
+      top:10px;
+      height:28%;
+      border-radius:26px;
+      background:linear-gradient(180deg, rgba(255,255,255,.18), transparent);
+      opacity:.25;
+      pointer-events:none;
+      filter:blur(8px);
+    }
+
+    .story-card.is-visible{
+      opacity:1;
+      transform:translate3d(0,0,0) scale(1) rotate(var(--rot, 0deg));
+    }
+
+    .story-shell{
+      position:relative;
+      width:100%;
+      height:100%;
+      border-radius:24px;
+      overflow:hidden;
+      background:linear-gradient(180deg, rgba(255,255,255,.42), rgba(255,255,255,.12));
+      border:1px solid rgba(255,255,255,.38);
+    }
+
+    .story-media{
+      position:absolute;
+      inset:0;
+      border-radius:24px;
+      overflow:hidden;
+      background:var(--card-bg, linear-gradient(180deg, #dcc5ba, #b98f7a));
+    }
+
+    .story-media::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 30% 20%, rgba(255,255,255,.30), transparent 22%),
+        linear-gradient(180deg, rgba(255,255,255,.10), transparent 36%, rgba(0,0,0,.12) 100%);
+      pointer-events:none;
+    }
+
+    .story-media::after{
+      content:"";
+      position:absolute;
+      right:-18%;
+      bottom:-8%;
+      width:62%;
+      height:42%;
+      background:radial-gradient(circle, rgba(255,255,255,.25), transparent 65%);
+      filter:blur(18px);
+      opacity:.55;
+    }
+
+    .story-ui-top{
+      position:absolute;
+      inset:0 0 auto 0;
+      padding:16px 16px 0;
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      z-index:3;
+    }
+
+    .story-tag{
+      display:inline-flex;
+      align-items:center;
+      gap:7px;
+      padding:8px 11px;
+      min-height:30px;
+      border-radius:999px;
+      background:rgba(255,255,255,.28);
+      border:1px solid rgba(255,255,255,.38);
+      color:rgba(77,58,51,.88);
+      font-size:10px;
+      font-weight:600;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      backdrop-filter:blur(8px);
+    }
+
+    .story-dot{
+      width:6px;
+      height:6px;
+      border-radius:50%;
+      background:#c48f7a;
+      box-shadow:0 0 0 4px rgba(196,143,122,.12);
+    }
+
+    .story-counter{
+      padding:8px 10px;
+      border-radius:999px;
+      background:rgba(255,255,255,.24);
+      border:1px solid rgba(255,255,255,.34);
+      font-size:10px;
+      font-weight:500;
+      color:rgba(77,58,51,.7);
+      letter-spacing:.12em;
+    }
+
+    .story-label{
+      position:absolute;
+      left:16px;
+      right:16px;
+      bottom:18px;
+      z-index:3;
+      display:grid;
+      gap:8px;
+    }
+
+    .story-kicker{
+      font-size:10px;
+      font-weight:600;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:rgba(77,58,51,.58);
+    }
+
+    .story-title{
+      font-size:25px;
+      font-weight:700;
+      line-height:1.04;
+      letter-spacing:-0.05em;
+      color:#3f2d26;
+      max-width:86%;
+    }
+
+    .story-sub{
+      font-size:12px;
+      line-height:1.5;
+      color:rgba(77,58,51,.66);
+      max-width:88%;
+    }
+
+    .story-meta{
+      position:absolute;
+      left:16px;
+      right:16px;
+      bottom:112px;
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      z-index:3;
+    }
+
+    .story-pill{
+      display:inline-flex;
+      align-items:center;
+      min-height:28px;
+      padding:0 10px;
+      border-radius:999px;
+      background:rgba(255,255,255,.24);
+      border:1px solid rgba(255,255,255,.35);
+      font-size:10px;
+      font-weight:500;
+      color:rgba(77,58,51,.70);
+      letter-spacing:.12em;
+      text-transform:uppercase;
+    }
+
+    .story-bars{
+      position:absolute;
+      left:16px;
+      top:58px;
+      right:16px;
+      display:flex;
+      gap:6px;
+      z-index:3;
+    }
+
+    .story-bars span{
+      height:3px;
+      border-radius:999px;
+      flex:1;
+      background:rgba(255,255,255,.44);
+    }
+
+    .story-bars span.dim{
+      opacity:.35;
+    }
+
+    .story-card.card-1{ left:0; top:180px; --rot:-8deg; z-index:1; }
+    .story-card.card-2{ left:170px; top:70px; --rot:-4deg; z-index:2; }
+    .story-card.card-3{ left:390px; top:145px; --rot:1deg; z-index:4; width:236px; height:440px; }
+    .story-card.card-4{ left:650px; top:48px; --rot:4deg; z-index:3; }
+    .story-card.card-5{ right:80px; top:170px; --rot:8deg; z-index:2; }
+
+    .story-card.card-3 .story-title{
+      font-size:28px;
+    }
+
+    .story-card.card-3 .story-shell{
+      border-radius:26px;
+    }
+
+    .story-card.card-3 .story-media{
+      background:linear-gradient(180deg, #e0c4ba 0%, #cca18f 55%, #ae7a66 100%);
+    }
+
+    .story-card.card-1 .story-media{
+      background:linear-gradient(180deg, #edd7cf 0%, #dbb6a8 48%, #c18f7d 100%);
+    }
+
+    .story-card.card-2 .story-media{
+      background:linear-gradient(180deg, #f0ded6 0%, #d8b29d 50%, #b98772 100%);
+    }
+
+    .story-card.card-4 .story-media{
+      background:linear-gradient(180deg, #efe6df 0%, #d9bbaa 50%, #b78a77 100%);
+    }
+
+    .story-card.card-5 .story-media{
+      background:linear-gradient(180deg, #ead6cb 0%, #d3ae9d 50%, #a87363 100%);
+    }
+
+    .story-accent-word{
+      position:absolute;
+      right:42px;
+      top:120px;
+      font-family:var(--font-accent);
+      font-size:130px;
+      color:rgba(177,132,115,.22);
+      transform:rotate(-5deg);
+      pointer-events:none;
+      user-select:none;
+      z-index:1;
+    }
+
+    .showcase-footer{
+      position:relative;
+      z-index:2;
+      margin-top:38px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:24px;
+      color:var(--reels-soft);
+    }
+
+    .showcase-mini{
+      font-size:12px;
+      font-weight:500;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+    }
+
+    .showcase-line{
+      flex:1;
+      height:1px;
+      background:linear-gradient(90deg, rgba(99,73,63,.10), rgba(99,73,63,.24), rgba(99,73,63,.10));
+    }
+
+    /* generic reveal */
     [data-reveal]{
       opacity:0;
       transform:translateY(34px);
@@ -759,10 +1114,6 @@
       will-change:transform;
       transform:translate3d(0,0,0);
     }
-
-    /* =========================
-       CUSTOM CURSOR
-       ========================= */
 
     .custom-cursor{
       position:fixed;
@@ -813,98 +1164,56 @@
       cursor:none !important;
     }
 
-    /* =========================
-       RESPONSIVE
-       ========================= */
-
     @media (max-width: 1280px){
-      .container{
-        padding:0 40px;
-      }
+      .container{ padding:0 40px; }
+      .hero-inner{ grid-template-columns:560px 1fr; }
+      h1{ font-size:80px; }
+      .visual{ width:min(48vw, 700px); }
+      .panel{ width:min(28vw, 360px); height:610px; }
+      .bg-script{ font-size:210px; right:40px; top:250px; }
+      .bg-block{ font-size:145px; left:-20px; }
+      .model{ height:min(82vh, 730px); right:20px; }
+      .collab-title{ font-size:34px; }
 
-      .hero-inner{
-        grid-template-columns:560px 1fr;
+      .showcase-head{
+        grid-template-columns:1fr;
+        gap:16px;
       }
-
-      h1{
-        font-size:80px;
+      .showcase-copy{
+        justify-self:start;
+        max-width:620px;
       }
-
-      .visual{
-        width:min(48vw, 700px);
+      .story-stack{
+        width:min(100%, 1040px);
       }
-
-      .panel{
-        width:min(28vw, 360px);
-        height:610px;
+      .story-card{
+        width:200px;
+        height:382px;
       }
-
-      .bg-script{
-        font-size:210px;
-        right:40px;
-        top:250px;
+      .story-card.card-3{
+        width:218px;
+        height:418px;
       }
-
-      .bg-block{
-        font-size:145px;
-        left:-20px;
-      }
-
-      .model{
-        height:min(82vh, 730px);
-        right:20px;
-      }
-
-      .collab-title{
-        font-size:34px;
-      }
+      .story-card.card-1{ left:10px; }
+      .story-card.card-2{ left:155px; }
+      .story-card.card-3{ left:340px; }
+      .story-card.card-4{ left:560px; }
+      .story-card.card-5{ right:20px; }
     }
 
     @media (max-width: 980px){
-      :root{
-        --header-h:86px;
-      }
+      :root{ --header-h:86px; }
 
-      .header-inner{
-        grid-template-columns:1fr auto;
-      }
+      .header-inner{ grid-template-columns:1fr auto; }
+      nav{ display:none; }
+      .container{ padding:0 22px; }
 
-      nav{
-        display:none;
-      }
-
-      .container{
-        padding:0 22px;
-      }
-
-      .hero{
-        padding-top:var(--header-h);
-      }
-
-      .hero::after{
-        height:170px;
-      }
-
-      .hero-inner{
-        min-height:auto;
-        display:block;
-      }
-
-      .left{
-        max-width:100%;
-        padding-top:12px;
-        padding-bottom:42px;
-      }
-
-      h1{
-        font-size:58px;
-        line-height:.96;
-      }
-
-      .desc{
-        font-size:16px;
-        max-width:100%;
-      }
+      .hero{ padding-top:var(--header-h); }
+      .hero::after{ height:170px; }
+      .hero-inner{ min-height:auto; display:block; }
+      .left{ max-width:100%; padding-top:12px; padding-bottom:42px; }
+      h1{ font-size:58px; line-height:.96; }
+      .desc{ font-size:16px; max-width:100%; }
 
       .visual{
         position:relative;
@@ -914,160 +1223,139 @@
         height:520px;
         margin-top:10px;
       }
-
-      .panel{
-        right:0;
-        top:40px;
-        width:300px;
-        height:420px;
-      }
-
-      .bg-script{
-        font-size:130px;
-        right:20px;
-        top:160px;
-      }
-
-      .bg-block{
-        left:0;
-        bottom:28px;
-        font-size:100px;
-      }
-
-      .model{
-        right:10px;
-        bottom:0;
-        height:430px;
-      }
+      .panel{ right:0; top:40px; width:300px; height:420px; }
+      .bg-script{ font-size:130px; right:20px; top:160px; }
+      .bg-block{ left:0; bottom:28px; font-size:100px; }
+      .model{ right:10px; bottom:0; height:430px; }
 
       .collaborations{
         margin-top:-46px;
         padding:88px 0 68px;
       }
-
       .collab-head{
         grid-template-columns:1fr;
         gap:10px;
       }
-
-      .collab-title{
-        font-size:30px;
-      }
-
+      .collab-title{ font-size:30px; }
       .collab-note{
         padding-top:0;
         white-space:normal;
       }
-
       .logo-chip{
         min-width:200px;
         height:72px;
         padding:0 24px;
       }
+      .logo-row.top{ animation-duration:34s; }
+      .logo-row.bottom{ animation-duration:38s; }
 
-      .logo-row.top{
-        animation-duration:34s;
+      .vertical-showcase{
+        padding:90px 0 100px;
       }
-
-      .logo-row.bottom{
-        animation-duration:38s;
+      .showcase-title{
+        font-size:34px;
+      }
+      .story-stage{
+        min-height:auto;
+      }
+      .story-column{
+        position:relative;
+        top:auto;
+        height:auto;
+        display:block;
+      }
+      .story-stack{
+        height:auto;
+        display:grid;
+        grid-template-columns:repeat(2, minmax(0,1fr));
+        gap:18px;
+      }
+      .story-card{
+        position:relative;
+        width:100%;
+        height:360px;
+        left:auto !important;
+        right:auto !important;
+        top:auto !important;
+        transform:translate3d(0,52px,0) scale(.96) rotate(0deg);
+      }
+      .story-card.is-visible{
+        transform:translate3d(0,0,0) scale(1) rotate(0deg);
+      }
+      .story-card.card-3{
+        width:100%;
+        height:392px;
+      }
+      .story-accent-word{
+        top:60px;
+        right:10px;
+        font-size:88px;
+      }
+      .showcase-footer{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+      .showcase-line{
+        width:100%;
       }
     }
 
     @media (max-width: 640px){
-      .logo{
-        font-size:19px;
-      }
+      .logo{ font-size:19px; }
+      .header-cta{ padding:10px 16px; font-size:13px; }
+      .tag{ font-size:10px; }
+      h1{ font-size:46px; line-height:.95; }
+      .buttons{ gap:12px; }
+      .btn{ width:100%; }
 
-      .header-cta{
-        padding:10px 16px;
-        font-size:13px;
-      }
-
-      .tag{
-        font-size:10px;
-      }
-
-      h1{
-        font-size:46px;
-        line-height:.95;
-      }
-
-      .buttons{
-        gap:12px;
-      }
-
-      .btn{
-        width:100%;
-      }
-
-      .visual{
-        height:420px;
-      }
-
-      .panel{
-        width:245px;
-        height:340px;
-      }
-
-      .bg-script{
-        font-size:88px;
-        right:10px;
-        top:140px;
-      }
-
-      .bg-block{
-        font-size:74px;
-      }
-
-      .model{
-        height:335px;
-        right:0;
-      }
+      .visual{ height:420px; }
+      .panel{ width:245px; height:340px; }
+      .bg-script{ font-size:88px; right:10px; top:140px; }
+      .bg-block{ font-size:74px; }
+      .model{ height:335px; right:0; }
 
       .collaborations{
         margin-top:-28px;
         padding:72px 0 58px;
       }
-
-      .collab-kicker{
-        font-size:10px;
-      }
-
-      .collab-title{
-        font-size:26px;
-      }
-
-      .logo-marquee{
-        gap:14px;
-      }
-
+      .collab-kicker{ font-size:10px; }
+      .collab-title{ font-size:26px; }
+      .logo-marquee{ gap:14px; }
       .logo-chip{
         min-width:170px;
         height:64px;
         padding:0 18px;
         gap:10px;
       }
+      .logo-word.serif{ font-size:21px; }
+      .logo-word.sans{ font-size:15px; }
+      .logo-word.mixed .main{ font-size:21px; }
+      .logo-word.scriptish{ font-size:28px; }
+      .logo-row.top,
+      .logo-row.bottom{ animation-duration:28s; }
 
-      .logo-word.serif{
-        font-size:21px;
+      .vertical-showcase{
+        padding:74px 0 84px;
       }
-
-      .logo-word.sans{
+      .showcase-title{
+        font-size:28px;
+        line-height:1.06;
+      }
+      .showcase-copy{
         font-size:15px;
       }
-
-      .logo-word.mixed .main{
-        font-size:21px;
+      .story-stack{
+        grid-template-columns:1fr;
       }
-
-      .logo-word.scriptish{
-        font-size:28px;
+      .story-card,
+      .story-card.card-3{
+        height:370px;
       }
-
-      .logo-row.top,
-      .logo-row.bottom{
-        animation-duration:28s;
+      .story-title{
+        font-size:24px;
+      }
+      .story-card.card-3 .story-title{
+        font-size:26px;
       }
     }
 
@@ -1083,7 +1371,8 @@
 
       .model,
       .hero-entrance,
-      [data-reveal]{
+      [data-reveal],
+      .story-card{
         opacity:1 !important;
         transform:none !important;
         filter:none !important;
@@ -1125,7 +1414,7 @@
         <nav>
           <a href="#">Home</a>
           <a href="#collaborations">Portfolio</a>
-          <a href="#">Services</a>
+          <a href="#vertical-content">Services</a>
           <a href="#">About</a>
           <a href="#">Contact</a>
         </nav>
@@ -1164,7 +1453,7 @@
       <div class="visual" data-parallax="0.08">
         <div class="panel" data-parallax="0.05"></div>
         <div class="bg-script" data-parallax="0.12">story</div>
-        <div class="bg-block" data-parallax="0.04">CREATOR</div>
+        <div class="bg-block" data-parallax="0.04">Creator</div>
         <img class="model" src="/images/sara-hero.jpg" alt="Sara Cavaliere">
       </div>
     </section>
@@ -1219,6 +1508,137 @@
           </div>
 
           <div class="logo-divider"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="vertical-showcase" id="vertical-content">
+      <div class="container">
+        <div class="showcase-head" data-reveal="slow">
+          <div>
+            <div class="showcase-kicker">Vertical content direction</div>
+            <h2 class="showcase-title">
+              Premium vertical storytelling for beauty, fashion and lifestyle
+              <span class="accent">moments</span>
+            </h2>
+          </div>
+          <div class="showcase-copy">
+            A curated system of floating story panels designed to present reels, product demos and branded vertical content with a more editorial, luxurious and art-directed feel.
+          </div>
+        </div>
+
+        <div class="story-stage">
+          <div class="story-column">
+            <div class="story-stack">
+              <div class="story-accent-word" data-parallax="0.05">reels</div>
+
+              <article class="story-card card-1 js-story-card">
+                <div class="story-shell">
+                  <div class="story-media"></div>
+                  <div class="story-bars"><span></span><span class="dim"></span><span class="dim"></span></div>
+                  <div class="story-ui-top">
+                    <div class="story-tag"><span class="story-dot"></span> Beauty</div>
+                    <div class="story-counter">01 / 05</div>
+                  </div>
+                  <div class="story-meta">
+                    <span class="story-pill">Glow Ritual</span>
+                    <span class="story-pill">Soft Light</span>
+                  </div>
+                  <div class="story-label">
+                    <div class="story-kicker">Editorial frame</div>
+                    <div class="story-title">Luxury beauty close-ups</div>
+                    <div class="story-sub">Elegant motion and detail-driven composition for premium campaigns.</div>
+                  </div>
+                </div>
+              </article>
+
+              <article class="story-card card-2 js-story-card">
+                <div class="story-shell">
+                  <div class="story-media"></div>
+                  <div class="story-bars"><span></span><span></span><span class="dim"></span></div>
+                  <div class="story-ui-top">
+                    <div class="story-tag"><span class="story-dot"></span> Skincare</div>
+                    <div class="story-counter">02 / 05</div>
+                  </div>
+                  <div class="story-meta">
+                    <span class="story-pill">Texture Shot</span>
+                    <span class="story-pill">Serum</span>
+                  </div>
+                  <div class="story-label">
+                    <div class="story-kicker">Product demo</div>
+                    <div class="story-title">Textures with a polished finish</div>
+                    <div class="story-sub">Designed for clean product storytelling with soft luxury aesthetics.</div>
+                  </div>
+                </div>
+              </article>
+
+              <article class="story-card card-3 js-story-card">
+                <div class="story-shell">
+                  <div class="story-media"></div>
+                  <div class="story-bars"><span></span><span></span><span></span></div>
+                  <div class="story-ui-top">
+                    <div class="story-tag"><span class="story-dot"></span> Fashion</div>
+                    <div class="story-counter">03 / 05</div>
+                  </div>
+                  <div class="story-meta">
+                    <span class="story-pill">Lookbook</span>
+                    <span class="story-pill">Editorial</span>
+                    <span class="story-pill">UGC Review</span>
+                  </div>
+                  <div class="story-label">
+                    <div class="story-kicker">Signature capsule</div>
+                    <div class="story-title">Hero vertical piece with depth</div>
+                    <div class="story-sub">A lead panel that anchors the composition and elevates the visual hierarchy.</div>
+                  </div>
+                </div>
+              </article>
+
+              <article class="story-card card-4 js-story-card">
+                <div class="story-shell">
+                  <div class="story-media"></div>
+                  <div class="story-bars"><span></span><span class="dim"></span><span class="dim"></span></div>
+                  <div class="story-ui-top">
+                    <div class="story-tag"><span class="story-dot"></span> Travel</div>
+                    <div class="story-counter">04 / 05</div>
+                  </div>
+                  <div class="story-meta">
+                    <span class="story-pill">Lifestyle</span>
+                    <span class="story-pill">Day Flow</span>
+                  </div>
+                  <div class="story-label">
+                    <div class="story-kicker">Floating story</div>
+                    <div class="story-title">Lifestyle with atmospheric rhythm</div>
+                    <div class="story-sub">Soft pacing, motion layering and a more cinematic creator presence.</div>
+                  </div>
+                </div>
+              </article>
+
+              <article class="story-card card-5 js-story-card">
+                <div class="story-shell">
+                  <div class="story-media"></div>
+                  <div class="story-bars"><span></span><span></span><span class="dim"></span></div>
+                  <div class="story-ui-top">
+                    <div class="story-tag"><span class="story-dot"></span> Wellness</div>
+                    <div class="story-counter">05 / 05</div>
+                  </div>
+                  <div class="story-meta">
+                    <span class="story-pill">Haircare</span>
+                    <span class="story-pill">Nails</span>
+                  </div>
+                  <div class="story-label">
+                    <div class="story-kicker">Review panel</div>
+                    <div class="story-title">Refined social proof content</div>
+                    <div class="story-sub">Perfect for testimonials, UGC reviews and premium conversion content.</div>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+
+        <div class="showcase-footer" data-reveal="soft">
+          <div class="showcase-mini">Beauty · Skincare · Haircare · Travel · Lifestyle · Fashion · Wellness · Nails · Product Demo · UGC Review</div>
+          <div class="showcase-line"></div>
         </div>
       </div>
     </section>
@@ -1310,6 +1730,37 @@
       updateParallax();
       window.addEventListener('scroll', requestTick, { passive:true });
       window.addEventListener('resize', requestTick);
+    })();
+
+    (() => {
+      const cards = Array.from(document.querySelectorAll('.js-story-card'));
+      if (!cards.length) return;
+
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduceMotion) {
+        cards.forEach(card => card.classList.add('is-visible'));
+        return;
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+
+          const card = entry.target;
+          const index = cards.indexOf(card);
+
+          setTimeout(() => {
+            card.classList.add('is-visible');
+          }, index * 120);
+
+          observer.unobserve(card);
+        });
+      }, {
+        threshold: 0.28,
+        rootMargin: '0px 0px -8% 0px'
+      });
+
+      cards.forEach(card => observer.observe(card));
     })();
 
     (() => {
