@@ -50,13 +50,11 @@
       --logo-accent:#b98a78;
       --logo-accent-2:#c3a494;
 
-      --reels-bg:#f6f0e9;
-      --reels-bg-2:#f3e9df;
-      --reels-ink:#4d3a33;
-      --reels-soft:rgba(77,58,51,.62);
-      --reels-line:rgba(99,73,63,.11);
-      --reels-glass:rgba(255,255,255,.28);
-      --reels-shadow:0 24px 60px rgba(88,59,48,.10);
+      --phones-bg:#f7f0e8;
+      --phones-bg-2:#f2e7dc;
+      --phones-ink:#46342d;
+      --phones-soft:rgba(70,52,45,.60);
+      --phones-line:rgba(106,78,67,.12);
 
       --ease-premium:cubic-bezier(.22,1,.36,1);
       --header-h:92px;
@@ -65,7 +63,8 @@
       --font-accent:"Great Vibes", cursive;
     }
 
-    html, body{
+    html,
+    body{
       width:100%;
       min-height:100%;
     }
@@ -99,6 +98,10 @@
       margin:0 auto;
       padding:0 56px;
     }
+
+    /* =========================
+       PRELOADER
+       ========================= */
 
     .preloader{
       position:fixed;
@@ -148,6 +151,10 @@
       0%{ width:0%; }
       100%{ width:100%; }
     }
+
+    /* =========================
+       HEADER
+       ========================= */
 
     header{
       position:fixed;
@@ -200,6 +207,10 @@
     .header-cta:hover{
       background:rgba(255,255,255,.04);
     }
+
+    /* =========================
+       HERO
+       ========================= */
 
     .hero{
       position:relative;
@@ -412,6 +423,10 @@
       transform:translate3d(0,0,0);
       transition-delay:.18s;
     }
+
+    /* =========================
+       COLLABORATIONS
+       ========================= */
 
     .collaborations{
       position:relative;
@@ -703,389 +718,398 @@
     }
 
     /* =========================
-       VERTICAL CONTENT SECTION
+       PHONES PINNED SECTION
        ========================= */
 
-    .vertical-showcase{
+    .phones-scroll{
       position:relative;
-      padding:120px 0 140px;
+      height:360vh;
       background:
-        radial-gradient(circle at 20% 10%, rgba(190,150,129,.10), transparent 24%),
-        radial-gradient(circle at 82% 22%, rgba(210,184,168,.12), transparent 24%),
-        linear-gradient(180deg, var(--reels-bg) 0%, var(--reels-bg-2) 100%);
+        radial-gradient(circle at 12% 10%, rgba(198,160,139,.12), transparent 24%),
+        radial-gradient(circle at 82% 18%, rgba(216,192,177,.16), transparent 24%),
+        linear-gradient(180deg, var(--phones-bg) 0%, var(--phones-bg-2) 100%);
       overflow:hidden;
     }
 
-    .vertical-showcase::before{
+    .phones-scroll::before{
       content:"";
       position:absolute;
       inset:0;
       background:
-        linear-gradient(180deg, rgba(255,255,255,.22), transparent 20%, transparent 80%, rgba(255,255,255,.10));
+        linear-gradient(180deg, rgba(255,255,255,.18), transparent 16%, transparent 84%, rgba(255,255,255,.10));
       pointer-events:none;
     }
 
-    .showcase-head{
-      position:relative;
-      z-index:2;
-      display:grid;
-      grid-template-columns:minmax(0, 640px) 1fr;
-      gap:40px;
-      align-items:end;
-      margin-bottom:52px;
+    .phones-pin{
+      position:sticky;
+      top:0;
+      height:100vh;
+      overflow:hidden;
+      display:flex;
+      align-items:center;
     }
 
-    .showcase-kicker{
+    .phones-inner{
+      position:relative;
+      width:min(1440px, 100%);
+      margin:0 auto;
+      padding:120px 56px 80px;
+      height:100vh;
+    }
+
+    .phones-copy{
+      position:absolute;
+      left:56px;
+      top:120px;
+      width:min(520px, 42vw);
+      z-index:8;
+    }
+
+    .phones-kicker{
       font-size:11px;
       font-weight:500;
       letter-spacing:.22em;
       text-transform:uppercase;
-      color:var(--reels-soft);
+      color:var(--phones-soft);
       margin-bottom:14px;
     }
 
-    .showcase-title{
-      font-family:var(--font-main);
-      font-size:46px;
+    .phones-title{
+      font-size:48px;
       font-weight:700;
       line-height:1.02;
       letter-spacing:-0.055em;
-      color:var(--reels-ink);
-      max-width:760px;
+      color:var(--phones-ink);
+      max-width:560px;
     }
 
-    .showcase-title .accent{
+    .phones-title .accent{
       font-family:var(--font-accent);
       font-weight:400;
-      font-size:1.05em;
-      letter-spacing:0;
+      color:#b38472;
+      font-size:1.06em;
       margin-left:.08em;
-      color:#b18473;
     }
 
-    .showcase-copy{
+    .phones-desc{
+      margin-top:18px;
       font-size:16px;
       line-height:1.75;
-      font-weight:400;
-      color:var(--reels-soft);
-      max-width:440px;
-      justify-self:end;
-      padding-bottom:4px;
+      color:var(--phones-soft);
+      max-width:420px;
     }
 
-    .story-stage{
-      position:relative;
-      min-height:2200px;
-      z-index:2;
-    }
-
-    .story-column{
-      position:sticky;
-      top:110px;
-      height:calc(100vh - 130px);
+    .phones-meta{
+      position:absolute;
+      left:56px;
+      bottom:52px;
       display:flex;
-      align-items:center;
-      justify-content:center;
-    }
-
-    .story-stack{
-      position:relative;
-      width:min(100%, 1220px);
-      height:min(78vh, 760px);
-      margin:0 auto;
-    }
-
-    .story-card{
-      position:absolute;
-      width:220px;
-      height:410px;
-      border-radius:34px;
-      padding:14px;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.46), rgba(255,255,255,.16));
-      border:1px solid rgba(255,255,255,.42);
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.55),
-        inset 0 -1px 0 rgba(255,255,255,.14),
-        var(--reels-shadow);
-      backdrop-filter:blur(16px);
-      -webkit-backdrop-filter:blur(16px);
-      opacity:0;
-      transform:translate3d(0,70px,0) scale(.94) rotate(var(--rot, 0deg));
-      transition:
-        opacity .9s var(--ease-premium),
-        transform 1s var(--ease-premium),
-        box-shadow .4s ease;
-      overflow:hidden;
-    }
-
-    .story-card::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.12), transparent 22%, transparent 76%, rgba(255,255,255,.10));
-      pointer-events:none;
-    }
-
-    .story-card::after{
-      content:"";
-      position:absolute;
-      left:10px;
-      right:10px;
-      top:10px;
-      height:28%;
-      border-radius:26px;
-      background:linear-gradient(180deg, rgba(255,255,255,.18), transparent);
-      opacity:.25;
-      pointer-events:none;
-      filter:blur(8px);
-    }
-
-    .story-card.is-visible{
-      opacity:1;
-      transform:translate3d(0,0,0) scale(1) rotate(var(--rot, 0deg));
-    }
-
-    .story-shell{
-      position:relative;
-      width:100%;
-      height:100%;
-      border-radius:24px;
-      overflow:hidden;
-      background:linear-gradient(180deg, rgba(255,255,255,.42), rgba(255,255,255,.12));
-      border:1px solid rgba(255,255,255,.38);
-    }
-
-    .story-media{
-      position:absolute;
-      inset:0;
-      border-radius:24px;
-      overflow:hidden;
-      background:var(--card-bg, linear-gradient(180deg, #dcc5ba, #b98f7a));
-    }
-
-    .story-media::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        radial-gradient(circle at 30% 20%, rgba(255,255,255,.30), transparent 22%),
-        linear-gradient(180deg, rgba(255,255,255,.10), transparent 36%, rgba(0,0,0,.12) 100%);
-      pointer-events:none;
-    }
-
-    .story-media::after{
-      content:"";
-      position:absolute;
-      right:-18%;
-      bottom:-8%;
-      width:62%;
-      height:42%;
-      background:radial-gradient(circle, rgba(255,255,255,.25), transparent 65%);
-      filter:blur(18px);
-      opacity:.55;
-    }
-
-    .story-ui-top{
-      position:absolute;
-      inset:0 0 auto 0;
-      padding:16px 16px 0;
-      display:flex;
-      justify-content:space-between;
-      align-items:flex-start;
-      z-index:3;
-    }
-
-    .story-tag{
-      display:inline-flex;
-      align-items:center;
-      gap:7px;
-      padding:8px 11px;
-      min-height:30px;
-      border-radius:999px;
-      background:rgba(255,255,255,.28);
-      border:1px solid rgba(255,255,255,.38);
-      color:rgba(77,58,51,.88);
-      font-size:10px;
-      font-weight:600;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      backdrop-filter:blur(8px);
-    }
-
-    .story-dot{
-      width:6px;
-      height:6px;
-      border-radius:50%;
-      background:#c48f7a;
-      box-shadow:0 0 0 4px rgba(196,143,122,.12);
-    }
-
-    .story-counter{
-      padding:8px 10px;
-      border-radius:999px;
-      background:rgba(255,255,255,.24);
-      border:1px solid rgba(255,255,255,.34);
-      font-size:10px;
-      font-weight:500;
-      color:rgba(77,58,51,.7);
-      letter-spacing:.12em;
-    }
-
-    .story-label{
-      position:absolute;
-      left:16px;
-      right:16px;
-      bottom:18px;
-      z-index:3;
-      display:grid;
-      gap:8px;
-    }
-
-    .story-kicker{
-      font-size:10px;
-      font-weight:600;
-      letter-spacing:.18em;
-      text-transform:uppercase;
-      color:rgba(77,58,51,.58);
-    }
-
-    .story-title{
-      font-size:25px;
-      font-weight:700;
-      line-height:1.04;
-      letter-spacing:-0.05em;
-      color:#3f2d26;
-      max-width:86%;
-    }
-
-    .story-sub{
-      font-size:12px;
-      line-height:1.5;
-      color:rgba(77,58,51,.66);
-      max-width:88%;
-    }
-
-    .story-meta{
-      position:absolute;
-      left:16px;
-      right:16px;
-      bottom:112px;
-      display:flex;
-      gap:8px;
-      flex-wrap:wrap;
-      z-index:3;
-    }
-
-    .story-pill{
-      display:inline-flex;
-      align-items:center;
-      min-height:28px;
-      padding:0 10px;
-      border-radius:999px;
-      background:rgba(255,255,255,.24);
-      border:1px solid rgba(255,255,255,.35);
-      font-size:10px;
-      font-weight:500;
-      color:rgba(77,58,51,.70);
-      letter-spacing:.12em;
-      text-transform:uppercase;
-    }
-
-    .story-bars{
-      position:absolute;
-      left:16px;
-      top:58px;
-      right:16px;
-      display:flex;
-      gap:6px;
-      z-index:3;
-    }
-
-    .story-bars span{
-      height:3px;
-      border-radius:999px;
-      flex:1;
-      background:rgba(255,255,255,.44);
-    }
-
-    .story-bars span.dim{
-      opacity:.35;
-    }
-
-    .story-card.card-1{ left:0; top:180px; --rot:-8deg; z-index:1; }
-    .story-card.card-2{ left:170px; top:70px; --rot:-4deg; z-index:2; }
-    .story-card.card-3{ left:390px; top:145px; --rot:1deg; z-index:4; width:236px; height:440px; }
-    .story-card.card-4{ left:650px; top:48px; --rot:4deg; z-index:3; }
-    .story-card.card-5{ right:80px; top:170px; --rot:8deg; z-index:2; }
-
-    .story-card.card-3 .story-title{
-      font-size:28px;
-    }
-
-    .story-card.card-3 .story-shell{
-      border-radius:26px;
-    }
-
-    .story-card.card-3 .story-media{
-      background:linear-gradient(180deg, #e0c4ba 0%, #cca18f 55%, #ae7a66 100%);
-    }
-
-    .story-card.card-1 .story-media{
-      background:linear-gradient(180deg, #edd7cf 0%, #dbb6a8 48%, #c18f7d 100%);
-    }
-
-    .story-card.card-2 .story-media{
-      background:linear-gradient(180deg, #f0ded6 0%, #d8b29d 50%, #b98772 100%);
-    }
-
-    .story-card.card-4 .story-media{
-      background:linear-gradient(180deg, #efe6df 0%, #d9bbaa 50%, #b78a77 100%);
-    }
-
-    .story-card.card-5 .story-media{
-      background:linear-gradient(180deg, #ead6cb 0%, #d3ae9d 50%, #a87363 100%);
-    }
-
-    .story-accent-word{
-      position:absolute;
-      right:42px;
-      top:120px;
-      font-family:var(--font-accent);
-      font-size:130px;
-      color:rgba(177,132,115,.22);
-      transform:rotate(-5deg);
-      pointer-events:none;
-      user-select:none;
-      z-index:1;
-    }
-
-    .showcase-footer{
-      position:relative;
-      z-index:2;
-      margin-top:38px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
       gap:24px;
-      color:var(--reels-soft);
+      align-items:center;
+      z-index:8;
+      color:var(--phones-soft);
     }
 
-    .showcase-mini{
+    .phones-meta-line{
+      width:120px;
+      height:1px;
+      background:linear-gradient(90deg, rgba(108,80,68,.08), rgba(108,80,68,.22), rgba(108,80,68,.08));
+    }
+
+    .phones-meta-text{
       font-size:12px;
       font-weight:500;
       letter-spacing:.16em;
       text-transform:uppercase;
     }
 
-    .showcase-line{
-      flex:1;
-      height:1px;
-      background:linear-gradient(90deg, rgba(99,73,63,.10), rgba(99,73,63,.24), rgba(99,73,63,.10));
+    .phones-stage{
+      position:absolute;
+      inset:0;
+      z-index:4;
+      pointer-events:none;
     }
 
-    /* generic reveal */
+    .phone-accent-word{
+      position:absolute;
+      right:160px;
+      top:120px;
+      font-family:var(--font-accent);
+      font-size:150px;
+      line-height:1;
+      color:rgba(177,132,115,.18);
+      transform:rotate(-6deg);
+      user-select:none;
+      pointer-events:none;
+      z-index:1;
+    }
+
+    .phone{
+      position:absolute;
+      width:258px;
+      aspect-ratio:9 / 18.8;
+      border-radius:42px;
+      padding:10px;
+      background:linear-gradient(180deg, #201916 0%, #0e0b0a 100%);
+      box-shadow:
+        0 30px 90px rgba(77,52,42,.18),
+        0 10px 24px rgba(0,0,0,.18),
+        inset 0 1px 0 rgba(255,255,255,.06);
+      transform-origin:center center;
+      opacity:0;
+      z-index:2;
+      will-change:transform, opacity;
+    }
+
+    .phone::before{
+      content:"";
+      position:absolute;
+      inset:3px;
+      border-radius:39px;
+      border:1px solid rgba(255,255,255,.06);
+      pointer-events:none;
+    }
+
+    .phone::after{
+      content:"";
+      position:absolute;
+      top:14px;
+      left:50%;
+      transform:translateX(-50%);
+      width:34%;
+      height:22px;
+      background:#0a0909;
+      border-radius:0 0 16px 16px;
+      z-index:5;
+      box-shadow:0 1px 0 rgba(255,255,255,.04);
+    }
+
+    .phone-screen{
+      position:relative;
+      width:100%;
+      height:100%;
+      border-radius:34px;
+      overflow:hidden;
+      background:var(--screen-bg, linear-gradient(180deg, #ead1c4, #c38f78));
+    }
+
+    .phone-screen::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.18), transparent 26%, transparent 70%, rgba(0,0,0,.14) 100%),
+        radial-gradient(circle at 26% 14%, rgba(255,255,255,.26), transparent 18%);
+      pointer-events:none;
+    }
+
+    .phone-screen::after{
+      content:"";
+      position:absolute;
+      right:-14%;
+      top:28%;
+      width:48%;
+      height:32%;
+      background:radial-gradient(circle, rgba(255,255,255,.18), transparent 70%);
+      filter:blur(18px);
+      opacity:.55;
+      pointer-events:none;
+    }
+
+    .phone-ui-top{
+      position:absolute;
+      top:14px;
+      left:14px;
+      right:14px;
+      z-index:3;
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+    }
+
+    .phone-tag{
+      display:inline-flex;
+      align-items:center;
+      gap:7px;
+      min-height:30px;
+      padding:0 11px;
+      border-radius:999px;
+      background:rgba(255,255,255,.24);
+      border:1px solid rgba(255,255,255,.34);
+      backdrop-filter:blur(8px);
+      font-size:10px;
+      font-weight:600;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:rgba(64,45,37,.86);
+    }
+
+    .phone-dot{
+      width:6px;
+      height:6px;
+      border-radius:50%;
+      background:#c78972;
+      box-shadow:0 0 0 4px rgba(199,137,114,.12);
+    }
+
+    .phone-mini{
+      display:inline-flex;
+      align-items:center;
+      min-height:28px;
+      padding:0 10px;
+      border-radius:999px;
+      background:rgba(255,255,255,.22);
+      border:1px solid rgba(255,255,255,.30);
+      color:rgba(64,45,37,.64);
+      font-size:10px;
+      font-weight:500;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+    }
+
+    .phone-bars{
+      position:absolute;
+      top:56px;
+      left:14px;
+      right:14px;
+      display:flex;
+      gap:6px;
+      z-index:3;
+    }
+
+    .phone-bars span{
+      flex:1;
+      height:3px;
+      border-radius:999px;
+      background:rgba(255,255,255,.44);
+    }
+
+    .phone-bars span.dim{
+      opacity:.34;
+    }
+
+    .phone-center-play{
+      position:absolute;
+      left:50%;
+      top:50%;
+      transform:translate(-50%, -50%);
+      width:74px;
+      height:74px;
+      border-radius:50%;
+      background:rgba(255,255,255,.14);
+      border:1px solid rgba(255,255,255,.26);
+      backdrop-filter:blur(10px);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      z-index:3;
+      box-shadow:0 8px 24px rgba(0,0,0,.10);
+    }
+
+    .phone-center-play::before{
+      content:"";
+      margin-left:5px;
+      width:0;
+      height:0;
+      border-top:11px solid transparent;
+      border-bottom:11px solid transparent;
+      border-left:17px solid rgba(64,45,37,.82);
+    }
+
+    .phone-bottom{
+      position:absolute;
+      left:16px;
+      right:16px;
+      bottom:16px;
+      z-index:3;
+      display:grid;
+      gap:8px;
+    }
+
+    .phone-category{
+      font-size:10px;
+      font-weight:600;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:rgba(64,45,37,.56);
+    }
+
+    .phone-title{
+      font-size:26px;
+      font-weight:700;
+      line-height:1.02;
+      letter-spacing:-0.05em;
+      color:#3f2c25;
+      max-width:88%;
+    }
+
+    .phone-sub{
+      font-size:12px;
+      line-height:1.5;
+      color:rgba(64,45,37,.66);
+      max-width:86%;
+    }
+
+    .phone-actions{
+      position:absolute;
+      right:16px;
+      bottom:18px;
+      z-index:3;
+      display:grid;
+      gap:10px;
+      justify-items:center;
+    }
+
+    .phone-action{
+      width:34px;
+      height:34px;
+      border-radius:50%;
+      background:rgba(255,255,255,.20);
+      border:1px solid rgba(255,255,255,.28);
+      backdrop-filter:blur(8px);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:rgba(64,45,37,.72);
+      font-size:12px;
+      font-weight:600;
+    }
+
+    .phone-stat{
+      font-size:10px;
+      font-weight:500;
+      letter-spacing:.06em;
+      color:rgba(64,45,37,.58);
+    }
+
+    /* phone screen themes */
+    .phone-1 .phone-screen{
+      background:linear-gradient(180deg, #f1ddd3 0%, #d4a996 54%, #bb826c 100%);
+    }
+    .phone-2 .phone-screen{
+      background:linear-gradient(180deg, #efe3db 0%, #d9b8a9 50%, #b98b79 100%);
+    }
+    .phone-3 .phone-screen{
+      background:linear-gradient(180deg, #ead2c5 0%, #d19f8c 52%, #ab725f 100%);
+    }
+    .phone-4 .phone-screen{
+      background:linear-gradient(180deg, #f3e7df 0%, #dcc2b4 50%, #b88876 100%);
+    }
+    .phone-5 .phone-screen{
+      background:linear-gradient(180deg, #ecd7cb 0%, #d4a892 52%, #a96f5c 100%);
+    }
+
+    /* initial placements controlled by JS, but keep sensible absolute anchors */
+    .phone-1{ left:50%; top:50%; }
+    .phone-2{ left:50%; top:50%; }
+    .phone-3{ left:50%; top:50%; }
+    .phone-4{ left:50%; top:50%; }
+    .phone-5{ left:50%; top:50%; }
+
+    /* =========================
+       REVEAL / PARALLAX
+       ========================= */
+
     [data-reveal]{
       opacity:0;
       transform:translateY(34px);
@@ -1114,6 +1138,10 @@
       will-change:transform;
       transform:translate3d(0,0,0);
     }
+
+    /* =========================
+       CUSTOM CURSOR
+       ========================= */
 
     .custom-cursor{
       position:fixed;
@@ -1175,30 +1203,19 @@
       .model{ height:min(82vh, 730px); right:20px; }
       .collab-title{ font-size:34px; }
 
-      .showcase-head{
-        grid-template-columns:1fr;
-        gap:16px;
+      .phones-copy{
+        width:min(450px, 38vw);
       }
-      .showcase-copy{
-        justify-self:start;
-        max-width:620px;
+      .phones-title{
+        font-size:40px;
       }
-      .story-stack{
-        width:min(100%, 1040px);
+      .phone{
+        width:228px;
       }
-      .story-card{
-        width:200px;
-        height:382px;
+      .phone-accent-word{
+        right:80px;
+        font-size:128px;
       }
-      .story-card.card-3{
-        width:218px;
-        height:418px;
-      }
-      .story-card.card-1{ left:10px; }
-      .story-card.card-2{ left:155px; }
-      .story-card.card-3{ left:340px; }
-      .story-card.card-4{ left:560px; }
-      .story-card.card-5{ right:20px; }
     }
 
     @media (max-width: 980px){
@@ -1249,54 +1266,57 @@
       .logo-row.top{ animation-duration:34s; }
       .logo-row.bottom{ animation-duration:38s; }
 
-      .vertical-showcase{
-        padding:90px 0 100px;
+      .phones-scroll{
+        height:300vh;
       }
-      .showcase-title{
+      .phones-inner{
+        padding:96px 22px 40px;
+      }
+      .phones-copy{
+        position:relative;
+        left:auto;
+        top:auto;
+        width:100%;
+        max-width:100%;
+        margin-bottom:26px;
+      }
+      .phones-title{
         font-size:34px;
       }
-      .story-stage{
-        min-height:auto;
+      .phones-desc{
+        max-width:100%;
       }
-      .story-column{
-        position:relative;
-        top:auto;
-        height:auto;
-        display:block;
+      .phones-meta{
+        left:22px;
+        right:22px;
+        bottom:24px;
       }
-      .story-stack{
-        height:auto;
-        display:grid;
-        grid-template-columns:repeat(2, minmax(0,1fr));
-        gap:18px;
+      .phones-meta-line{
+        flex:1;
+        width:auto;
       }
-      .story-card{
-        position:relative;
-        width:100%;
-        height:360px;
-        left:auto !important;
-        right:auto !important;
-        top:auto !important;
-        transform:translate3d(0,52px,0) scale(.96) rotate(0deg);
-      }
-      .story-card.is-visible{
-        transform:translate3d(0,0,0) scale(1) rotate(0deg);
-      }
-      .story-card.card-3{
-        width:100%;
-        height:392px;
-      }
-      .story-accent-word{
-        top:60px;
-        right:10px;
+      .phone-accent-word{
+        top:170px;
+        right:20px;
         font-size:88px;
       }
-      .showcase-footer{
-        flex-direction:column;
-        align-items:flex-start;
+      .phone{
+        width:176px;
+        border-radius:34px;
+        padding:8px;
       }
-      .showcase-line{
-        width:100%;
+      .phone::before{
+        border-radius:31px;
+      }
+      .phone-screen{
+        border-radius:28px;
+      }
+      .phone::after{
+        height:18px;
+        top:11px;
+      }
+      .phone-title{
+        font-size:22px;
       }
     }
 
@@ -1334,28 +1354,59 @@
       .logo-row.top,
       .logo-row.bottom{ animation-duration:28s; }
 
-      .vertical-showcase{
-        padding:74px 0 84px;
+      .phones-scroll{
+        height:280vh;
       }
-      .showcase-title{
+      .phones-inner{
+        padding-top:88px;
+      }
+      .phones-title{
         font-size:28px;
         line-height:1.06;
       }
-      .showcase-copy{
+      .phones-desc{
         font-size:15px;
       }
-      .story-stack{
-        grid-template-columns:1fr;
+      .phone{
+        width:146px;
+        padding:7px;
+        border-radius:30px;
       }
-      .story-card,
-      .story-card.card-3{
-        height:370px;
+      .phone::before{
+        border-radius:27px;
       }
-      .story-title{
-        font-size:24px;
+      .phone::after{
+        height:15px;
+        top:10px;
       }
-      .story-card.card-3 .story-title{
-        font-size:26px;
+      .phone-screen{
+        border-radius:24px;
+      }
+      .phone-tag,
+      .phone-mini,
+      .phone-pill{
+        font-size:9px;
+      }
+      .phone-title{
+        font-size:18px;
+        max-width:92%;
+      }
+      .phone-sub{
+        font-size:11px;
+      }
+      .phone-center-play{
+        width:58px;
+        height:58px;
+      }
+      .phone-accent-word{
+        top:210px;
+        font-size:64px;
+      }
+      .phones-meta{
+        gap:14px;
+      }
+      .phones-meta-text{
+        font-size:10px;
       }
     }
 
@@ -1372,7 +1423,7 @@
       .model,
       .hero-entrance,
       [data-reveal],
-      .story-card{
+      .phone{
         opacity:1 !important;
         transform:none !important;
         filter:none !important;
@@ -1414,7 +1465,7 @@
         <nav>
           <a href="#">Home</a>
           <a href="#collaborations">Portfolio</a>
-          <a href="#vertical-content">Services</a>
+          <a href="#phones-section">Services</a>
           <a href="#">About</a>
           <a href="#">Contact</a>
         </nav>
@@ -1512,133 +1563,135 @@
       </div>
     </section>
 
-    <section class="vertical-showcase" id="vertical-content">
-      <div class="container">
-        <div class="showcase-head" data-reveal="slow">
-          <div>
-            <div class="showcase-kicker">Vertical content direction</div>
-            <h2 class="showcase-title">
-              Premium vertical storytelling for beauty, fashion and lifestyle
-              <span class="accent">moments</span>
+    <section class="phones-scroll" id="phones-section">
+      <div class="phones-pin">
+        <div class="phones-inner">
+          <div class="phones-copy">
+            <div class="phones-kicker">Scroll-driven content showcase</div>
+            <h2 class="phones-title">
+              Vertical social content designed as a premium
+              <span class="accent">story flow</span>
             </h2>
-          </div>
-          <div class="showcase-copy">
-            A curated system of floating story panels designed to present reels, product demos and branded vertical content with a more editorial, luxurious and art-directed feel.
-          </div>
-        </div>
-
-        <div class="story-stage">
-          <div class="story-column">
-            <div class="story-stack">
-              <div class="story-accent-word" data-parallax="0.05">reels</div>
-
-              <article class="story-card card-1 js-story-card">
-                <div class="story-shell">
-                  <div class="story-media"></div>
-                  <div class="story-bars"><span></span><span class="dim"></span><span class="dim"></span></div>
-                  <div class="story-ui-top">
-                    <div class="story-tag"><span class="story-dot"></span> Beauty</div>
-                    <div class="story-counter">01 / 05</div>
-                  </div>
-                  <div class="story-meta">
-                    <span class="story-pill">Glow Ritual</span>
-                    <span class="story-pill">Soft Light</span>
-                  </div>
-                  <div class="story-label">
-                    <div class="story-kicker">Editorial frame</div>
-                    <div class="story-title">Luxury beauty close-ups</div>
-                    <div class="story-sub">Elegant motion and detail-driven composition for premium campaigns.</div>
-                  </div>
-                </div>
-              </article>
-
-              <article class="story-card card-2 js-story-card">
-                <div class="story-shell">
-                  <div class="story-media"></div>
-                  <div class="story-bars"><span></span><span></span><span class="dim"></span></div>
-                  <div class="story-ui-top">
-                    <div class="story-tag"><span class="story-dot"></span> Skincare</div>
-                    <div class="story-counter">02 / 05</div>
-                  </div>
-                  <div class="story-meta">
-                    <span class="story-pill">Texture Shot</span>
-                    <span class="story-pill">Serum</span>
-                  </div>
-                  <div class="story-label">
-                    <div class="story-kicker">Product demo</div>
-                    <div class="story-title">Textures with a polished finish</div>
-                    <div class="story-sub">Designed for clean product storytelling with soft luxury aesthetics.</div>
-                  </div>
-                </div>
-              </article>
-
-              <article class="story-card card-3 js-story-card">
-                <div class="story-shell">
-                  <div class="story-media"></div>
-                  <div class="story-bars"><span></span><span></span><span></span></div>
-                  <div class="story-ui-top">
-                    <div class="story-tag"><span class="story-dot"></span> Fashion</div>
-                    <div class="story-counter">03 / 05</div>
-                  </div>
-                  <div class="story-meta">
-                    <span class="story-pill">Lookbook</span>
-                    <span class="story-pill">Editorial</span>
-                    <span class="story-pill">UGC Review</span>
-                  </div>
-                  <div class="story-label">
-                    <div class="story-kicker">Signature capsule</div>
-                    <div class="story-title">Hero vertical piece with depth</div>
-                    <div class="story-sub">A lead panel that anchors the composition and elevates the visual hierarchy.</div>
-                  </div>
-                </div>
-              </article>
-
-              <article class="story-card card-4 js-story-card">
-                <div class="story-shell">
-                  <div class="story-media"></div>
-                  <div class="story-bars"><span></span><span class="dim"></span><span class="dim"></span></div>
-                  <div class="story-ui-top">
-                    <div class="story-tag"><span class="story-dot"></span> Travel</div>
-                    <div class="story-counter">04 / 05</div>
-                  </div>
-                  <div class="story-meta">
-                    <span class="story-pill">Lifestyle</span>
-                    <span class="story-pill">Day Flow</span>
-                  </div>
-                  <div class="story-label">
-                    <div class="story-kicker">Floating story</div>
-                    <div class="story-title">Lifestyle with atmospheric rhythm</div>
-                    <div class="story-sub">Soft pacing, motion layering and a more cinematic creator presence.</div>
-                  </div>
-                </div>
-              </article>
-
-              <article class="story-card card-5 js-story-card">
-                <div class="story-shell">
-                  <div class="story-media"></div>
-                  <div class="story-bars"><span></span><span></span><span class="dim"></span></div>
-                  <div class="story-ui-top">
-                    <div class="story-tag"><span class="story-dot"></span> Wellness</div>
-                    <div class="story-counter">05 / 05</div>
-                  </div>
-                  <div class="story-meta">
-                    <span class="story-pill">Haircare</span>
-                    <span class="story-pill">Nails</span>
-                  </div>
-                  <div class="story-label">
-                    <div class="story-kicker">Review panel</div>
-                    <div class="story-title">Refined social proof content</div>
-                    <div class="story-sub">Perfect for testimonials, UGC reviews and premium conversion content.</div>
-                  </div>
-                </div>
-              </article>
+            <div class="phones-desc">
+              A pinned editorial sequence where premium social mockups appear progressively while the section stays anchored, creating a controlled and immersive scroll illusion.
             </div>
           </div>
-        </div>
 
-        <div class="showcase-footer" data-reveal="soft">
-          <div class="showcase-mini">Beauty · Skincare · Haircare · Travel · Lifestyle · Fashion · Wellness · Nails · Product Demo · UGC Review</div>
-          <div class="showcase-line"></div>
+          <div class="phones-stage" id="phonesStage">
+            <div class="phone-accent-word">social</div>
+
+            <article class="phone phone-1 js-phone">
+              <div class="phone-screen">
+                <div class="phone-bars"><span></span><span></span><span class="dim"></span></div>
+                <div class="phone-ui-top">
+                  <div class="phone-tag"><span class="phone-dot"></span> Beauty</div>
+                  <div class="phone-mini">Hero</div>
+                </div>
+                <div class="phone-center-play"></div>
+                <div class="phone-bottom">
+                  <div class="phone-category">Featured Reel</div>
+                  <div class="phone-title">Soft-focus beauty story</div>
+                  <div class="phone-sub">Premium close-up content with elegant rhythm and conversion-oriented framing.</div>
+                </div>
+                <div class="phone-actions">
+                  <div class="phone-action">♥</div>
+                  <div class="phone-stat">24k</div>
+                  <div class="phone-action">↗</div>
+                  <div class="phone-stat">1.8k</div>
+                </div>
+              </div>
+            </article>
+
+            <article class="phone phone-2 js-phone">
+              <div class="phone-screen">
+                <div class="phone-bars"><span></span><span class="dim"></span><span class="dim"></span></div>
+                <div class="phone-ui-top">
+                  <div class="phone-tag"><span class="phone-dot"></span> Skincare</div>
+                  <div class="phone-mini">Demo</div>
+                </div>
+                <div class="phone-bottom">
+                  <div class="phone-category">Product Demo</div>
+                  <div class="phone-title">Textures & serum ritual</div>
+                  <div class="phone-sub">Clean product storytelling with premium light, softness and tactile detail.</div>
+                </div>
+                <div class="phone-actions">
+                  <div class="phone-action">▶</div>
+                  <div class="phone-stat">12s</div>
+                  <div class="phone-action">♡</div>
+                  <div class="phone-stat">9.1k</div>
+                </div>
+              </div>
+            </article>
+
+            <article class="phone phone-3 js-phone">
+              <div class="phone-screen">
+                <div class="phone-bars"><span></span><span></span><span></span></div>
+                <div class="phone-ui-top">
+                  <div class="phone-tag"><span class="phone-dot"></span> Fashion</div>
+                  <div class="phone-mini">Story</div>
+                </div>
+                <div class="phone-center-play"></div>
+                <div class="phone-bottom">
+                  <div class="phone-category">Look & Motion</div>
+                  <div class="phone-title">Editorial outfit transitions</div>
+                  <div class="phone-sub">A central flagship mockup with the highest visual priority in the sequence.</div>
+                </div>
+                <div class="phone-actions">
+                  <div class="phone-action">♥</div>
+                  <div class="phone-stat">31k</div>
+                  <div class="phone-action">✦</div>
+                  <div class="phone-stat">save</div>
+                </div>
+              </div>
+            </article>
+
+            <article class="phone phone-4 js-phone">
+              <div class="phone-screen">
+                <div class="phone-bars"><span></span><span class="dim"></span><span class="dim"></span></div>
+                <div class="phone-ui-top">
+                  <div class="phone-tag"><span class="phone-dot"></span> Travel</div>
+                  <div class="phone-mini">UGC</div>
+                </div>
+                <div class="phone-bottom">
+                  <div class="phone-category">Lifestyle Clip</div>
+                  <div class="phone-title">Travel diary with brand mood</div>
+                  <div class="phone-sub">A softer supporting panel that broadens the story and adds motion depth.</div>
+                </div>
+                <div class="phone-actions">
+                  <div class="phone-action">↺</div>
+                  <div class="phone-stat">loop</div>
+                  <div class="phone-action">♥</div>
+                  <div class="phone-stat">15k</div>
+                </div>
+              </div>
+            </article>
+
+            <article class="phone phone-5 js-phone">
+              <div class="phone-screen">
+                <div class="phone-bars"><span></span><span></span><span class="dim"></span></div>
+                <div class="phone-ui-top">
+                  <div class="phone-tag"><span class="phone-dot"></span> Wellness</div>
+                  <div class="phone-mini">Review</div>
+                </div>
+                <div class="phone-bottom">
+                  <div class="phone-category">UGC Review</div>
+                  <div class="phone-title">Haircare & lifestyle proof</div>
+                  <div class="phone-sub">Testimonial-driven content presented with a softer luxury interface language.</div>
+                </div>
+                <div class="phone-actions">
+                  <div class="phone-action">★</div>
+                  <div class="phone-stat">4.9</div>
+                  <div class="phone-action">♥</div>
+                  <div class="phone-stat">7.8k</div>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="phones-meta">
+            <div class="phones-meta-text">Beauty · Skincare · Haircare · Travel · Lifestyle · Fashion · Wellness · Product Demo · UGC Review</div>
+            <div class="phones-meta-line"></div>
+          </div>
         </div>
       </div>
     </section>
@@ -1732,35 +1785,123 @@
       window.addEventListener('resize', requestTick);
     })();
 
+    /* =========================
+       PINNED PHONES SCROLL ANIMATION
+       ========================= */
     (() => {
-      const cards = Array.from(document.querySelectorAll('.js-story-card'));
-      if (!cards.length) return;
+      const section = document.querySelector('.phones-scroll');
+      const phones = Array.from(document.querySelectorAll('.js-phone'));
+      if (!section || !phones.length) return;
 
       const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       if (reduceMotion) {
-        cards.forEach(card => card.classList.add('is-visible'));
+        phones.forEach((phone, i) => {
+          phone.style.opacity = '1';
+          phone.style.transform = `translate(-50%, -50%) scale(${i === 2 ? 1 : 0.96})`;
+        });
         return;
       }
 
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
+      const clamp = (v, min, max) => Math.min(Math.max(v, min), max);
 
-          const card = entry.target;
-          const index = cards.indexOf(card);
+      const mapRange = (value, inMin, inMax, outMin, outMax) => {
+        const t = clamp((value - inMin) / (inMax - inMin), 0, 1);
+        return outMin + (outMax - outMin) * t;
+      };
 
-          setTimeout(() => {
-            card.classList.add('is-visible');
-          }, index * 120);
+      const easeOut = (t) => 1 - Math.pow(1 - t, 3);
 
-          observer.unobserve(card);
+      const progressBetween = (p, start, end) => easeOut(clamp((p - start) / (end - start), 0, 1));
+
+      const layoutsDesktop = [
+        { start:0.02, end:0.20, from:{x:0, y:110, s:.88, r:-8}, to:{x:0, y:10, s:1.02, r:-4}, after:{x:-250, y:48, s:.92, r:-10}, exitStart:.42, exitEnd:.60 },
+        { start:0.18, end:0.34, from:{x:280, y:160, s:.88, r:10}, to:{x:210, y:54, s:.94, r:7}, after:{x:-60, y:92, s:.90, r:2}, exitStart:.62, exitEnd:.78 },
+        { start:0.34, end:0.52, from:{x:-320, y:180, s:.82, r:-12}, to:{x:0, y:-10, s:1.08, r:0}, after:{x:0, y:-20, s:1.05, r:0}, exitStart:1, exitEnd:1 },
+        { start:0.52, end:0.70, from:{x:360, y:180, s:.86, r:12}, to:{x:250, y:92, s:.92, r:8}, after:{x:230, y:36, s:.88, r:10}, exitStart:1, exitEnd:1 },
+        { start:0.70, end:0.90, from:{x:-380, y:210, s:.84, r:-14}, to:{x:-235, y:118, s:.90, r:-8}, after:{x:-215, y:118, s:.90, r:-8}, exitStart:1, exitEnd:1 }
+      ];
+
+      const layoutsMobile = [
+        { start:0.02, end:0.20, from:{x:0, y:140, s:.90, r:-4}, to:{x:0, y:32, s:1.02, r:-2}, after:{x:-74, y:32, s:.92, r:-6}, exitStart:.40, exitEnd:.58 },
+        { start:0.18, end:0.34, from:{x:120, y:170, s:.86, r:6}, to:{x:82, y:110, s:.90, r:5}, after:{x:70, y:118, s:.86, r:3}, exitStart:.62, exitEnd:.78 },
+        { start:0.34, end:0.54, from:{x:-120, y:180, s:.84, r:-8}, to:{x:0, y:4, s:1.06, r:0}, after:{x:0, y:0, s:1.02, r:0}, exitStart:1, exitEnd:1 },
+        { start:0.54, end:0.72, from:{x:130, y:180, s:.84, r:8}, to:{x:88, y:152, s:.86, r:6}, after:{x:84, y:150, s:.84, r:6}, exitStart:1, exitEnd:1 },
+        { start:0.72, end:0.92, from:{x:-130, y:210, s:.82, r:-9}, to:{x:-88, y:160, s:.86, r:-6}, after:{x:-84, y:158, s:.84, r:-6}, exitStart:1, exitEnd:1 }
+      ];
+
+      let ticking = false;
+
+      function getProgress() {
+        const rect = section.getBoundingClientRect();
+        const scrollable = rect.height - window.innerHeight;
+        const raw = (-rect.top) / scrollable;
+        return clamp(raw, 0, 1);
+      }
+
+      function renderPhone(phone, cfg, progress) {
+        let x = cfg.from.x;
+        let y = cfg.from.y;
+        let s = cfg.from.s;
+        let r = cfg.from.r;
+        let opacity = 0;
+
+        const enter = progressBetween(progress, cfg.start, cfg.end);
+        if (progress >= cfg.start) {
+          opacity = enter;
+          x = mapRange(enter, 0, 1, cfg.from.x, cfg.to.x);
+          y = mapRange(enter, 0, 1, cfg.from.y, cfg.to.y);
+          s = mapRange(enter, 0, 1, cfg.from.s, cfg.to.s);
+          r = mapRange(enter, 0, 1, cfg.from.r, cfg.to.r);
+        }
+
+        if (progress > cfg.end) {
+          opacity = 1;
+          x = cfg.to.x;
+          y = cfg.to.y;
+          s = cfg.to.s;
+          r = cfg.to.r;
+        }
+
+        if (cfg.after && progress > cfg.end) {
+          const settleEnd = Math.min(cfg.end + 0.18, 1);
+          const settle = progressBetween(progress, cfg.end, settleEnd);
+          x = mapRange(settle, 0, 1, cfg.to.x, cfg.after.x);
+          y = mapRange(settle, 0, 1, cfg.to.y, cfg.after.y);
+          s = mapRange(settle, 0, 1, cfg.to.s, cfg.after.s);
+          r = mapRange(settle, 0, 1, cfg.to.r, cfg.after.r);
+        }
+
+        if (cfg.exitEnd > cfg.exitStart && progress > cfg.exitStart) {
+          const fade = progressBetween(progress, cfg.exitStart, cfg.exitEnd);
+          opacity = mapRange(fade, 0, 1, 1, 0.20);
+        }
+
+        phone.style.opacity = opacity.toFixed(3);
+        phone.style.transform = `translate(-50%, -50%) translate3d(${x}px, ${y}px, 0) scale(${s}) rotate(${r}deg)`;
+      }
+
+      function updatePhones() {
+        const progress = getProgress();
+        const mobile = window.matchMedia('(max-width: 980px)').matches;
+        const layouts = mobile ? layoutsMobile : layoutsDesktop;
+
+        phones.forEach((phone, index) => {
+          renderPhone(phone, layouts[index], progress);
         });
-      }, {
-        threshold: 0.28,
-        rootMargin: '0px 0px -8% 0px'
-      });
 
-      cards.forEach(card => observer.observe(card));
+        ticking = false;
+      }
+
+      function requestTick() {
+        if (!ticking) {
+          requestAnimationFrame(updatePhones);
+          ticking = true;
+        }
+      }
+
+      updatePhones();
+      window.addEventListener('scroll', requestTick, { passive:true });
+      window.addEventListener('resize', requestTick);
     })();
 
     (() => {
